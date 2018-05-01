@@ -59,17 +59,17 @@ int contadorDeCartas(Lista*);
 */
 void controlarCartasNoMontante();
 
-/* Essa rotina recebe um ponteiro do player 
+/* Essa rotina recebe um ponteiro da lista das mãos do player 
 ** e aloca as cartas nos vetores de possibilidades do jogador conforme as cartas na mesa
 ** apontadas por -> M_l.
 */
-void alocarVetoresDePossibilidades();
+void alocarVetoresDePossibilidades(Lista*);
 
 /* Essa função recebe o apontador para o player 
-** e conta as quantidades de carta por tipo de cartas: Normal, Coringa e Ação. S
-** OBS:Sempre zera com NULL a lista de cartas apontada para cada tipo.
+** conta as quantidades de carta por tipo de cartas e as aloca em lista para: Normal, Coringa e Ação. S
+** OBS:Sempre zera com NULL a lista de cartas apontada para cada tipo no início de sua execução.
 */
-void contadorDeCartasPorTipo(player *j);
+void contadorDeCartasPorTipo(player*);
 
 // Implementação desta Interface:
 #include "MotorCarta.c"

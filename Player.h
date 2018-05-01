@@ -26,7 +26,7 @@ typedef struct jogador
 	int id;					 /* Identificador do jogador */
 	string nome;			 /* Nome do jogador durante as partidas */
 	Lista *listaMaos;		 /* Mantem uma referencia para as cartas em mãos */
-	bool bool_statusJogador; /* Indica a vez do jogador, tem somente valor true quando  é vez dele */
+	bool bool_statusJogador; /* Indica a vez do jogador, tem somente valor true quando é vez dele */
 	int vitorias;			 /* Guarda o número de vitórias a cada partida realizada */
 	carta cartaNaMesa;		 /* Guarda as informações da carta atual na mesa */
 
