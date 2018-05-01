@@ -7,8 +7,17 @@ int main(){
 
 	
 startScreen();
-	
+
 executarMotorCarta();
+
+//lst_Imprime(G_l);
+
+inicializaJogadores();
+
+printf("\nJogador: %s -- IA : %d -- Vitórias: %d -- Vez de Jogar: %d \n",j1.nome, j1.id, j1.vitorias, j1.bool_statusJogador);
+printf("Jogador: %s -- IA : %d -- Vitórias: %d -- Vez de Jogar: %d \n",j2.nome, j2.id, j2.vitorias, j2.bool_statusJogador);
+	
+/**executarMotorCarta();
 
 lst_Imprime(G_l);
 
@@ -27,7 +36,7 @@ puts("\nExecuta rotina conta cartas por tipo");
 
 contadorDeCartasPorTipo(&j1);
 contadorDeCartasPorTipo(&j2);
-/*
+
 puts("\nImprime cartas Acao");
 lst_Imprime(j1.cartasAcao);
 puts("\nImprime cartas Normal");
@@ -43,7 +52,7 @@ lst_Imprime(j2.cartasAcao);
 puts("\nImprime cartas Normal");
 lst_Imprime(j2.cartasNormal);
 puts("\nImprime cartas Coringa");
-lst_Imprime(j2.cartasCoringa);*/
+lst_Imprime(j2.cartasCoringa);
 
 int contNormal, contAcao, contCoringa;
 contNormal = contAcao = contCoringa = 0;
@@ -79,7 +88,7 @@ printf("\nQTD cartas Acao %d", contAcao);
 printf("\nQTD cartas Normal %d", contNormal);
 printf("\nQTD cartas Coringa %d", contCoringa);
 
-lst_Imprime(G_l);
+lst_Imprime(G_l);*/
 return EXIT_SUCCESS;
 }
 
