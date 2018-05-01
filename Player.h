@@ -4,7 +4,6 @@
 #include ".\util\Util.h"
 #endif
 
-
 //Protótipos
 /* Inicializa os dois jogadores com um nome próprio, 
 ** identificação, cartas em mão e estado inicial.
@@ -31,19 +30,17 @@ typedef struct jogador
 	int vitorias;			 /* Guarda o número de vitórias a cada partida realizada */
 	carta cartaNaMesa;		 /* Guarda as informações da carta atual na mesa */
 
-	/* *Matriz tipo: carta*
-	 *Linhas:            || Colunas:
-	 *Número ->            [0....108].
-	 *Cor ->               [0....108]
-     *Coringa Comprar 4 -> [0....108].
-     *Coringa No_Action -> [0....108].
-     *Sequencia númerica -> [0....108].
-	*/
-	carta matrizDePossibilidades[5][108]; // Salva as possibilidades de jogada atual.
-	int numDeCartasNormal[108];			  // Salva quantidade de cartas do tipo Normal.
-	int numDeCartasAcao[108];			  // Salva quantidade de cartas do tipo Ação.
-	int numDeCartasCoringa[108];		  // Salva quantidade de cartas do tipo Coringa.
-										  //stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
+	carta corDePossibilidades[108];			 /* Salva as possibildades referente a cor da carta*/
+	carta numDePossibilidades[108];			 /* Salva as possibildades referente ao número da carta*/
+	carta coringaDePossibilidades[108];		 /* Salva as possibildades referente ao tipo coringa da carta*/
+	carta CorESequenciaDePossiblidades[108]; /* Salva as possibildades de seq. númerica da mesma cor*/
+	int numDeCartasNormal;					 // Salva quantidade de cartas do tipo Normal.
+	int numDeCartasAcao;					 // Salva quantidade de cartas do tipo Ação.
+	int numDeCartasCoringa;					 // Salva quantidade de cartas do tipo Coringa.
+	Lista *cartasNormal;					 // Lista temporária que salva as cartas do tipo Normal.
+	Lista *cartasAcao;						 // Lista temporária que salva as cartas do tipo Acao.
+	Lista *cartasCoringa;					 // Lista temporária que salva as cartas do tipo Coringa.
+											 //stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
 } player;
 
 /* INÍCIO: Variáveis Globais*/
@@ -55,4 +52,3 @@ player j2;
 #define PLAYER_C
 #include "Player.c"
 #endif
-

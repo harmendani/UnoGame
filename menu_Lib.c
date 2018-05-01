@@ -4,13 +4,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 /** Definições de linguagem**/
 #include <locale.h>
 
 /**Bibliotecas do jogo**/
 
+
+#ifndef CARTAS_C
+#define CARTAS_C
 #include "Cartas.c"
+#endif
 
 #ifndef MOTORCARTA_H
 #define MOTORCARTA_H

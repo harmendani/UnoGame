@@ -13,22 +13,22 @@
 Lista* lst_cria();
 
 /* Insere no inicio da Lista */
-Lista* lst_Insere(Lista* l, carta c );
+Lista* lst_Insere(Lista*, carta);
 
 /* Verifica se Lista está Vazia */
-int lst_IsEmpty(Lista* l);
+int lst_IsEmpty(Lista*);
 
 /* Remove primeiro Elemento da Lista - topo */
-Lista* lst_Remove(Lista* l);
+Lista* lst_Remove(Lista*);
 
 /* Imprime elementos da Lista */
-void lst_Imprime(Lista* l);
+void lst_Imprime(Lista*);
 
 /* Imprime elementos em ordem inversa usando Recursividade */
-void lst_Imprime_Rec(Lista *l);
+void lst_Imprime_Rec(Lista*);
 
 /* Libera a lista de memória */
-void lst_FreeList(Lista* l);
+void lst_FreeList(Lista*);
 
 /* Obtem carta do topo da lista */
-carta obter_Carta(Lista* lst);
+carta lst_ObterCarta(Lista*);

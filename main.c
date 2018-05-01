@@ -10,51 +10,76 @@ startScreen();
 	
 executarMotorCarta();
 
-//lst_Imprime(G_l);
+lst_Imprime(G_l);
 
 inicializaJogadores();
 
 distribuiCartasInicio();
 puts("\n\n Cartas Jogador 1");
 
+//carta tempx = lst_ObterCarta(G_l);
+
 lst_Imprime(j1.listaMaos);
-
 puts("\n\n Cartas Jogador 2");
-//lst_Imprime(j2.listaMaos);
+lst_Imprime(j2.listaMaos);
 
-int numCartas = contadorDeCartas(G_l);
-int jp = numCartas;
-for(int i = 0; i < jp; i++){
-	
-/*	printf("Tamanho da Lista %d", numCartas);
-	numCartas = contadorDeCartas(G_l);*/
-	G_l = lst_Remove(G_l);
-	
-	
-}
-//j1.listaMaos = lst_Remove(j1.listaMaos);
+puts("\nExecuta rotina conta cartas por tipo");
 
+contadorDeCartasPorTipo(&j1);
+contadorDeCartasPorTipo(&j2);
+/*
+puts("\nImprime cartas Acao");
+lst_Imprime(j1.cartasAcao);
+puts("\nImprime cartas Normal");
+lst_Imprime(j1.cartasNormal);
+puts("\nImprime cartas Coringa");
+lst_Imprime(j1.cartasCoringa);
 
-	numCartas = contadorDeCartas(G_l);
-	printf("Tamanho da Lista %d", numCartas);
-	
-	
-	executarMotorCarta();
-	
-	//lst_Imprime(G_l);
-	
-	
-	puts("\nTamanho da Lista apos executarRotina\n");
-	
-		numCartas = contadorDeCartas(G_l);
-	printf("Tamanho da Lista %d", numCartas);
-	
-	int a = contadorDeCartas(j1.listaMaos);
-	int b = contadorDeCartas(j2.listaMaos);
-	printf("Quantidade cartas do jogador 1: %d ", a);
-	printf("Quantidade cartas do jogador 2: %d", b);
-endProgram();
+puts("\nExecuta rotina conta cartas por tipo JOGADOR 2:");
 
-return 0;
+contadorDeCartasPorTipo(&j2);
+puts("\nImprime cartas Acao");
+lst_Imprime(j2.cartasAcao);
+puts("\nImprime cartas Normal");
+lst_Imprime(j2.cartasNormal);
+puts("\nImprime cartas Coringa");
+lst_Imprime(j2.cartasCoringa);*/
+
+int contNormal, contAcao, contCoringa;
+contNormal = contAcao = contCoringa = 0;
+
+puts("\n -- JOGADOR 1 -- ");
+contNormal = contadorDeCartas(j1.cartasNormal);
+contAcao = contadorDeCartas(j1.cartasAcao);
+contCoringa = contadorDeCartas(j1.cartasCoringa);
+puts("\nImprime cartas Acao");
+lst_Imprime(j1.cartasAcao);
+puts("\nImprime cartas Normal");
+lst_Imprime(j1.cartasNormal);
+puts("\nImprime cartas Coringa");
+lst_Imprime(j1.cartasCoringa);
+
+printf("\nQTD cartas Acao %d", contAcao);
+printf("\nQTD cartas Normal %d", contNormal);
+printf("\nQTD cartas Coringa %d", contCoringa);
+
+puts("\n -- JOGADOR 2 -- ");
+contNormal = contAcao = contCoringa = 0;
+contNormal = contadorDeCartas(j2.cartasNormal);
+contAcao = contadorDeCartas(j2.cartasAcao);
+contCoringa = contadorDeCartas(j2.cartasCoringa);
+puts("\nImprime cartas Acao");
+lst_Imprime(j2.cartasAcao);
+puts("\nImprime cartas Normal");
+lst_Imprime(j2.cartasNormal);
+puts("\nImprime cartas Coringa");
+lst_Imprime(j2.cartasCoringa);
+
+printf("\nQTD cartas Acao %d", contAcao);
+printf("\nQTD cartas Normal %d", contNormal);
+printf("\nQTD cartas Coringa %d", contCoringa);
+
+lst_Imprime(G_l);
+return EXIT_SUCCESS;
 }
 

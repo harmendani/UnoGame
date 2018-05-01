@@ -37,6 +37,8 @@ void InsertionSortRandom(int n, Lista *vet)
     G_l = nova;
     for (int j = 0; j < 108; j++)
     {
+    	vetCarta[j].id = j;
         G_l = lst_Insere(G_l, vetCarta[j]);
+        
     }
 }

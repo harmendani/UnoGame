@@ -50,15 +50,26 @@ void executarMotorCarta();
 #include "Player.h"
 #endif
 /* Recebe uma variável do tipo player e conta o número de cartas nas mãos */
-int contadorDeCartas(Lista* lista);
+int contadorDeCartas(Lista*);
 
 /* Confere se existe cartas no montante realizando o controle do montante.
 ** Realize duas tarefas básicas: 
 ** 1- Aloca a pilha de cartas na mesa no montante caso ele esteja sem cartas. 
-** 2- A Pilha da Mesa é zerada após a ação executada acima.*/
+** 2- A Pilha da Mesa é zerada após a ação executada acima.
+*/
 void controlarCartasNoMontante();
 
+/* Essa rotina recebe um ponteiro do player 
+** e aloca as cartas nos vetores de possibilidades do jogador conforme as cartas na mesa
+** apontadas por -> M_l.
+*/
+void alocarVetoresDePossibilidades();
 
+/* Essa função recebe o apontador para o player 
+** e conta as quantidades de carta por tipo de cartas: Normal, Coringa e Ação. S
+** OBS:Sempre zera com NULL a lista de cartas apontada para cada tipo.
+*/
+void contadorDeCartasPorTipo(player *j);
 
 // Implementação desta Interface:
 #include "MotorCarta.c"
