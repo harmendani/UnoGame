@@ -32,6 +32,9 @@ typedef struct jogador
 	carta cartaNaMesa;		 /* Guarda as informações da carta atual na mesa */
 
 	 
+	carta CorESequenciaDePossiblidades[100]; /* Guarda as cartas de mesma cor em seq. numérica */
+    //int coresDePossibilidades[5]; /* Guarda as cores disponíveis em mãos */
+
 	int numDeCartasNormal;					 // Salva quantidade de cartas do tipo Normal.
 	int numDeCartasAcao;					 // Salva quantidade de cartas do tipo Ação.
 	int numDeCartasCoringa;					 // Salva quantidade de cartas do tipo Coringa.
