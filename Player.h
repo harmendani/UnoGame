@@ -26,14 +26,15 @@ typedef struct jogador
 	int id;					 /* Identificador do jogador */
 	string nome;			 /* Nome do jogador durante as partidas */
 	Lista *listaMaos;		 /* Mantem uma referencia para as cartas em mãos */
+	
 	bool bool_statusJogador; /* Indica a vez do jogador, tem somente valor true quando é vez dele */
 	int vitorias;			 /* Guarda o número de vitórias a cada partida realizada */
 	carta cartaNaMesa;		 /* Guarda as informações da carta atual na mesa */
 
-	carta corDePossibilidades[108];			 /* Salva as possibildades referente a cor da carta*/
-	carta numDePossibilidades[108];			 /* Salva as possibildades referente ao número da carta*/
-	carta coringaDePossibilidades[108];		 /* Salva as possibildades referente ao tipo coringa da carta*/
-	carta CorESequenciaDePossiblidades[108]; /* Salva as possibildades de seq. númerica da mesma cor*/
+	 
+	carta CorESequenciaDePossiblidades[100]; /* Guarda as cartas de mesma cor em seq. numérica */
+    //int coresDePossibilidades[5]; /* Guarda as cores disponíveis em mãos */
+
 	int numDeCartasNormal;					 // Salva quantidade de cartas do tipo Normal.
 	int numDeCartasAcao;					 // Salva quantidade de cartas do tipo Ação.
 	int numDeCartasCoringa;					 // Salva quantidade de cartas do tipo Coringa.
