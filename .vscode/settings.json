@@ -1,0 +1,8 @@
+{
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "files.associations": {
+        "cartas.h": "c",
+        "listacarta.h": "c",
+        "player.c": "c"
+    }
+}
