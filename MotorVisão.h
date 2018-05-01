@@ -1,6 +1,8 @@
 /* Visão dos jogos são contagens, predições e verificações em relação as cartas e
 ** são utilizados para que o motor de IA do jogo tome as melhores decisões.
 */
+
+// TIPOS DEFINIDOS
 typedef struct VisaoContagem
 {
     int i_quantMesa;
