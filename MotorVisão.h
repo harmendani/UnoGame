@@ -5,7 +5,7 @@
 // TIPOS DEFINIDOS
 typedef struct VisaoContagem
 {
-    int i_quantMesa;
+    int i_quantMesa;int i_quantMesa;
     int i_quantMontante;
 
 } st_Contagem;
@@ -30,11 +30,17 @@ typedef struct VisaoTotal
     st_Jogador jogador;
 } vision;
 
-/* Procedimentos para a visão Contagem */
+// Visão Contagem
+/* Retorna a quantidade de cartas na mesa */
 int v_QuantMesa();
+/* Retorna a quantidade de cartas no montante */
 int v_QuantMontante();
-/* Procedimentos para a visão Mesa */
+
+// Visão Mesa
+/* Retorna a carta da mesa */
 carta v_VerificarCartaMesa();
-/* Procedimento para a visão Jogador */
-int v_QuantJogador();
-int v_QuantAdversario();
+
+// Visão Jogador
+/* Retorna a quantidade de cartas de qualquer jogador */
+int v_QuantJogador(player*);
+

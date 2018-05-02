@@ -1,8 +1,6 @@
 /* Implementa a interface "MotorCarta.h" com algumas funçees
 que manipulam as cartas durante as partidas*/
 
-
-
 void alocadorDeCartasMemoria()
 {
 
@@ -77,10 +75,8 @@ int contadorDeCartas(Lista *lista)
 	}
 	else
 	{
-
 		while (proxima != NULL)
 		{
-
 			numCartas++;
 			proxima = proxima->prox;
 		}
@@ -88,9 +84,6 @@ int contadorDeCartas(Lista *lista)
 	return numCartas;
 }
 
-void alocarMatrizPossibilidades()
-{
-}
 void contadorDeCartasPorTipo(player *j)
 {
 	int contNormal = 0;

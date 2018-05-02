@@ -35,9 +35,6 @@ void embaralhadorDeCartas();
 /*  Distribui cartas no inicio do jogo para cada player. */
 void distribuiCartasInicio();
 
-/* Impressão das cartas em memoria por id, tipo e cor. */
-void imprimeIDCartasMemoria();
-
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////
 ROTINA PRINCIPAL PARA O MOTOR DE CARTAS: 
 Executada apenas uma vez antes do início do jogo. Estão presentes todas as funções necessárias
@@ -58,8 +55,6 @@ int contadorDeCartas(Lista*);
 ** 2- A Pilha da Mesa é zerada após a ação executada acima.
 */
 void controlarCartasNoMontante();
-
-
 
 /* Essa função recebe o apontador para o player 
 ** conta as quantidades de carta por tipo de cartas e as aloca em lista para: Normal, Coringa e Ação. S
