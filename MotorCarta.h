@@ -42,10 +42,13 @@ para carregar as cartas embaralhadas em memória na variável global Lista* G_l.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 void executarMotorCarta();
 
+
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Player.h"
 #endif
+
+
 /* Recebe uma variável do tipo player e conta o número de cartas nas mãos */
 int contadorDeCartas(Lista*);
 

@@ -3,6 +3,7 @@
 #include ".\util\Util.h"
 #endif
 
+
 //Protótipos
 /* Inicializa os dois jogadores com um nome próprio, 
 ** identificação, cartas em mão e estado inicial.
@@ -18,8 +19,9 @@ void inicializaJogadores();
 #define AR 1	// Com aprendizado de máquina
 #define NO_AR 0 // Sem aprenzido de máquina
 
-// TIPOS DEFINIDOS
-typedef struct jogador
+
+// TIPOS
+struct jogador
 {
 	int id;			  /* Identificador do jogador */
 	string nome;	  /* Nome do jogador durante as partidas */
@@ -35,9 +37,11 @@ typedef struct jogador
 	Lista *cartasNormal;	// Lista temporária que salva as cartas do tipo Normal.
 	Lista *cartasAcao;		// Lista temporária que salva as cartas do tipo Acao.
 	Lista *cartasCoringa;   // Lista temporária que salva as cartas do tipo Coringa.
-	vision visaoPlayer;		// Salva as visões atuais do jogo
+	vision visaoPlayer;		// Salva as vis�es atuais do jogo
 							//stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
-} player;
+};
+
+typedef struct jogador player;
 
 /* INÍCIO: Variáveis Globais*/
 player j1;

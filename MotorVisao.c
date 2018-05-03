@@ -15,7 +15,7 @@ carta v_VerificarCartaMesa()
     return lst_ObterCarta(M_l);
 }
 
-int v_QuantJogador(player* jogador)
+int v_QuantPlayer(player* jogador)
 {
     return contadorDeCartas(jogador->listaMaos);
 }

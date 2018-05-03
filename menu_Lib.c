@@ -11,21 +11,26 @@
 
 /**Bibliotecas do jogo**/
 
-
 #ifndef CARTAS_C
 #define CARTAS_C
 #include "Cartas.c"
 #endif
 
-#ifndef MOTORCARTA_H
+#ifndef MOTORVISAO_H
+#define MOTORVISAO_H
+#include "MotorVisao.h"
+#endif
+
+/*#ifndef MOTORCARTA_H
 #define MOTORCARTA_H
 #include "MotorCarta.h"
 #endif
-
-#ifndef PLAYER_H
+*/
+/*#ifndef PLAYER_H
 #define PLAYER_H
 #include "Player.h"
-#endif
+#endif*/
+
 
 void startScreen()
 {

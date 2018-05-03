@@ -15,11 +15,11 @@ void inicializaJogadores()
 	j1.listaMaos = lst_cria(); // Inicializa m�os do jogador 1 com o valor NULL
 	j2.listaMaos = lst_cria(); // Inicializa m�os do jogador 2 com o valor NULL
 
-	j1.visaoPlayer = NULL;
+	/*j1.visaoPlayer = (vision)NULL;
 	j2.visaoPlayer = NULL;
 
 	j1.cartaNaMesa = NULL;
-	j2.cartaNaMesa = NULL;
+	j2.cartaNaMesa = NULL;*/
 
 	j1.numDeCartasAcao = 0;
 	j1.numDeCartasCoringa = 0;

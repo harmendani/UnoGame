@@ -1,6 +1,9 @@
 
 // Bibliotecas
+#ifndef CARTAS_H
+#define CARTAS_H
 #include "Cartas.h"
+#endif
 
 // Estruturas
 // Tipos

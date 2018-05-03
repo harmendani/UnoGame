@@ -2,10 +2,12 @@
 ** são utilizados para que o motor de IA do jogo tome as melhores decisões.
 */
 
+
+
 // TIPOS DEFINIDOS
 typedef struct VisaoContagem
 {
-    int i_quantMesa;int i_quantMesa;
+    int i_quantMesa;
     int i_quantMontante;
 
 } st_Contagem;
@@ -30,6 +32,18 @@ typedef struct VisaoTotal
     st_Jogador jogador;
 } vision;
 
+#ifndef MOTORCARTA_H
+#define MOTORCARTA_H
+#include "MotorCarta.h"
+#endif
+
+#ifndef PLAYER_H
+#define PLAYER_H
+#include "Player.h"
+#endif
+
+
+
 // Visão Contagem
 /* Retorna a quantidade de cartas na mesa */
 int v_QuantMesa();
@@ -40,7 +54,6 @@ int v_QuantMontante();
 /* Retorna a carta da mesa */
 carta v_VerificarCartaMesa();
 
-// Visão Jogador
+// Vis�o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
-int v_QuantJogador(player*);
-
+int v_QuantPlayer(player*);

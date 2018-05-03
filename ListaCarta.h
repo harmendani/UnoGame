@@ -3,11 +3,16 @@
 /////////////////////////////////////////////
 
 // Bibliotecas
+#ifndef LISTACARTA_C
+#define LISTACARTA_C
 #include "ListaCarta.c"
+#endif
 
 /*
 ** Fun��es disponibilidades por essa biblioteca
 */
+
+
 
 /* Retorna uma lista vazia */
 Lista* lst_cria();
