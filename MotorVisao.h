@@ -2,8 +2,6 @@
 ** s√£o utilizados para que o motor de IA do jogo tome as melhores decis√µes.
 */
 
-
-
 // TIPOS DEFINIDOS
 typedef struct VisaoContagem
 {
@@ -42,18 +40,22 @@ typedef struct VisaoTotal
 #include "Player.h"
 #endif
 
-
-
-// Vis√£o Contagem
+// Vis„o Contagem
 /* Retorna a quantidade de cartas na mesa */
 int v_QuantMesa();
+
 /* Retorna a quantidade de cartas no montante */
 int v_QuantMontante();
 
-// Vis√£o Mesa
+// Vis„o Mesa
 /* Retorna a carta da mesa */
 carta v_VerificarCartaMesa();
 
 // Vis„o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
-int v_QuantPlayer(player*);
+int v_QuantPlayer(player);
+
+#ifndef MOTORVISAO_C
+#define MOTORVISAO_C
+#include "MotorVisao.c"
+#endif
