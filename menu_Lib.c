@@ -5,11 +5,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-
+#include <string.h>
 /** Definições de linguagem**/
 #include <locale.h>
 
 /**Bibliotecas do jogo**/
+#include "Estado.h"
 
 #ifndef CARTAS_C
 #define CARTAS_C

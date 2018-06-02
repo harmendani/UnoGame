@@ -5,8 +5,6 @@ ordena��o e gera��o de n�meros pseudo-aleat�rios*/
 #include "Random.c"
 #include "InsertionSort.c"
 
-// TIPOS DEFINIDOS
-typedef char *string;
 
 //PROT�TIPOS DE FUNCOES
 int randomInteger();
