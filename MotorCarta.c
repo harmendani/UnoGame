@@ -1,4 +1,4 @@
-/* Implementa a interface "MotorCarta.h" com algumas funçees
+/* Implementa a interface "MotorCarta.h" com algumas funções
 que manipulam as cartas durante as partidas*/
 
 void alocadorDeCartasMemoria()
@@ -89,11 +89,14 @@ void contadorDeCartasPorTipo(player *j)
 	int contNormal = 0;
 	int contAcao = 0;
 	int contCoringa = 0;
-	/* Sempre zera a lista por tipo de carta para assegurar a integridade */
+	/* Sempre zera e libera a lista por tipo de carta para assegurar a integridade */
+	lst_FreeList(j->cartasNormal);
+	lst_FreeList(j->cartasAcao);
+	lst_FreeList(j->cartasCoringa);
 	j->cartasNormal = lst_cria();
 	j->cartasAcao = lst_cria();
 	j->cartasCoringa = lst_cria();
-
+    
 	Lista *l = NULL; // Auxilia para varrer a lista de cartas do jogador.
 
 	/* Conta cartas do tipo Normal */
