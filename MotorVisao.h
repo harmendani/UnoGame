@@ -13,7 +13,7 @@ typedef struct VisaoContagem
 typedef struct VisaoMesa
 {
     carta c_cartaMesa;
-
+    
 } st_Mesa;
 
 typedef struct VisaoJogador
@@ -40,18 +40,18 @@ typedef struct VisaoTotal
 #include "Player.h"
 #endif
 
-// Visão Contagem
+// Visï¿½o Contagem
 /* Retorna a quantidade de cartas na mesa */
 int v_QuantMesa();
 
 /* Retorna a quantidade de cartas no montante */
 int v_QuantMontante();
 
-// Visão Mesa
+// Visï¿½o Mesa
 /* Retorna a carta da mesa */
 carta v_VerificarCartaMesa();
 
-// Visão Jogador
+// Visï¿½o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
 int v_QuantPlayer(player);
 
