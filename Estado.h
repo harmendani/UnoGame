@@ -15,7 +15,7 @@
 #define S8 "1000"
 #define S9 "1001"
 
-estado estadoGlobal; // Variável global que representa estado do jogo
+estado estadoGlobal; // Variável global que representa o Estado do jogo
 
 //TIPOS
 
