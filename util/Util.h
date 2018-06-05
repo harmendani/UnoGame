@@ -9,3 +9,6 @@ ordena��o e gera��o de n�meros pseudo-aleat�rios*/
 //PROT�TIPOS DE FUNCOES
 int randomInteger();
 void InsertionSortRandom(int, Lista *);
+
+//TIPOS DEFINIDOS
+typedef char* string;

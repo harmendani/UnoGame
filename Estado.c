@@ -1,8 +1,5 @@
 /* Implementa as rotinas de 'Estado.h' */
-#ifndef ESTADO_H
-#define ESTADO_H
-#include "Estado.h"
-#endif
+
 
 void start_StateGame()
 {

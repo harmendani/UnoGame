@@ -15,8 +15,6 @@
 #define S8 "1000"
 #define S9 "1001"
 
-estado estadoGlobal; // Variável global que representa o Estado do jogo
-
 //TIPOS
 
 struct Estado
@@ -25,7 +23,10 @@ struct Estado
     char stateGame[9];
     /* Salva o próximo estado do jogo */
     char stateNext[9];
-} typedef struct Estado estado;
+};
+ typedef struct Estado estado;
+ 
+ estado estadoGlobal; // Variável global que representa o Estado do jogo
 
 //ROTINAS
 /* Concatena os estados S no vetor stateGame[] para criar os estados do jogo*/
@@ -34,3 +35,8 @@ void build_StateGame();
 void start_StateGame();
 /*Define a string '000000000' para limpar o estado anterior salvo*/
 void start_StateNext();
+
+#ifndef ESTADO_C
+#define ESTADO_C
+#include "Estado.c"
+#endif

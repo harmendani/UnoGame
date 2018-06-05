@@ -10,7 +10,10 @@
 #include <locale.h>
 
 /**Bibliotecas do jogo**/
+#ifndef ESTADO_H
+#define ESTADO_H
 #include "Estado.h"
+#endif
 
 #ifndef CARTAS_C
 #define CARTAS_C

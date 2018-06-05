@@ -23,7 +23,7 @@ void inicializaJogadores();
 // TIPOS
 struct jogador
 {
-	int id;			  /* Identificador do jogador */
+	int id;			  /* Identificador do jogador 0: NO AR -- 1 AR*/
 	string nome;	  /* Nome do jogador durante as partidas */
 	Lista *listaMaos; /* Mantem uma referencia para as cartas em mãos */
 
