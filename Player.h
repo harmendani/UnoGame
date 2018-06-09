@@ -4,9 +4,9 @@
 #endif
 
 
-//Prot?≥tipos
-/* Inicializa os dois jogadores com um nome pr?≥prio, 
-** identifica?ß?£o, cartas em m?£o e estado inicial.
+//Prot?ÔøΩtipos
+/* Inicializa os dois jogadores com um nome pr?ÔøΩprio, 
+** identifica?ÔøΩ?ÔøΩo, cartas em m?ÔøΩo e estado inicial.
 */
 void inicializaJogadores();
 
@@ -22,17 +22,16 @@ void inicializaJogadores();
 
 // TIPOS
 struct jogador
-{
+{   
 	int id;			  /* Identificador do jogador 0: NO AR -- 1 AR*/
 	string nome;	  /* Nome do jogador durante as partidas */
-	Lista *listaMaos; /* Mantem uma referencia para as cartas em m?£os */
+	Lista *listaMaos; /* Mantem uma referencia para as cartas em m?ÔøΩos */
 
 	bool bool_statusJogador; /* Indica a vez do jogador, tem somente valor true quando ?? vez dele */
-	int vitorias;			 /* Guarda o n??mero de vit?≥rias a cada partida realizada */
-	carta cartaNaMesa;		 /* Guarda as informa?ß?µes da carta atual na mesa */
-
+	int vitorias;			 /* Guarda o n??mero de vit?ÔøΩrias a cada partida realizada */
+	
 	int numDeCartasNormal;  // Salva quantidade de cartas do tipo Normal.
-	int numDeCartasAcao;	// Salva quantidade de cartas do tipo A?ß?£o.
+	int numDeCartasAcao;	// Salva quantidade de cartas do tipo A?ÔøΩ?ÔøΩo.
 	int numDeCartasCoringa; // Salva quantidade de cartas do tipo Coringa.
 	Lista *cartasNormal;	// Lista tempor??ria que salva as cartas do tipo Normal.
 	Lista *cartasAcao;		// Lista tempor??ria que salva as cartas do tipo Acao.
@@ -43,7 +42,7 @@ struct jogador
 
 typedef struct jogador player;
 
-/* IN?çCIO: Vari??veis Globais*/
+/* IN?ÔøΩCIO: Vari??veis Globais*/
 player j1;
 player j2;
 /* FIM: Vari??veis Globais*/

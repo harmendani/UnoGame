@@ -1,5 +1,5 @@
-/* Visão dos jogos são contagens, predições e verificações em relação as cartas e
-** são utilizados para que o motor de IA do jogo tome as melhores decisões.
+/* Visï¿½o dos jogos sï¿½o contagens, prediï¿½ï¿½es e verificaï¿½ï¿½es em relaï¿½ï¿½o as cartas e
+** sï¿½o utilizados para que o motor de IA do jogo tome as melhores decisï¿½es.
 */
 
 // TIPOS DEFINIDOS
@@ -40,18 +40,18 @@ typedef struct VisaoTotal
 #include "Player.h"
 #endif
 
-// Visão Contagem
+// Visï¿½o Contagem
 /* Retorna a quantidade de cartas na mesa */
 int v_QuantMesa();
 
 /* Retorna a quantidade de cartas no montante */
 int v_QuantMontante();
 
-// Visão Mesa
+// Visï¿½o Mesa
 /* Retorna a carta da mesa */
 carta v_VerificarCartaMesa();
 
-// Visão Jogador
+// Visï¿½o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
 int v_QuantPlayer(player);
 

@@ -12,6 +12,7 @@ void start_StateGame(estado s)
 }
 
 void start_StateNext(estado s){
+    
     for (int i = 0; i < 9; i++)
     {
         s.stateNext[i] = '0';
