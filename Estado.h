@@ -19,22 +19,25 @@
 
 struct Estado
 {
-    /* Salva o estado atual do jogo formado por uma tupla Sv1 X Sv2 X Sv3 qualquer */
+    /* Salva o estado anterior do jogo  */
     char stateGame[9];
-    /* Salva o prÃ³ximo estado do jogo */
+    /* Salva o próximo estado do jogo após executar uma ação*/
     char stateNext[9];
 };
  typedef struct Estado estado;
  
- estado estadoGlobal; // VariÃ¡vel global que representa o Estado do jogo
-
+ 
 //ROTINAS
-/* Concatena os estados S no vetor stateGame[] para criar os estados do jogo*/
+/*  Ao realizar uma ação, salva stateNext[n] em stateGame[n].
+*   Depois salva S em stateNext[n].
+*/
 void build_StateGame();
-/*Define a string '000000000' para iniciar a variÃ¡vel de estado do jogo*/
-void start_StateGame();
+
 /*Define a string '000000000' para limpar o estado anterior salvo*/
-void start_StateNext();
+void start_StateGame(estado s);
+
+/*Define a string '000000000' para iniciar a variável de estado do jogo*/
+void start_StateNext(estado s);
 
 #ifndef ESTADO_C
 #define ESTADO_C

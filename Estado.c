@@ -1,20 +1,20 @@
 /* Implementa as rotinas de 'Estado.h' */
 
 
-void start_StateGame()
+void start_StateGame(estado s)
 {
 
     for (int i = 0; i < 9; i++)
     {
-        estadoGlobal.stateGame[i] = '0';
+        s.stateGame[i] = '0';
     }
 
 }
 
-void start_StateNext(){
+void start_StateNext(estado s){
     for (int i = 0; i < 9; i++)
     {
-        estadoGlobal.stateNext[i] = '0';
+        s.stateNext[i] = '0';
     }
 }
 
