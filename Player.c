@@ -30,4 +30,7 @@ void inicializaJogadores()
 	j2.cartasNormal = lst_cria();
 	j2.cartasAcao = lst_cria();
 	j2.cartasCoringa = lst_cria();
+	
+	j1.adversario = &j2;
+	j2.adversario = &j1;
 }

@@ -21,7 +21,9 @@ void inicializaJogadores();
 
 
 // TIPOS
-typedef struct jogador
+typedef struct jogador player;
+
+struct jogador
 {   
 	int id;			  /* Identificador do jogador 0: NO AR -- 1 AR*/
 	string nome;	  /* Nome do jogador durante as partidas */
@@ -39,7 +41,9 @@ typedef struct jogador
 	vision visaoPlayer;		// Salva as vis?es atuais do jogo
 	player* adversario;		// Salva o jogador adversário no início da partida.			
 	                       //stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
-}player;
+};
+
+
 
 
 
