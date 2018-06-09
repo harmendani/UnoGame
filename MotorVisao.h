@@ -53,14 +53,14 @@ carta v_VerificarCartaMesa();
 
 // Vis�o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
-int v_QuantPlayer(player);
+int v_QuantPlayer(player*);
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////
 * ROTINA PRINCIPAL PARA O MOTOR DE VISÃO: 
 * Executa todas as rotinas necessárias para processar e salvar os dados na visão do jogador.
-* A rotina precisa conhecer apenas o jogador - Recebe como argumento :player p.
+* A rotina precisa conhecer apenas o jogador - Recebe como argumento :ponteiro para o player.
 * //////////////////////////////////////////////////////////////////////////////////////////////////////*/
-void executarMotorVisao(player p);
+void executarMotorVisao(player* p);
 
 
 #ifndef MOTORVISAO_C

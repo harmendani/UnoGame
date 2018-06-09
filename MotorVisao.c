@@ -15,26 +15,26 @@ carta v_VerificarCartaMesa()
     return lst_ObterCarta(M_l);
 }
 
-int v_QuantPlayer(player jogador)
+int v_QuantPlayer(player* jogador)
 {
 	
-    return contadorDeCartas(jogador.listaMaos);
+    return contadorDeCartas(jogador->listaMaos);
 }
 
-/*void executarMotorVisao(player* p){
+void executarMotorVisao(player* p){
+
 
 // Visão Contagem
 p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
 p->visaoPlayer.contagem.i_quantMontante = v_QuantMontante();
 
 // Visão Mesa
-p->visaoPlayer.mesa.c_cartaMesa = v_VerificarCartaMesa();
+//p->visaoPlayer.mesa.c_cartaMesa = v_VerificarCartaMesa();
 
 
 //Visão Jogador
 p->visaoPlayer.jogador.i_quantJogador = v_QuantPlayer(p);
-//p->visaoPlayer.jogador.i_quantadversario = v_QuantPlayer(adv);
+p->visaoPlayer.jogador.i_quantadversario = v_QuantPlayer(p->adversario);
 
 
 }
-*/
