@@ -21,7 +21,7 @@ void inicializaJogadores();
 
 
 // TIPOS
-struct jogador
+typedef struct jogador
 {   
 	int id;			  /* Identificador do jogador 0: NO AR -- 1 AR*/
 	string nome;	  /* Nome do jogador durante as partidas */
@@ -37,10 +37,11 @@ struct jogador
 	Lista *cartasAcao;		// Lista tempor??ria que salva as cartas do tipo Acao.
 	Lista *cartasCoringa;   // Lista tempor??ria que salva as cartas do tipo Coringa.
 	vision visaoPlayer;		// Salva as vis?es atuais do jogo
-							//stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
-};
+	player* adversario;		// Salva o jogador adversário no início da partida.			
+	                       //stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
+}player;
 
-typedef struct jogador player;
+
 
 /* IN?�CIO: Vari??veis Globais*/
 player j1;
