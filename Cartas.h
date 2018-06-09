@@ -1,7 +1,7 @@
-/* Interface - Cartas.h - O c�digo-fonte abaixo abstrai as propriedades b�sicas 
+/* Interface - Cartas.h - O c?digo-fonte abaixo abstrai as propriedades b?sicas 
 da entidade CARTAS -- Desenvolvido por Pedro Harmendani - 2018 --*/
 
-// Prot�tipos
+// Prot?tipos
 void inicializa_Cartas();
 
 //CONSTANTES
@@ -9,15 +9,15 @@ void inicializa_Cartas();
 // Cartas com PESO CORINGA
 #define QTD_CARTAS_CORINGA_COMPRAR_4 4
 #define QTD_CARTAS_CORINGA 4
-// Cartas com PESO A��O
+// Cartas com PESO A??O
 #define QTD_CARTAS_INVERTE 8
 #define QTD_CARTAS_SALTA 8
 #define QTD_CARTAS_COMPRAR_2 8
 // Cartas NORMAL
-#define QTD_CARTAS_AZUL 19     /* Cartas de 0 a 9 -- Apenas uma carta de n� 0 */
-#define QTD_CARTAS_VERMELHO 19 /* Cartas de 0 a 9 -- Apenas uma carta de n� 0 */
-#define QTD_CARTAS_AMARELO 19  /* Cartas de 0 a 9 -- Apenas uma carta de n� 0 */
-#define QTD_CARTAS_VERDE 19    /* Cartas de 0 a 9 -- Apenas uma carta de n� 0 */
+#define QTD_CARTAS_AZUL 19     /* Cartas de 0 a 9 -- Apenas uma carta de n? 0 */
+#define QTD_CARTAS_VERMELHO 19 /* Cartas de 0 a 9 -- Apenas uma carta de n? 0 */
+#define QTD_CARTAS_AMARELO 19  /* Cartas de 0 a 9 -- Apenas uma carta de n? 0 */
+#define QTD_CARTAS_VERDE 19    /* Cartas de 0 a 9 -- Apenas uma carta de n? 0 */
 
 // PESOS DAS CARTAS ESPECIAIS
 #define PESO_CARTA_CORINGA 50
@@ -57,7 +57,7 @@ typedef struct cartas
     int id; /* Usado para embaralhar as cartas */
 } carta;
 
-/* Vari�veis Globais do tipo : carta */
+/* Vari?veis Globais do tipo : carta */
 
 // Guarda cartas Azuis
 carta vetorCartasAzul[24];

@@ -12,8 +12,8 @@ void inicializaJogadores()
 	j2.bool_statusJogador = false;
 	j1.vitorias = 0;
 	j2.vitorias = 0;
-	j1.listaMaos = lst_cria(); // Inicializa m�os do jogador 1 com o valor NULL
-	j2.listaMaos = lst_cria(); // Inicializa m�os do jogador 2 com o valor NULL
+	j1.listaMaos = lst_cria(); // Inicializa m?os do jogador 1 com o valor NULL
+	j2.listaMaos = lst_cria(); // Inicializa m?os do jogador 2 com o valor NULL
 
 	/*j1.visaoPlayer = (vision)NULL;
 	j2.visaoPlayer = NULL;

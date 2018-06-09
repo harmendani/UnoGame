@@ -15,7 +15,7 @@ struct ListaCarta
     Lista *prox;
 };
 
-// Opera√ß√µes
+// OperaÁıes
 
 /* Retorna uma lista vazia */
 Lista *lst_cria()
@@ -32,7 +32,7 @@ Lista *lst_Insere(Lista *atual, carta c)
     novo->prox = atual;
     return novo;
 }
-/* Verifica se Lista est√° Vazia */
+/* Verifica se Lista est· Vazia */
 int lst_IsEmpty(Lista *l)
 {
 
@@ -47,7 +47,7 @@ Lista *lst_Remove(Lista *atual)
     topo = atual->prox;
     printf("\n Removida id: %d", atual->Carta.id);
     free(atual);
-    atual = NULL; // Garante que o valor È NULL
+    atual = NULL; // Garante que o valor ? NULL
 
     return topo;
 }
@@ -71,7 +71,7 @@ void lst_Imprime(Lista *l)
     }
     printf("\n");
 }
-/* Libera a lista de mem√©ria */
+/* Libera a lista de memÈria */
 void lst_FreeList(Lista *l)
 {
     Lista *p = l;
@@ -82,7 +82,7 @@ void lst_FreeList(Lista *l)
         p = ant;
     }
 }
-/* Imprime de tr√°s pra frente usando Recursividade */
+/* Imprime de tr·s pra frente usando Recursividade */
 void lst_Imprime_Rec(Lista *l)
 {
     if (!lst_IsEmpty(l))
@@ -94,7 +94,7 @@ void lst_Imprime_Rec(Lista *l)
     }
 }
 
-/* Obt√©m carta do topo de uma lista */
+/* ObtÈm carta do topo de uma lista */
 carta lst_ObterCarta(Lista *lst)
 {
 

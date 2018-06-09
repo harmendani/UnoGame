@@ -6,7 +6,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
-/** DefiniÃ§Ãµes de linguagem**/
+/** Definições de linguagem**/
 #include <locale.h>
 
 /**Bibliotecas do jogo**/
@@ -48,7 +48,7 @@ void startScreen()
 void endProgram()
 {
     puts("\n");
-    printf("\n--- ATÃ‰ MAIS ---\n");
+    printf("\n--- ATÉ MAIS ---\n");
     puts("______________________________________________________________________________");
     system("pause");
 }

@@ -9,7 +9,7 @@
 #endif
 
 /*
-** Funï¿½ï¿½es disponibilidades por essa biblioteca
+** Fun??es disponibilidades por essa biblioteca
 */
 
 
@@ -20,7 +20,7 @@ Lista* lst_cria();
 /* Insere no inicio da Lista */
 Lista* lst_Insere(Lista*, carta);
 
-/* Verifica se Lista estÃ¡ Vazia */
+/* Verifica se Lista está Vazia */
 int lst_IsEmpty(Lista*);
 
 /* Remove primeiro Elemento da Lista - topo */
@@ -32,7 +32,7 @@ void lst_Imprime(Lista*);
 /* Imprime elementos em ordem inversa usando Recursividade */
 void lst_Imprime_Rec(Lista*);
 
-/* Libera a lista de memÃ³ria */
+/* Libera a lista de memória */
 void lst_FreeList(Lista*);
 
 /* Obtem carta do topo da lista */

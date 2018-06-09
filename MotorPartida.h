@@ -1,7 +1,7 @@
-/* Este arquivo cont√©m rotinas e vari√°veis  que permitem 
+/* Este arquivo contÈm rotinas e vari·veis  que permitem 
 ** controlar as partidas de jogo
  */
 
-/** IN√çCIO: Vari√°veis Globais **/
-int STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o t√©rmino da partida.
-/** FIM: Vari√°veis Globais **/
+/** INÕCIO: Vari·veis Globais **/
+int STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o tÈrmino da partida.
+/** FIM: Vari·veis Globais **/

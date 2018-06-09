@@ -1,23 +1,23 @@
-/* Cont√©m declara√ß√µes e defini√ß√µes para manipular a mec√¢nica b√°sica do jogo referente as cartas
-** como contagem, embaralhamento e alocador de cartas em mem√≥ria
+/* ContÈm declaraÁıes e definiÁıes para manipular a mec‚nica b·sica do jogo referente as cartas
+** como contagem, embaralhamento e alocador de cartas em memÛria
 */
 
 
-/** IN√çCIO: Vari√°veis Globais **/
+/** INÕCIO: Vari·veis Globais **/
 
 /* Listas Globais para guardar as cartas do jogo para: Mesa, Montante e Jogadores. */
 Lista *G_l; //Montante
 Lista *M_l; //Mesa
 
-/* Vari√°veis para contagem de cartas da vis√£o Espectador. */
+/* Vari·veis para contagem de cartas da vis„o Espectador. */
 int CONT_MESA;
 int CONT_MONTANTE;
 
-/** FIM: Vari√°veis Globais **/
+/** FIM: Vari·veis Globais **/
 
 //Rotinas
 
-/* Aloca um n√∫mero aleat√≥rio para cada carta ao chamar o preparaRandom() referente a cada rotina abaixo. */
+/* Aloca um n˙mero aleatÛrio para cada carta ao chamar o preparaRandom() referente a cada rotina abaixo. */
 void rotinaPreparaRandom();
 void preparaRandomAzul();
 void preparaRandomVermelho();
@@ -26,7 +26,7 @@ void preparaRandomAmarelo();
 void preparaRandomZero();
 void preparaRandomCoringa();
 
-/*  Transfere as cartas inicializadas para uma lista din√¢mica em mem√≥ria. */
+/*  Transfere as cartas inicializadas para uma lista din‚mica em memÛria. */
 void alocadorDeCartasMemoria();
 
 /* Embaralha todas as cartas da Lista. */
@@ -37,8 +37,8 @@ void distribuiCartasInicio();
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////
 ROTINA PRINCIPAL PARA O MOTOR DE CARTAS: 
-Executada apenas uma vez antes do in√≠cio do jogo. Est√£o presentes todas as fun√ß√µes necess√°rias
-para carregar as cartas embaralhadas em mem√≥ria na vari√°vel global Lista* G_l.
+Executada apenas uma vez antes do inÌcio do jogo. Est„o presentes todas as funÁıes necess·rias
+para carregar as cartas embaralhadas em memÛria na vari·vel global Lista* G_l.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 void executarMotorCarta();
 
@@ -49,21 +49,21 @@ void executarMotorCarta();
 #endif
 
 
-/* Recebe uma vari√°vel do tipo player e conta o n√∫mero de cartas nas m√£os */
+/* Recebe uma vari·vel do tipo player e conta o n˙mero de cartas nas m„os */
 int contadorDeCartas(Lista*);
 
 /* Confere se existe cartas no montante realizando o controle do montante.
-** Realize duas tarefas b√°sicas: 
+** Realize duas tarefas b·sicas: 
 ** 1- Aloca a pilha de cartas na mesa no montante caso ele esteja sem cartas. 
-** 2- A Pilha da Mesa √© zerada ap√≥s a a√ß√£o executada acima.
+** 2- A Pilha da Mesa È zerada apÛs a aÁ„o executada acima.
 */
 void controlarCartasNoMontante();
 
-/* Essa fun√ß√£o recebe o apontador para o player 
-** conta as quantidades de carta por tipo de cartas e as aloca em lista para: Normal, Coringa e A√ß√£o. S
-** OBS:Sempre zera com NULL a lista de cartas apontada para cada tipo no in√≠cio de sua execu√ß√£o.
+/* Essa funÁ„o recebe o apontador para o player 
+** conta as quantidades de carta por tipo de cartas e as aloca em lista para: Normal, Coringa e AÁ„o. S
+** OBS:Sempre zera com NULL a lista de cartas apontada para cada tipo no inÌcio de sua execuÁ„o.
 */
 void contadorDeCartasPorTipo(player*);
 
-// Implementa√ß√£o desta Interface:
+// ImplementaÁ„o desta Interface:
 #include "MotorCarta.c"

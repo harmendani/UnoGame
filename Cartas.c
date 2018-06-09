@@ -3,7 +3,7 @@
 // Dados - Tipo: carta //////////////////////
 /////////////////////////////////////////////
 
-/* Abstrai mecanismos para manipular cartas mem�ria*/
+/* Abstrai mecanismos para manipular cartas mem?ria*/
 #ifndef LISTACARTA_H
 #define LISTACARTA_H
 #include "ListaCarta.h"
@@ -67,7 +67,7 @@ void inicializa_Cartas()
     vetorCartasVerde[21].TipoCarta = ACAO;
     vetorCartasVerde[22].TipoCarta = ACAO;
     vetorCartasVerde[23].TipoCarta = ACAO;
-    // A��o da Carta
+    // A??o da Carta
     vetorCartasVerde[0].AcaoCarta = NORMAL_NOACTION;
     vetorCartasVerde[1].AcaoCarta = NORMAL_NOACTION;
     vetorCartasVerde[2].AcaoCarta = NORMAL_NOACTION;
@@ -94,7 +94,7 @@ void inicializa_Cartas()
     vetorCartasVerde[22].AcaoCarta = REVERTER;
     vetorCartasVerde[23].AcaoCarta = COMPRAR_DUAS;
 
-    //N�mero da Carta
+    //N?mero da Carta
     vetorCartasVerde[0].numFace = 1;
     vetorCartasVerde[1].numFace = 2;
     vetorCartasVerde[2].numFace = 3;
@@ -169,7 +169,7 @@ void inicializa_Cartas()
     vetorCartasAzul[21].TipoCarta = ACAO;
     vetorCartasAzul[22].TipoCarta = ACAO;
     vetorCartasAzul[23].TipoCarta = ACAO;
-    // A��o da Carta
+    // A??o da Carta
     vetorCartasAzul[0].AcaoCarta = NORMAL_NOACTION;
     vetorCartasAzul[1].AcaoCarta = NORMAL_NOACTION;
     vetorCartasAzul[2].AcaoCarta = NORMAL_NOACTION;
@@ -195,7 +195,7 @@ void inicializa_Cartas()
     vetorCartasAzul[21].AcaoCarta = PULAR;
     vetorCartasAzul[22].AcaoCarta = REVERTER;
     vetorCartasAzul[23].AcaoCarta = COMPRAR_DUAS;
-    //N�mero da Carta
+    //N?mero da Carta
     vetorCartasAzul[0].numFace = 1;
     vetorCartasAzul[1].numFace = 2;
     vetorCartasAzul[2].numFace = 3;
@@ -272,7 +272,7 @@ void inicializa_Cartas()
     vetorCartasAmarelo[21].TipoCarta = ACAO;
     vetorCartasAmarelo[22].TipoCarta = ACAO;
     vetorCartasAmarelo[23].TipoCarta = ACAO;
-    // A��o da Carta
+    // A??o da Carta
     vetorCartasAmarelo[0].AcaoCarta = NORMAL_NOACTION;
     vetorCartasAmarelo[1].AcaoCarta = NORMAL_NOACTION;
     vetorCartasAmarelo[2].AcaoCarta = NORMAL_NOACTION;
@@ -298,7 +298,7 @@ void inicializa_Cartas()
     vetorCartasAmarelo[21].AcaoCarta = PULAR;
     vetorCartasAmarelo[22].AcaoCarta = REVERTER;
     vetorCartasAmarelo[23].AcaoCarta = COMPRAR_DUAS;
-    //N�mero da Carta
+    //N?mero da Carta
     vetorCartasAmarelo[0].numFace = 1;
     vetorCartasAmarelo[1].numFace = 2;
     vetorCartasAmarelo[2].numFace = 3;
@@ -339,7 +339,7 @@ void inicializa_Cartas()
     vetorDeCartasCoringa[5].TipoCarta = CORINGA;
     vetorDeCartasCoringa[6].TipoCarta = CORINGA;
     vetorDeCartasCoringa[7].TipoCarta = CORINGA;
-    // A��o da Carta
+    // A??o da Carta
     vetorDeCartasCoringa[0].AcaoCarta = CORINGA_NOACTION;
     vetorDeCartasCoringa[1].AcaoCarta = CORINGA_NOACTION;
     vetorDeCartasCoringa[2].AcaoCarta = CORINGA_NOACTION;
@@ -361,12 +361,12 @@ void inicializa_Cartas()
     vetorDeCartasZero[1].TipoCarta = NORMAL;
     vetorDeCartasZero[2].TipoCarta = NORMAL;
     vetorDeCartasZero[3].TipoCarta = NORMAL;
-    // A��o da Carta
+    // A??o da Carta
     vetorDeCartasZero[0].AcaoCarta = NORMAL_NOACTION;
     vetorDeCartasZero[1].AcaoCarta = NORMAL_NOACTION;
     vetorDeCartasZero[2].AcaoCarta = NORMAL_NOACTION;
     vetorDeCartasZero[3].AcaoCarta = NORMAL_NOACTION;
-    //N�mero da Carta
+    //N?mero da Carta
     vetorDeCartasZero[0].numFace = 0;
     vetorDeCartasZero[1].numFace = 0;
     vetorDeCartasZero[2].numFace = 0;
@@ -425,7 +425,7 @@ void inicializa_Cartas()
     vetorCartasVermelho[22].TipoCarta = ACAO;
     vetorCartasVermelho[23].TipoCarta = ACAO;
 
-    // A��o da Carta
+    // A??o da Carta
     vetorCartasVermelho[0].AcaoCarta = NORMAL_NOACTION;
     vetorCartasVermelho[1].AcaoCarta = NORMAL_NOACTION;
     vetorCartasVermelho[2].AcaoCarta = NORMAL_NOACTION;
@@ -451,7 +451,7 @@ void inicializa_Cartas()
     vetorCartasVermelho[21].AcaoCarta = PULAR;
     vetorCartasVermelho[22].AcaoCarta = REVERTER;
     vetorCartasVermelho[23].AcaoCarta = COMPRAR_DUAS;
-    //N�mero da Carta
+    //N?mero da Carta
     vetorCartasVermelho[0].numFace = 1;
     vetorCartasVermelho[1].numFace = 2;
     vetorCartasVermelho[2].numFace = 3;
