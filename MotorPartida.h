@@ -10,7 +10,14 @@ static bool STATUS_MONTANTE_DESCARTE; // Guarda TRUE ou FALSE para indicar o ter
 
 //ROTINAS
 
-/* Rotina para iniciar cada partida:
+/* Rotina básica para iniciar variáveis de controle da partida
+* STATUS_PARTIDA;
+* STATUS_PILHA_MESA;
+* STATUS_MONTANTE_DESCARTE
+*/
+void start_StatusMatch();
+
+/* Rotina Principal para iniciar cada partida:
 * - Invoca executarMotorCarta(). para inicializar e embaralhar as cartas do jogo.
 * - Inicializa jogadores invocando a rotina inicializaJogadores().
 * - Invoca distribuiCartasInicio() para distribuir 7 cartas para os jogadores.
@@ -20,8 +27,3 @@ static bool STATUS_MONTANTE_DESCARTE; // Guarda TRUE ou FALSE para indicar o ter
 * STATUS_MONTANTE_DESCARTE -> TRUE.
 */
 void start_Match();
-
-
-
-
-

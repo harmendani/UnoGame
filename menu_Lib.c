@@ -6,7 +6,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
-/** Definições de linguagem**/
+/** Definiï¿½ï¿½es de linguagem**/
 #include <locale.h>
 
 /**Bibliotecas do jogo**/
@@ -35,6 +35,10 @@
 #include "Player.h"
 #endif*/
 
+#ifndef MOTORPARTIDA_C
+#define MOTORPARTIDA_C
+#include "MotorPartida.c"
+#endif
 
 void startScreen()
 {
@@ -48,7 +52,7 @@ void startScreen()
 void endProgram()
 {
     puts("\n");
-    printf("\n--- ATÉ MAIS ---\n");
+    printf("\n--- ATï¿½ MAIS ---\n");
     puts("______________________________________________________________________________");
     system("pause");
 }
