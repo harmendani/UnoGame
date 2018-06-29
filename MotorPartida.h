@@ -1,7 +1,27 @@
-/* Este arquivo contém rotinas e variáveis  que permitem 
+/* Este arquivo contï¿½m rotinas e variï¿½veis  que permitem 
 ** controlar as partidas de jogo
  */
 
-/** INÍCIO: Variáveis Globais **/
-int STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o término da partida.
-/** FIM: Variáveis Globais **/
+/** INï¿½CIO: Variï¿½veis Globais **/
+static bool STATUS_PARTIDA;
+static bool STATUS_PILHA_MESA;
+static bool STATUS_MONTANTE_DESCARTE; // Guarda TRUE ou FALSE para indicar o termino da partida.
+/** FIM: Variï¿½veis Globais **/
+
+//ROTINAS
+
+/* Rotina para iniciar cada partida:
+* - Invoca executarMotorCarta(). para inicializar e embaralhar as cartas do jogo.
+* - Inicializa jogadores invocando a rotina inicializaJogadores().
+* - Invoca distribuiCartasInicio() para distribuir 7 cartas para os jogadores.
+* - Define os valores padrÃµes iniciais para as VariÃ¡veis deste mÃ³dulo:
+* STATUS_PARTIDA -> TRUE.
+* STATUS_PILHA_MESA -> FALSE.
+* STATUS_MONTANTE_DESCARTE -> TRUE.
+*/
+void start_Match();
+
+
+
+
+
