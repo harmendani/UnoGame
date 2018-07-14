@@ -34,6 +34,7 @@ void InsertionSortRandom(int n, Lista *vet)
 
     Lista *nova;
     nova = lst_cria();
+    lst_FreeList(G_l);
     G_l = nova;
     for (int j = 0; j < 108; j++)
     {
