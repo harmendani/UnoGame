@@ -28,7 +28,6 @@ void start_Match()
 
     executarMotorCarta();
     inicializaJogadores();
-    distribuiCartasInicio();
     start_StatusMatch();
 }
 
@@ -43,11 +42,6 @@ static void end_StatusMatch()
 
 void end_Match()
 {
-    /* Libera mãos dos jogadores */
-    lst_FreeList(j1.listaMaos);
-    lst_FreeList(j2.listaMaos);
-    j1.listaMaos = lst_cria();
-    j2.listaMaos = lst_cria();
 
     /* Libera Montante de descarte e pilha da mesa */
     lst_FreeList(G_l);

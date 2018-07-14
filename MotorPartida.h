@@ -35,8 +35,8 @@ void start_Match();
 /* Rotina Principal para finalizar a partida:
 *  Define os valores padrões finais para as Variáveis deste módulo: end_StatusMatch().
 *  Limpa da memória:
-* - Lista das mãos dos jogadores.
-* - Lista do montante de Descarte (G_l).
+* 
+* -  Lista do montante de Descarte (G_l).
 * -  Lista da pilha da mesa (M_l).
 */
 void end_Match();
