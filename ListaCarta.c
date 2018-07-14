@@ -15,7 +15,7 @@ struct ListaCarta
     Lista *prox;
 };
 
-// Operações
+// Operaï¿½ï¿½es
 
 /* Retorna uma lista vazia */
 Lista *lst_cria()
@@ -32,7 +32,7 @@ Lista *lst_Insere(Lista *atual, carta c)
     novo->prox = atual;
     return novo;
 }
-/* Verifica se Lista está Vazia */
+/* Verifica se Lista estï¿½ Vazia */
 int lst_IsEmpty(Lista *l)
 {
 
@@ -54,6 +54,7 @@ Lista *lst_Remove(Lista *atual)
 /* Imprime elementos da Lista */
 void lst_Imprime(Lista *l)
 {
+    if(l == NULL) return;
     printf("\n Lista de Cartas:\n");
     int i = 1;
     Lista *p = l;
@@ -71,7 +72,7 @@ void lst_Imprime(Lista *l)
     }
     printf("\n");
 }
-/* Libera a lista de meméria */
+/* Libera a lista de memï¿½ria */
 void lst_FreeList(Lista *l)
 {
     Lista *p = l;
@@ -82,7 +83,7 @@ void lst_FreeList(Lista *l)
         p = ant;
     }
 }
-/* Imprime de trás pra frente usando Recursividade */
+/* Imprime de trï¿½s pra frente usando Recursividade */
 void lst_Imprime_Rec(Lista *l)
 {
     if (!lst_IsEmpty(l))
@@ -94,7 +95,7 @@ void lst_Imprime_Rec(Lista *l)
     }
 }
 
-/* Obtém carta do topo de uma lista */
+/* Obtï¿½m carta do topo de uma lista */
 carta lst_ObterCarta(Lista *lst)
 {
 
