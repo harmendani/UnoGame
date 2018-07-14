@@ -3,9 +3,9 @@
  */
 
 /** IN�CIO: Vari�veis Globais **/
-static bool STATUS_PARTIDA;
+static bool STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o termino da partida.
 static bool STATUS_PILHA_MESA;
-static bool STATUS_MONTANTE_DESCARTE; // Guarda TRUE ou FALSE para indicar o termino da partida.
+static bool STATUS_MONTANTE_DESCARTE; 
 /** FIM: Vari�veis Globais **/
 
 //ROTINAS

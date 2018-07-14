@@ -9,10 +9,18 @@ static void start_StatusMatch()
 
     STATUS_PARTIDA = true;
     if (!lst_IsEmpty(M_l))
+    {
+        puts("\nExceção: PILHA_MESA!\n");
         return;
+    }
+
     STATUS_PILHA_MESA = false;
     if (lst_IsEmpty(G_l))
+    {
+        puts("\nExceção: MONTANTE_DESCARTE!\n");
         return;
+    }
+
     STATUS_MONTANTE_DESCARTE = true;
 }
 void start_Match()
