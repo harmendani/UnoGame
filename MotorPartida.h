@@ -26,11 +26,10 @@ static void start_StatusMatch();
 static void end_StatusMatch();
 
 /* Rotina Principal para iniciar cada partida:
-* - Invoca executarMotorCarta(). para inicializar e embaralhar as cartas do jogo.
+* - Invoca executarMotorCarta(). para inicializar e distribuir as cartas do jogo.
 * - Inicializa jogadores invocando a rotina inicializaJogadores().
-* - Invoca distribuiCartasInicio() para distribuir 7 cartas para os jogadores.
 * - Define os valores padrões iniciais para as Variáveis deste módulo: start_StatusMatch().
-*
+* 
 */
 void start_Match();
 

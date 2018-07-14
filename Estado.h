@@ -21,23 +21,20 @@ struct Estado
 {
     /* Salva o estado anterior do jogo  */
     char stateGame[9];
-    /* Salva o próximo estado do jogo após executar uma ação*/
+    /* Salva o prï¿½ximo estado do jogo apï¿½s executar uma aï¿½ï¿½o*/
     char stateNext[9];
 };
  typedef struct Estado estado;
  
  
 //ROTINAS
-/*  Ao realizar uma ação, salva stateNext[n] em stateGame[n].
+/*  Ao realizar uma aï¿½ï¿½o, salva stateNext[n] em stateGame[n].
 *   Depois salva S em stateNext[n].
 */
 void build_StateGame();
 
-/*Define a string '000000000' para limpar o estado anterior salvo*/
-void start_StateGame(estado s);
-
-/*Define a string '000000000' para iniciar a variável de estado do jogo*/
-void start_StateNext(estado s);
+/*Define a string '000000000' para inicializar stateGame e stateNext*/
+void start_StateGame(estado *s);
 
 #ifndef ESTADO_C
 #define ESTADO_C

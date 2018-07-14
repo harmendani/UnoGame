@@ -40,7 +40,7 @@ struct jogador
 	Lista *cartasCoringa;   // Lista tempor??ria que salva as cartas do tipo Coringa.
 	vision visaoPlayer;		// Salva as vis?es atuais do jogo
 	player* adversario;		// Salva o jogador adversário no início da partida.			
-	                       //stateJogador; // Define o estado (s1, s2, s3) atual do jogo para o agente jogador.
+	estado estadoPlayer;    // Define o estado (s1, s2, s3) para o agente jogador.
 };
 
 
