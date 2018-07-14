@@ -25,9 +25,8 @@ static void start_StatusMatch()
 }
 void start_Match()
 {
-
-    executarMotorCarta();
     inicializaJogadores();
+    executarMotorCarta();    
     start_StatusMatch();
 }
 
