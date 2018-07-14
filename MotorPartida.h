@@ -29,7 +29,6 @@ static void end_StatusMatch();
 * - Invoca executarMotorCarta(). para inicializar e distribuir as cartas do jogo.
 * - Inicializa jogadores invocando a rotina inicializaJogadores().
 * - Define os valores padrões iniciais para as Variáveis deste módulo: start_StatusMatch().
-* 
 */
 void start_Match();
 

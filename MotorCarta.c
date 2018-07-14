@@ -223,4 +223,5 @@ void executarMotorCarta()
 	rotinaPreparaRandom();
 	alocadorDeCartasMemoria();
 	embaralhadorDeCartas();
+	distribuiCartasInicio();
 }
