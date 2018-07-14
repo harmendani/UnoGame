@@ -38,7 +38,7 @@ void distribuiCartasInicio();
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////
 * ROTINA PRINCIPAL PARA O MOTOR DE CARTAS: 
 * Executada apenas uma vez antes do in�cio do jogo. Est�o presentes todas as fun��es necess�rias
-* para carregar as cartas embaralhadas em mem�ria na vari�vel global Lista* G_l.
+* para carregar as cartas embaralhadas em mem�ria na vari�vel global Lista* G_l e distribuir para os jogadores.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 void executarMotorCarta();
 
