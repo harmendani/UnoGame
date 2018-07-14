@@ -13,8 +13,6 @@ void inicializaJogadores()
 	j1.vitorias = 0;
 	j2.vitorias = 0;
 
-	lst_FreeList(j1.listaMaos);
-	lst_FreeList(j2.listaMaos);
 	j1.listaMaos = lst_cria(); // Inicializa m?os do jogador 1 com o valor NULL
 	j2.listaMaos = lst_cria(); // Inicializa m?os do jogador 2 com o valor NULL
 

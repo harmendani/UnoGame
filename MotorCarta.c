@@ -3,8 +3,11 @@ que manipulam as cartas durante as partidas*/
 
 void alocadorDeCartasMemoria()
 {
-
-	G_l = lst_cria(); // Cria apontador pra lista de cartas atraves da variavel global no jogo.
+	/*Limpa da memória e inicializa montante e pilha*/
+    lst_FreeList(G_l);
+	lst_FreeList(M_l);
+	M_l = lst_cria();
+	G_l = lst_cria(); 
 
 	for (int i = 0; i < 24; i++)
 	{
