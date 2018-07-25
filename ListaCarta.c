@@ -42,7 +42,8 @@ int lst_IsEmpty(Lista *l)
 /* Remove primeiro Elemento da Lista - topo */
 Lista *lst_Remove(Lista *atual)
 {
-	if(atual == NULL) return NULL;
+    if (atual == NULL)
+        return NULL;
     Lista *topo;
     topo = atual->prox;
     printf("\n Removida id: %d", atual->Carta.id);
@@ -54,7 +55,8 @@ Lista *lst_Remove(Lista *atual)
 /* Imprime elementos da Lista */
 void lst_Imprime(Lista *l)
 {
-    if(l == NULL) return;
+    if (l == NULL)
+        return;
     printf("\n Lista de Cartas:\n");
     int i = 1;
     Lista *p = l;
@@ -95,10 +97,24 @@ void lst_Imprime_Rec(Lista *l)
     }
 }
 
-/* Obt�m carta do topo de uma lista */
+/* Obt�m dados da carta do topo de uma lista */
 carta lst_ObterCarta(Lista *lst)
 {
 
     carta c_temp = lst->Carta;
     return c_temp;
+}
+
+/* Obtém referência da carta do topo de uma lista */
+
+carta *lst_ObterCartaRef(Lista *lst)
+{
+    if (lst_IsEmpty(lst))
+    {
+        return NULL;
+    }
+    else
+    {
+        return &lst->Carta;
+    }
 }

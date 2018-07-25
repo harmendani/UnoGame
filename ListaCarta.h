@@ -12,15 +12,13 @@
 ** Fun??es disponibilidades por essa biblioteca
 */
 
-
-
 /* Retorna uma lista vazia */
 Lista* lst_cria();
 
 /* Insere no inicio da Lista */
 Lista* lst_Insere(Lista*, carta);
 
-/* Verifica se Lista está Vazia */
+/* Verifica se Lista estï¿½ Vazia */
 int lst_IsEmpty(Lista*);
 
 /* Remove primeiro Elemento da Lista - topo */
@@ -32,8 +30,11 @@ void lst_Imprime(Lista*);
 /* Imprime elementos em ordem inversa usando Recursividade */
 void lst_Imprime_Rec(Lista*);
 
-/* Libera a lista de memória */
+/* Libera a lista de memï¿½ria */
 void lst_FreeList(Lista*);
 
 /* Obtem carta do topo da lista */
 carta lst_ObterCarta(Lista*);
+
+/* ObtÃ©m referÃªncia da carta do topo de uma lista */
+carta *lst_ObterCartaRef(Lista *lst);
