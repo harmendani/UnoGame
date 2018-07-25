@@ -2,10 +2,12 @@
 
 //CONSTANTES
 /* Define os estados do jogo para cada vis�o*/
+//Valor default - inicial
+#define DEFAULT "000000000"
 //V1 (Baixo, Médio e Alto) - Visão Contagem
-#define S1 "01"
-#define S2 "10"
-#define S3 "11"
+#define S1 "001"
+#define S2 "010"
+#define S3 "011"
 //V2 (Baixo, Médio e Alto) - Visão Mesa
 #define S4 "100"
 #define S5 "101"
@@ -19,10 +21,15 @@
 
 struct Estado
 {
+    /* Salva os subestados atuais*/
+    char state_contagem[4];
+    char state_mesa[4];
+    char state_maos[4];
+    
     /* Salva o estado anterior do jogo  */
-    char stateGame[9];
+    char stateGame[10];
     /* Salva o pr�ximo estado do jogo ap�s executar uma a��o*/
-    char stateNext[9];
+    char stateNext[10];
 };
  typedef struct Estado estado;
  
@@ -33,7 +40,7 @@ struct Estado
 */
 void build_StateGame();
 
-/*Define a string '000000000' para inicializar stateGame e stateNext*/
+/*Define NULL para inicializar todos as Strings da struct Estado*/
 void start_StateGame(estado *s);
 
 #ifndef ESTADO_C

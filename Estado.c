@@ -3,13 +3,14 @@
 
 void start_StateGame(estado *s)
 {
+    /*Inicializa sub-estados S*/
+    strcpy(s->state_contagem, DEFAULT);
+    strcpy(s->state_mesa, DEFAULT);
+    strcpy(s->state_maos, DEFAULT);
 
-    for (int i = 0; i < 9; i++)
-    {
-        s->stateGame[i] = '0'; 
-        s->stateNext[i] = '0';
-    }
-    
+    /*Inicializa Estados S*/
+    strcpy(s->stateGame, DEFAULT);
+    strcpy(s->stateNext, DEFAULT);
 }
 
 
