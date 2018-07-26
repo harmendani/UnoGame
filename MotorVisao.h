@@ -12,7 +12,7 @@ typedef struct VisaoContagem
 
 typedef struct VisaoMesa
 {
-    carta c_cartaMesa;
+    carta* c_cartaMesa;
 
 } st_Mesa;
 

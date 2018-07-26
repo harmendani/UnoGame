@@ -29,7 +29,7 @@ p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
 p->visaoPlayer.contagem.i_quantMontante = v_QuantMontante();
 
 // Visão Mesa
-//p->visaoPlayer.mesa.c_cartaMesa = v_VerificarCartaMesa();
+p->visaoPlayer.mesa.c_cartaMesa = v_VerificarCartaMesa();
 
 
 //Visão Jogador
