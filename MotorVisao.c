@@ -10,9 +10,9 @@ int v_QuantMontante()
     return contadorDeCartas(G_l);
 }
 
-carta v_VerificarCartaMesa()
+carta* v_VerificarCartaMesa()
 {
-    return lst_ObterCarta(M_l);
+    return lst_ObterCartaRef(M_l);
 }
 
 int v_QuantPlayer(player* jogador)

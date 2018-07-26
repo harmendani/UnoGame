@@ -49,7 +49,7 @@ int v_QuantMontante();
 
 // Vis�o Mesa
 /* Retorna a carta da mesa */
-carta v_VerificarCartaMesa();
+carta* v_VerificarCartaMesa();
 
 // Vis�o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
