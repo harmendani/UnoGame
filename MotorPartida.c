@@ -26,7 +26,7 @@ static void start_StatusMatch()
 void start_Match()
 {
     inicializaJogadores();
-    executarMotorCarta();    
+    executarMotorCarta();
     start_StatusMatch();
 }
 
@@ -50,4 +50,24 @@ void end_Match()
     end_StatusMatch();
 
     return;
+}
+
+void definePlayerSaida()
+{
+
+    int a = randomInteger();
+    if ((a % 2) == 0)
+    {
+        j2.bool_statusJogador = true;
+    }
+    else
+    {
+        j1.bool_statusJogador = true;
+    }
+    return;
+}
+
+void defineVezDoPlayer()
+{
+
 }

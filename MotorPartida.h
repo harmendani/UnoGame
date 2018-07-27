@@ -8,7 +8,7 @@ static bool STATUS_PILHA_MESA;
 static bool STATUS_MONTANTE_DESCARTE; 
 /** FIM: Vari�veis Globais **/
 
-//ROTINAS
+//ROTINAS PRINCIPAIS
 
 /* Rotina básica para iniciar variáveis de controle da partida:
 * STATUS_PARTIDA -> TRUE.
@@ -36,3 +36,11 @@ void start_Match();
 *  Define os valores padrões finais para as Variáveis deste módulo: end_StatusMatch().
 */
 void end_Match();
+
+//PROCEDIMENTOS INTERNOS
+
+/* Determina aleatoriamente o jogador a começar a partida*/
+void definePlayerSaida();
+
+/* Determina quem executa a ação de jogar*/
+void defineVezDoPlayer();
