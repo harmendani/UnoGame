@@ -22,11 +22,14 @@ static void start_StatusMatch()
     }
 
     STATUS_MONTANTE_DESCARTE = true;
+   
+   
 }
 void start_Match()
 {
     inicializaJogadores();
     executarMotorCarta();
+    definePlayerSaida();
     start_StatusMatch();
 }
 
@@ -66,8 +69,16 @@ void definePlayerSaida()
     }
     return;
 }
-
+/*
 void defineVezDoPlayer()
-{
+{   
+    
+    carta *temp = lst_ObterCartaRef(M_l); // Obter carta da mesa
+    if(temp->AcaoCarta == REVERTER || temp->AcaoCarta == PULAR){
+    
+    }
+    else{
 
-}
+    }
+
+}*/
