@@ -66,4 +66,8 @@ void controlarCartasNoMontante();
 void contadorDeCartasPorTipo(player*);
 
 // Implementa��o desta Interface:
+#ifndef MOTORCARTAS_C
+#define MOTORCARTAS_C
 #include "MotorCarta.c"
+#endif
+
