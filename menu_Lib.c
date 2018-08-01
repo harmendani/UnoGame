@@ -40,13 +40,17 @@
 #include "MotorPartida.c"
 #endif
 
+#ifndef MOTORDATA_H
+#define MOTORDATA_H
+#include "./data/MotorData.h"
+#endif
+
 void startScreen()
 {
     setlocale(LC_ALL, "Portuguese");
     puts("______________________________________________________________________________");
     printf("\n \t--- JOGO DE CARTAS UNO --- v0.1 -- SIMULADOR DE PARTIDAS (2018)\n");
     puts("______________________________________________________________________________");
-    puts("\n");
 }
 
 void endProgram()
