@@ -46,7 +46,6 @@ static Data *dadosEntrada()
 
     Data *dataEntrada = ponteiroData();
     bool dadosOk = false;
-    fflush(stdin);
 
     puts("\nEntre com o grau do treino: ");
     scanf("%d", &dataEntrada->md_training);
@@ -80,8 +79,6 @@ static Data *dadosEntrada()
 static bool validarDadosEntrada(Data *dataEntrada)
 {
 
-    if (dataEntrada->md_training <= 0)
-        return false;
     if (dataEntrada->md_learning.md_discountFactor <= 0 || dataEntrada->md_learning.md_discountFactor >= 100)
         return false;
     if (dataEntrada->md_learning.md_learningRate <= 0 || dataEntrada->md_learning.md_learningRate >= 100)

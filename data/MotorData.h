@@ -12,7 +12,8 @@ static enum I_Treino {
     MD_LOW = 2500,
     MD_MEDIUM = 5000,
     MD_HIGH = 7000,
-    MD_INTENSE = 10000
+    MD_INTENSE = 10000,
+    MD_EXTREME = 25000
 };
 
 /* Define a estrutura secundária de valores para o Q_Learning*/
