@@ -1,4 +1,6 @@
-/* Define e manipula estados do jogo*/
+/* Define e manipula estados do jogo */
+
+//Bibliotecas
 
 //CONSTANTES
 /* Define os estados do jogo para cada vis�o*/
@@ -25,23 +27,34 @@ struct Estado
     char state_contagem[4];
     char state_mesa[4];
     char state_maos[4];
-    
+
     /* Salva o estado anterior do jogo  */
     char stateGame[10];
-    /* Salva o pr�ximo estado do jogo ap�s executar uma a��o*/
+    /* Salva o pr�ximo estado do jogo ap�s executar uma a��o */
     char stateNext[10];
 };
- typedef struct Estado estado;
- 
- 
+typedef struct Estado estado;
+
 //ROTINAS
 /*  Ao realizar uma a��o, salva stateNext[n] em stateGame[n].
-*   Depois salva S em stateNext[n].
+*   Depois salva S em stateNext[n] - próximo estado do jogo.
 */
-void build_StateGame();
+static void save_StateGame();
 
-/*Define NULL para inicializar todos as Strings da struct Estado*/
-void start_StateGame(estado *s);
+/*Define NULL para inicializar todos as Strings da struct Estado */
+static void start_StateGame(estado *);
+
+/* Calcula o estado S corrente para o jogador atual a partir de (s1, s2, s3) */
+char *build_StateGame();
+
+/* Calcula e devolve sub-estado s1 */
+static char *build_SubEstado_1();
+
+/* Calcula e devolve sub-estado s2 */
+static char *build_SubEstado_2();
+
+/* Calcula e devolve sub-estado s3 */
+static char *build_SubEstado_3();
 
 #ifndef ESTADO_C
 #define ESTADO_C
