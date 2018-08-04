@@ -137,7 +137,31 @@ int contadorDeCartasAcao(Lista *lista)
 	return numCartas;
 }
 
-void contadorDeCartasPorTipo(player *j)
+int contadorDeCartasCuringa(Lista *lista){
+	int numCartas = 0;
+	Lista *proxima;
+	proxima = lista;
+	if (proxima == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		while (proxima != NULL)
+		{
+			carta *c = lst_ObterCartaRef(proxima);
+			if (c->TipoCarta == CORINGA)
+			{
+				numCartas++;
+			}
+			proxima = proxima->prox;
+		}
+	}
+	proxima = NULL;
+	return numCartas;
+}
+
+	void contadorDeCartasPorTipo(player *j)
 {
 	int contNormal = 0;
 	int contAcao = 0;
