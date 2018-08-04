@@ -4,10 +4,10 @@ que manipulam as cartas durante as partidas*/
 void alocadorDeCartasMemoria()
 {
 	/*Limpa da memória e inicializa montante e pilha*/
-    lst_FreeList(G_l);
+	lst_FreeList(G_l);
 	lst_FreeList(M_l);
 	M_l = lst_cria();
-	G_l = lst_cria(); 
+	G_l = lst_cria();
 
 	for (int i = 0; i < 24; i++)
 	{
@@ -87,6 +87,29 @@ int contadorDeCartas(Lista *lista)
 	return numCartas;
 }
 
+int contadorDeCartasCuringa_4(Lista *lista)
+{
+	int numCartas = 0;
+	Lista *proxima;
+	proxima = lista;
+	if (proxima == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		while (proxima != NULL)
+		{
+			carta* c = lst_ObterCartaRef(proxima);
+			if (c->AcaoCarta == CORINGA_COMPRAR_4){
+				numCartas++;
+			}
+				proxima = proxima->prox;
+		}
+	}
+	return numCartas;
+}
+
 void contadorDeCartasPorTipo(player *j)
 {
 	int contNormal = 0;
@@ -99,7 +122,7 @@ void contadorDeCartasPorTipo(player *j)
 	j->cartasNormal = lst_cria();
 	j->cartasAcao = lst_cria();
 	j->cartasCoringa = lst_cria();
-    
+
 	Lista *l = NULL; // Auxilia para varrer a lista de cartas do jogador.
 
 	/* Conta cartas do tipo Normal */

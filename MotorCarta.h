@@ -9,10 +9,6 @@
 Lista *G_l; //Montante
 Lista *M_l; //Mesa
 
-/* Vari�veis para contagem de cartas da vis�o Espectador. */
-int CONT_MESA;
-int CONT_MONTANTE;
-
 /** FIM: Vari�veis Globais **/
 
 //Rotinas
@@ -49,7 +45,7 @@ void executarMotorCarta();
 #endif
 
 
-/* Recebe uma vari�vel do tipo player e conta o n�mero de cartas nas m�os */
+/* Recebe uma vari�vel do tipo player e conta o n�mero de cartas totais sda lista */
 int contadorDeCartas(Lista*);
 
 /* Confere se existe cartas no montante realizando o controle do montante.
@@ -64,6 +60,13 @@ void controlarCartasNoMontante();
 ** OBS:Sempre zera com NULL a lista de cartas apontada para cada tipo no in�cio de sua execu��o.
 */
 void contadorDeCartasPorTipo(player*);
+
+/* Conta cartas Curinga +4 de uma lista */
+int contadorDeCartasCuringa_4(Lista *);
+/* Conta cartas Ação de uma lista */
+int contadorDeCartasAcao(Lista *);
+/* Conta todos os tipos de carta Curinga de uma lista */
+int contadorDeCartasCuringa(Lista *);
 
 // Implementa��o desta Interface:
 #ifndef MOTORCARTAS_C
