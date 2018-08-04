@@ -100,13 +100,40 @@ int contadorDeCartasCuringa_4(Lista *lista)
 	{
 		while (proxima != NULL)
 		{
-			carta* c = lst_ObterCartaRef(proxima);
-			if (c->AcaoCarta == CORINGA_COMPRAR_4){
+			carta *c = lst_ObterCartaRef(proxima);
+			if (c->AcaoCarta == CORINGA_COMPRAR_4)
+			{
 				numCartas++;
 			}
-				proxima = proxima->prox;
+			proxima = proxima->prox;
 		}
 	}
+	proxima = NULL;
+	return numCartas;
+}
+
+int contadorDeCartasAcao(Lista *lista)
+{
+	int numCartas = 0;
+	Lista *proxima;
+	proxima = lista;
+	if (proxima == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		while (proxima != NULL)
+		{
+			carta *c = lst_ObterCartaRef(proxima);
+			if (c->TipoCarta == ACAO)
+			{
+				numCartas++;
+			}
+			proxima = proxima->prox;
+		}
+	}
+	proxima = NULL;
 	return numCartas;
 }
 
