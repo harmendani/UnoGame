@@ -1,26 +1,18 @@
 /* Implementa as rotinas de 'Estado.h' */
 
-void start_StateGame(estado *s)
+void build_StateGame(player *j)
 {
-    /*Inicializa sub-estados S*/
-    strcpy(s->state_contagem, DEFAULT);
-    strcpy(s->state_mesa, DEFAULT);
-    strcpy(s->state_maos, DEFAULT);
+    char *sub_estado_1 = build_SubEstado_1(j); //Guarda s1
+    char *sub_estado_2 = build_SubEstado_2(j); //Guarda s2
+    char *sub_estado_3 = build_SubEstado_3(j); //Guarda s3
 
-    /*Inicializa Estados S*/
-    strcpy(s->stateGame, DEFAULT);
-    strcpy(s->stateNext, DEFAULT);
+    strcpy(j->estadoPlayer.stateGame, sub_estado_1);
+
+    strcat(j->estadoPlayer.stateGame, sub_estado_2);
+
+    strcat(j->estadoPlayer.stateGame, sub_estado_3);
 
     return;
-}
-
-char *build_StateGame()
-{
-    char sub_estado_1[4]; //Guarda s1
-    char sub_estado_2[4]; //Guarda s2
-    char sub_estado_3[4]; //Guarda s3
-
-    return DEFAULT;
 }
 
 static char *build_SubEstado_1(player *j)
