@@ -1,6 +1,18 @@
+static void inicializarMotorVisao(player* p){
 
+    // Visão Contagem
+    p->visaoPlayer.contagem.i_quantMesa = 0;
+    p->visaoPlayer.contagem.i_quantMontante = 0;
 
-int v_QuantMesa()
+    // Visão Mesa
+    p->visaoPlayer.mesa.c_cartaMesa = NULL;
+
+    //Visão Jogador
+    p->visaoPlayer.jogador.i_quantJogador = 0;
+    p->visaoPlayer.jogador.i_quantadversario = 0;
+}
+
+    int v_QuantMesa()
 {
     return contadorDeCartas(M_l);
 }
@@ -23,6 +35,8 @@ int v_QuantPlayer(player* jogador)
 
 void executarMotorVisao(player* p){
 
+// Zera variáveis antes de computar as visões do player* p
+inicializarMotorVisao(p);
 
 // Visão Contagem
 p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
