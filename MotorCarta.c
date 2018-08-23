@@ -1,5 +1,27 @@
-/* Implementa a interface "MotorCarta.h" com algumas funções
-que manipulam as cartas durante as partidas*/
+/* Implementa a interface "MotorCarta.h" com funções e procedimentos
+que manipulam dados e listas ligadas do tipo Carta */
+void transferirCartasMontanteParaMesa(int n)
+{
+
+	int cont = n;
+	if (n <= 0)
+	{
+		puts("\n\n Erro em transferirCartasMontanteParaMesa - n <= 0\n\n ");
+		exit(0);
+	}
+	if (G_l == NULL)
+	{
+		controlarCartasNoMontante();
+	}
+	while (n > 0)
+	{
+		carta temp = lst_ObterCarta(G_l);
+		M_l = lst_Insere(M_l, temp);
+		G_l = lst_Remove(G_l);
+		n--;
+	}
+	return;
+}
 
 void alocadorDeCartasMemoria()
 {
@@ -43,8 +65,6 @@ void distribuiCartasInicio()
 	while (n > 0)
 	{
 		carta temp1 = lst_ObterCarta(G_l);
-		if (n == 7)
-			printf("\nCarta retirad - id: %d \n", temp1.id);
 		j1.listaMaos = lst_Insere(j1.listaMaos, temp1);
 		if (n > 0)
 			G_l = lst_Remove(G_l);
@@ -59,6 +79,7 @@ void distribuiCartasInicio()
 			G_l = lst_Remove(G_l);
 		m--;
 	}
+	//transferirCartas(M_l, G_l, 1);
 }
 
 void embaralhadorDeCartas()
@@ -137,7 +158,8 @@ int contadorDeCartasAcao(Lista *lista)
 	return numCartas;
 }
 
-int contadorDeCartasCuringa(Lista *lista){
+int contadorDeCartasCuringa(Lista *lista)
+{
 	int numCartas = 0;
 	Lista *proxima;
 	proxima = lista;
@@ -161,7 +183,7 @@ int contadorDeCartasCuringa(Lista *lista){
 	return numCartas;
 }
 
-	void contadorDeCartasPorTipo(player *j)
+void contadorDeCartasPorTipo(player *j)
 {
 	int contNormal = 0;
 	int contAcao = 0;
