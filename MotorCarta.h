@@ -52,11 +52,19 @@ int contadorDeCartas(Lista *);
 */
 void controlarCartasNoMontante();
 
-/* Transfere N cartas de Montante de compra pra Pilha de cartas da mesa.
+/* Transfere 1 carta de Montante de compra pra Pilha de cartas da mesa.
 ** Verifica antes se montante de compra está Vazio invocando a rotina controlarCartasNoMontante();
 ** Assinatura da rotina:  Transferir n(quant) cartas de G_L->M_L.
 */
-void transferirCartasMontanteParaMesa(int);
+void transferirCartaMontanteParaMesa();
+
+/* Transfere 1 carta de Montante de compra pra mão do jogador.
+** Verifica antes se montante de compra está Vazio invocando a rotina controlarCartasNoMontante();
+*/
+void transferirCartaMontanteParaJogador(player *);
+
+/* Transfere 1 carta das mãos do jogador Para a Mesa.*/
+void transferirCartaJogadorParaMesa(player *);
 
 /* Essa fun��o recebe o apontador para o player 
 ** conta as quantidades de carta por tipo de cartas e as aloca em lista para: Normal, Coringa e A��o. S

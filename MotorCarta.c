@@ -1,25 +1,41 @@
 /* Implementa a interface "MotorCarta.h" com funções e procedimentos
-que manipulam dados e listas ligadas do tipo Carta */
-void transferirCartasMontanteParaMesa(int n)
+** que manipulam dados e listas ligadas do tipo Carta.
+*/
+
+void transferirCartaMontanteParaMesa()
 {
 
-	int cont = n;
-	if (n <= 0)
-	{
-		puts("\n\n Erro em transferirCartasMontanteParaMesa - n <= 0\n\n ");
-		exit(0);
-	}
 	if (G_l == NULL)
 	{
 		controlarCartasNoMontante();
 	}
-	while (n > 0)
+
+	carta temp = lst_ObterCarta(G_l);
+	M_l = lst_Insere(M_l, temp);
+	G_l = lst_Remove(G_l);
+
+	return;
+}
+
+void transferirCartaMontanteParaJogador(player *j)
+{
+
+	if (G_l == NULL)
 	{
-		carta temp = lst_ObterCarta(G_l);
-		M_l = lst_Insere(M_l, temp);
-		G_l = lst_Remove(G_l);
-		n--;
+		controlarCartasNoMontante();
 	}
+	carta temp = lst_ObterCarta(G_l);
+	j->listaMaos = lst_Insere(j->listaMaos, temp);
+	G_l = lst_Remove(G_l);
+
+	return;
+}
+
+void transferirCartaJogadorParaMesa(player *j)
+{
+	carta temp = lst_ObterCarta(j->listaMaos);
+	M_l = lst_Insere(M_l, temp);
+	j->listaMaos = lst_Remove(j->listaMaos);
 	return;
 }
 
