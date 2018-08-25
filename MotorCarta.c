@@ -31,7 +31,7 @@ void transferirCartaMontanteParaJogador(player *j)
 	return;
 }
 
-void transferirCartaJogadorParaMesa(player *j)
+void transferirCarstaJogadorParaMesa(player *j)
 {
 	carta temp = lst_ObterCarta(j->listaMaos);
 	M_l = lst_Insere(M_l, temp);
@@ -95,7 +95,7 @@ void distribuiCartasInicio()
 			G_l = lst_Remove(G_l);
 		m--;
 	}
-	//transferirCartas(M_l, G_l, 1);
+	transferirCartaMontanteParaMesa();
 }
 
 void embaralhadorDeCartas()

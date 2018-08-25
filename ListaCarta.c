@@ -46,7 +46,7 @@ Lista *lst_Remove(Lista *atual)
         return NULL;
     Lista *topo;
     topo = atual->prox;
-    printf("\n Removida id: %d", atual->Carta.id);
+    //printf("\n Removida id: %d", atual->Carta.id);
     free(atual);
     atual = NULL; // Garante que o valor ? NULL
 
