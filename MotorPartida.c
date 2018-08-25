@@ -8,13 +8,13 @@ static void start_StatusMatch()
 {
 
     STATUS_PARTIDA = true;
-    if (!lst_IsEmpty(M_l))
+    if (lst_IsEmpty(M_l))
     {
         puts("\nExceção: PILHA_MESA!\n");
         return;
     }
 
-    STATUS_PILHA_MESA = false;
+    STATUS_PILHA_MESA = true;
     if (lst_IsEmpty(G_l))
     {
         puts("\nExceção: MONTANTE_DESCARTE!\n");
@@ -22,8 +22,6 @@ static void start_StatusMatch()
     }
 
     STATUS_MONTANTE_DESCARTE = true;
-   
-   
 }
 void start_Match()
 {
@@ -31,6 +29,19 @@ void start_Match()
     executarMotorCarta();
     definePlayerSaida();
     start_StatusMatch();
+}
+
+bool isMatch()
+{
+    int contJ1 = v_QuantPlayer(&j1);
+    int contJ2 = v_QuantPlayer(&j2);
+
+    if (contJ1 == 0)
+        return false;
+    if (contJ2 == 0)
+        return false;
+
+    return true;
 }
 
 // PROCEDIMENTOS DE END

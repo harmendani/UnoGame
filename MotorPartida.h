@@ -39,6 +39,11 @@ void end_Match();
 
 //PROCEDIMENTOS INTERNOS
 
+/* Verifica existe Partida e devolve TRUE se for verdade, tal que:
+** STATUS_PARTIDA -> true;
+*/
+bool isMatch();
+
 /* Determina aleatoriamente o jogador a começar a partida*/
 void definePlayerSaida();
 
