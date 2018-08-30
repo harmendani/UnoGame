@@ -2,7 +2,7 @@
 // Bibliotecas
 #ifndef CARTAS_H
 #define CARTAS_H
-#include "Cartas.h"
+#include "./libs/Cartas.h"
 #endif
 
 // Estruturas

@@ -1,5 +1,8 @@
 /* Recebe e manipula os dados da plataforma de simulação*/
 
+#define DIR "data/logs/"
+#define EXT ".txt"
+
 /* Exporta tipos declarados */
 
 typedef struct Q_Values LearnFactors;
@@ -57,5 +60,5 @@ Data *executaMotorData();
 
 #ifndef MOTORDATA_C
 #define MOTORDATA_C
-#include ".\MotorData.c"
+#include "../data/MotorData.c"
 #endif

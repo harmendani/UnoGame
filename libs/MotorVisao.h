@@ -69,5 +69,5 @@ void executarMotorVisao(player *p);
 
 #ifndef MOTORVISAO_C
 #define MOTORVISAO_C
-#include "MotorVisao.c"
+#include "../MotorVisao.c"
 #endif

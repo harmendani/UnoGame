@@ -5,7 +5,7 @@
 // Bibliotecas
 #ifndef LISTACARTA_C
 #define LISTACARTA_C
-#include "ListaCarta.c"
+#include "../ListaCarta.c"
 #endif
 
 /*

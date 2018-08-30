@@ -1,6 +1,6 @@
 #ifndef UTIL_H
 #define UTIL_H
-#include ".\util\Util.h"
+#include "../util/Util.h"
 #endif
 
 
@@ -54,5 +54,5 @@ player j2;
 
 #ifndef PLAYER_C
 #define PLAYER_C
-#include "Player.c"
+#include "../Player.c"
 #endif

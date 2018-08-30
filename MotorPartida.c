@@ -1,7 +1,7 @@
 /* Implementa a interface "MotorPartida.h" com algumas funções
 para manipular as partidas*/
 
-#include "MotorPartida.h"
+#include "./libs/MotorPartida.h"
 
 // PROCEDIMENTOS DE START
 static void start_StatusMatch()

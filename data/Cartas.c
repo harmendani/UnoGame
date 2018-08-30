@@ -6,7 +6,7 @@
 /* Abstrai mecanismos para manipular cartas mem?ria*/
 #ifndef LISTACARTA_H
 #define LISTACARTA_H
-#include "ListaCarta.h"
+#include "../libs/ListaCarta.h"
 #endif
 
 void inicializa_Cartas()

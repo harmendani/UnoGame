@@ -53,5 +53,5 @@ static char *build_SubEstado_3(player *);
 
 #ifndef ESTADO_C
 #define ESTADO_C
-#include "Estado.c"
+#include "../Estado.c"
 #endif

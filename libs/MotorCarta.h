@@ -82,5 +82,5 @@ int contadorDeCartasCuringa(Lista *);
 // Implementa��o desta Interface:
 #ifndef MOTORCARTAS_C
 #define MOTORCARTAS_C
-#include "MotorCarta.c"
+#include "../MotorCarta.c"
 #endif
