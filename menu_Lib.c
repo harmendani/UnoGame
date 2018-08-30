@@ -6,36 +6,29 @@
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
+
 /** Defini��es de linguagem**/
 #include <locale.h>
 
 /**Bibliotecas do jogo**/
 
+#include "boobit.c"
+
 #ifndef CARTAS_C
 #define CARTAS_C
-#include "Cartas.c"
+#include "./data/Cartas.c"
 #endif
 
 
 #ifndef ESTADO_H
 #define ESTADO_H
-#include "Estado.h"
+#include "./libs/Estado.h"
 #endif
 
 #ifndef MOTORVISAO_H
 #define MOTORVISAO_H
-#include "MotorVisao.h"
+#include "./libs/MotorVisao.h"
 #endif
-
-/*#ifndef MOTORCARTA_H
-#define MOTORCARTA_H
-#include "MotorCarta.h"
-#endif
-*/
-/*#ifndef PLAYER_H
-#define PLAYER_H
-#include "Player.h"
-#endif*/
 
 #ifndef MOTORPARTIDA_C
 #define MOTORPARTIDA_C
@@ -44,8 +37,9 @@
 
 #ifndef MOTORDATA_H
 #define MOTORDATA_H
-#include "./data/MotorData.h"
+#include "./libs/MotorData.h"
 #endif
+
 
 void startScreen()
 {
