@@ -19,7 +19,6 @@
 #include "./data/Cartas.c"
 #endif
 
-
 #ifndef ESTADO_H
 #define ESTADO_H
 #include "./libs/Estado.h"
@@ -40,6 +39,10 @@
 #include "./libs/MotorData.h"
 #endif
 
+#ifndef CONTROLLER_C
+#define CONTROLLER_C
+#include "./controller/Controller.c"
+#endif
 
 void startScreen()
 {
