@@ -31,11 +31,23 @@ FILE *openFileTxt(String nameFile)
     return fileTxt; 
 }
 
-void writeFileEndTxt(FILE *streamFile, String stringText)
+void writeStringEndTxt(FILE *streamFile, String stringText)
 {
 
     fflush(streamFile);
     fputs(stringText, streamFile);
 
     return;
+}
+
+void writeIntegerEndTxt(FILE *streamFile, String maskText, int text){
+	fflush(streamFile);
+	fprintf(streamFile, maskText, text);
+	return;
+}
+
+void writeFloatEndTxt(FILE *streamFile, String maskText, float text){
+	fflush(streamFile);
+	fprintf(streamFile, maskText, text);
+	return;
 }
