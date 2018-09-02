@@ -6,7 +6,8 @@
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
-
+#include <ctype.h>
+#include <errno.h>
 /** Defini��es de linguagem**/
 #include <locale.h>
 
