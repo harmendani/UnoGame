@@ -2,7 +2,8 @@
 
 void runSystem()
 {
-    Data* data = (Data*) malloc(sizeof(Data));
-    *data =  executaMotorData();
+    Data *data = (Data *)malloc(sizeof(Data));
+    data = executaMotorData();
+    writeFileRunSystem(data);
     return;
 }
