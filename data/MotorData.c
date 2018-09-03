@@ -67,8 +67,8 @@ static Data *dadosEntrada()
 
     if (dadosOk)
     {
-        system("cls");
         imprimirDadosEntrada(dataEntrada);
+        system("cls");
         return dataEntrada;
     }
 
@@ -91,7 +91,7 @@ static bool validarDadosEntrada(Data *dataEntrada)
 
 void imprimirDadosEntrada(Data *dataEntrada)
 {
-
+    puts("\n\n Engine DATA..\n\n");
     puts("\n****Print Dados_Entrada****\n");
     printf(">md_training: %d\n", dataEntrada->md_training);
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
@@ -100,9 +100,71 @@ void imprimirDadosEntrada(Data *dataEntrada)
     puts("\n**************************\n");
 }
 
+String textMotorData(char c)
+{
+
+    if (c == 'h')
+        return "Training\t Desconto_Temporal\t Fator_Aprendizagem\t Taxa_Exploração\n";
+    if (c == 'x')
+        return ".txt";
+    if (c == 'n')
+        return "runSystem";
+    if (c == 't')
+    {
+        time_t curtime;
+        time(&curtime);
+        return ctime(&curtime);
+    }
+    if (c = 'c')
+        return "****************************ENGINE DATA****************************\n";
+    if (c = 'f')
+        return "***************************END ENGINE DATA*************************\n\n";
+
+    return NULL;
+}
+
+void writeFileRunSystem(Data *data)
+{
+    // Obter Strings necessárias
+    String nameFile = textMotorData('n');
+    String nameExtension = textMotorData('x');
+    String headerMenu = textMotorData('h');
+    String startHeader = textMotorData('c');
+    String endHeader = textMotorData('f');
+
+    // Escreve cabeçalho do arquivo
+    String path = createNameAndPath(DIR, nameFile, nameExtension);
+    FILE *file = openFileTxt(path);
+    writeStringEndTxt(file, startHeader);
+    writeStringEndTxt(file, headerMenu);
+
+    //Escreve Parâmetros de entrada: Data.
+    writeIntegerEndTxt(file, "%d\t\t\t", data->md_training);
+    writeIntegerEndTxt(file, "%d\t\t\t", data->md_learning.md_discountFactor);
+    writeIntegerEndTxt(file, "%d\t\t\t", data->md_learning.md_learningRate);
+    writeIntegerEndTxt(file, "%d\n\n", data->md_learning.md_exploitation);
+
+    //Escreve Parâmetros de Hora local e finaliza operação
+    String textTime = textMotorData('t');
+    fprintf(file, "Current Time = %s\n", textTime);
+    writeStringEndTxt(file, endHeader);
+
+    if (ferror(file))
+    {
+        printf("Error: %s\n", strerror(errno));
+        exit(1);
+    }
+
+    fclose(file);
+    puts("\nwriteFileRunSystem - Sucess in the writing in disk..\n");
+
+    return;
+}
+
 Data *executaMotorData()
 {
 
     informarDadosEntrada();
+
     return dadosEntrada();
 }

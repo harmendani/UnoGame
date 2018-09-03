@@ -1,7 +1,13 @@
 /* Recebe e manipula os dados da plataforma de simulação*/
 
+// BIBLIOTECAS 
+#ifndef TIME_H
+#define TIME_H
+#include <time.h>
+#endif
+
+// CONSTANTES 
 #define DIR "data/logs/"
-#define EXT ".txt"
 
 /* Exporta tipos declarados */
 
@@ -51,6 +57,23 @@ static Data *dadosEntrada();
 
 /* Valida os dados de entrada*/
 static bool validarDadosEntrada(Data *);
+
+/* Grava os seguintes dados no arquivo runSystem.txt:
+** - Data atual
+** - Parâmetros do Motor de Data
+*/
+void writeFileRunSystem(Data *);
+
+/* Retorna textos do tipo String de acordo com o contexto, definido por um simbolo (char).
+** Tabela de contexto 
+** 'h' - Cabeçalho arquivo
+** 'x' - Extensão arquivo
+** 'n' - Nome arquivo
+** 't' - Hora local do computador
+** 'c' - Nome do motor
+** 'f' - String de fechamento
+*/
+String textMotorData(char);
 
 /* Imprime na tela os dados de entrada*/
 void imprimirDadosEntrada(Data *);
