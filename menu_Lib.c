@@ -4,7 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#ifndef TIME_H
+#define TIME_H
 #include <time.h>
+#endif
+
 #include <string.h>
 #include <ctype.h>
 #include <errno.h>

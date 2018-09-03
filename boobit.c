@@ -28,7 +28,7 @@ FILE *openFileTxt(String nameFile)
         exit(1);
     }
 
-    return fileTxt; 
+    return fileTxt;
 }
 
 void writeStringEndTxt(FILE *streamFile, String stringText)
@@ -36,18 +36,35 @@ void writeStringEndTxt(FILE *streamFile, String stringText)
 
     fflush(streamFile);
     fputs(stringText, streamFile);
+    if (ferror(streamFile))
+    {
+        printf("Error: %s\n", strerror(errno));
+        exit(1);
+    }
 
     return;
 }
 
-void writeIntegerEndTxt(FILE *streamFile, String maskText, int text){
-	fflush(streamFile);
-	fprintf(streamFile, maskText, text);
-	return;
+void writeIntegerEndTxt(FILE *streamFile, String maskText, int text)
+{
+    fflush(streamFile);
+    fprintf(streamFile, maskText, text);
+    if (ferror(streamFile))
+    {
+        printf("Error: %s\n", strerror(errno));
+        exit(1);
+    }
+    return;
 }
 
-void writeFloatEndTxt(FILE *streamFile, String maskText, float text){
-	fflush(streamFile);
-	fprintf(streamFile, maskText, text);
-	return;
+void writeFloatEndTxt(FILE *streamFile, String maskText, float text)
+{
+    fflush(streamFile);
+    fprintf(streamFile, maskText, text);
+    if (ferror(streamFile))
+    {
+        printf("Error: %s\n", strerror(errno));
+        exit(1);
+    }
+    return;
 }
