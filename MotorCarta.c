@@ -31,7 +31,7 @@ void transferirCartaMontanteParaJogador(player *j)
 	return;
 }
 
-void transferirCarstaJogadorParaMesa(player *j)
+void transferirCartaJogadorParaMesa(player *j)
 {
 	carta temp = lst_ObterCarta(j->listaMaos);
 	M_l = lst_Insere(M_l, temp);
