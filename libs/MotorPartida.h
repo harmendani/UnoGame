@@ -45,7 +45,7 @@ void end_Match();
 bool isMatch();
 
 /* Determina aleatoriamente o jogador a começar a partida*/
-void definePlayerSaida();
+player* definePlayerSaida();
 
 /* Determina quem executa a ação de jogar*/
 void defineVezDoPlayer();

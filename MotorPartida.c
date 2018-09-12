@@ -66,20 +66,22 @@ void end_Match()
     return;
 }
 
-void definePlayerSaida()
+player *definePlayerSaida()
 {
 
     int a = randomInteger();
     if ((a % 2) == 0)
     {
         j2.bool_statusJogador = true;
+        return &j2;
     }
     else
     {
         j1.bool_statusJogador = true;
+        return &j1;
     }
-    return;
 }
+
 /*
 void defineVezDoPlayer()
 {   
