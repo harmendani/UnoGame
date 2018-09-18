@@ -5,10 +5,17 @@
 /** IN�CIO: Vari�veis Globais **/
 static bool STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o termino da partida.
 static bool STATUS_PILHA_MESA;
-static bool STATUS_MONTANTE_DESCARTE; 
+static bool STATUS_MONTANTE_DESCARTE;
 /** FIM: Vari�veis Globais **/
 
-//ROTINAS PRINCIPAIS
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////
+* ROTINA PRINCIPAL PARA O MOTOR DE PARTIDA:
+* - Executa startMatch().
+* - Invoca rotina que define player de saída e o salva.
+* - Começa loop de rodadas com o player do passo acima até a condição de parada : 
+*   Quantidade de cartas == 0 pra alguma jogador (*player)
+///////////////////////////////////////////////////////////////////////////////////////////////////////*/
+void executarMotorPartida();
 
 /* Rotina básica para iniciar variáveis de controle da partida:
 * STATUS_PARTIDA -> TRUE.
@@ -45,7 +52,7 @@ void end_Match();
 bool isMatch();
 
 /* Determina aleatoriamente o jogador a começar a partida*/
-player* definePlayerSaida();
+player *definePlayerSaida();
 
-/* Determina quem executa a ação de jogar*/
-void defineVezDoPlayer();
+/* Lança o jogador correto para efetuar uma jogada*/
+player *throwPlay(player *);

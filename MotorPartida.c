@@ -27,7 +27,6 @@ void start_Match()
 {
     inicializaJogadores();
     executarMotorCarta();
-    definePlayerSaida();
     start_StatusMatch();
 }
 
@@ -82,16 +81,38 @@ player *definePlayerSaida()
     }
 }
 
-/*
-void defineVezDoPlayer()
-{   
-    
-    carta *temp = lst_ObterCartaRef(M_l); // Obter carta da mesa
-    if(temp->AcaoCarta == REVERTER || temp->AcaoCarta == PULAR){
-    
-    }
-    else{
+player *throwPlay(player *p)
+{
+    static int i;
+    executarMotorVisao(p);
+    //tomada de decisão / calculo do estado
+    transferirCartaJogadorParaMesa(p);
+    executarMotorVisao(p);
+    i++;
+    printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
+    return p->adversario;
+}
 
-    }
+//Motor Principal que roda a PARTIDA
 
-}*/
+void executarMotorPartida()
+{
+    // Inicia Partida
+    start_Match();
+
+    //Define player que começa a partida
+    player *select = definePlayerSaida();
+
+    //Roda loop das rodadas
+    do
+    {
+        player *temp = throwPlay(select);
+        select = temp;
+
+    } while (isMatch());
+
+    // Finaliza Partida
+    end_Match();
+
+    return;
+}
