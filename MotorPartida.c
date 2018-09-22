@@ -27,6 +27,14 @@ void start_Match()
 {
     inicializaJogadores();
     executarMotorCarta();
+    while (lst_ObterCarta(M_l).TipoCarta == CORINGA)
+    {
+
+        sleep(2);
+        inicializaJogadores();
+        executarMotorCarta();
+    }
+
     start_StatusMatch();
 }
 
