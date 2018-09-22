@@ -23,11 +23,22 @@ typedef struct VisaoJogador
 
 } st_Jogador;
 
+typedef struct VisaoHistorico
+{
+    int i_verde;
+    int i_azul;
+    int i_amarelo;
+    int i_vermelho;
+    int numero[10];
+
+} st_Historico;
+
 typedef struct VisaoTotal
 {
     st_Contagem contagem;
     st_Mesa mesa;
     st_Jogador jogador;
+    st_Historico historico;
 } vision;
 
 #ifndef MOTORCARTA_H
