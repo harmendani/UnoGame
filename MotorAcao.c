@@ -23,9 +23,9 @@ void defActionSet(player *p, ActionSet *a)
     case ACAO:
         calc_ActionSet_ACAO(p, a);
         break;
-        //  calc_ActionSet_NORMAL(p, a);
-    case CORINGA:
 
+    case CORINGA:
+        calc_ActionSet_CORINGA(p, a);
         break;
     default:
         puts("\n\n ERRO de carta em ACTION_SET \n\n");
@@ -118,5 +118,26 @@ void calc_ActionSet_ACAO(player *p, ActionSet *a)
         }
     }
 
+    return;
+}
+
+void calc_ActionSet_CORINGA(player *p, ActionSet *a)
+{
+
+    if (p->numDeCartasCoringa > 0)
+    {
+
+        Lista *l = p->cartasCoringa;
+
+        while (l != NULL)
+        {
+            if (l->Carta.AcaoCarta == p->visaoPlayer.mesa.c_cartaMesa->AcaoCarta)
+            {
+                carta temp1 = lst_ObterCarta(l);
+                a->caseList = lst_Insere(a->caseList, temp1);
+            }
+            l = l->prox;
+        }
+    }
     return;
 }
