@@ -72,6 +72,9 @@ void transferirCartaJogadorParaMesa(player *);
 */
 void contadorDeCartasPorTipo(player *);
 
+/* Essa rotina contabiliza a quantidade de cartas por cor e salva no vision do player */
+void contadorDeCartasporCor(player *, Lista *);
+
 /* Conta cartas Curinga +4 de uma lista */
 int contadorDeCartasCuringa_4(Lista *);
 /* Conta cartas Ação de uma lista */

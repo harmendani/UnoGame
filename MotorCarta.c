@@ -258,6 +258,37 @@ void contadorDeCartasPorTipo(player *j)
 	j->numDeCartasCoringa = contCoringa;
 }
 
+void contadorDeCartasporCor(player *p, Lista* l)
+{
+
+	Lista *mesa = l;
+	while (mesa != NULL)
+	{
+		switch (mesa->Carta.CorCarta)
+		{
+		case AMARELO:
+			p->visaoPlayer.historico.i_amarelo++;
+			break;
+
+		case AZUL:
+			p->visaoPlayer.historico.i_azul++;
+			break;
+
+		case VERDE:
+			p->visaoPlayer.historico.i_verde++;
+			break;
+		case VERMELHO:
+			p->visaoPlayer.historico.i_vermelho++;
+			break;
+		default:
+			puts("\n\n ERRO de carta em contadorDeCartasPorTipo \n\n");
+		}
+		mesa = mesa->prox;
+	}
+
+	return;
+}
+
 void controlarCartasNoMontante()
 {
 	if (lst_IsEmpty(G_l))

@@ -1,4 +1,5 @@
-static void inicializarMotorVisao(player* p){
+static void inicializarMotorVisao(player *p)
+{
 
     // Visão Contagem
     p->visaoPlayer.contagem.i_quantMesa = 0;
@@ -10,9 +11,20 @@ static void inicializarMotorVisao(player* p){
     //Visão Jogador
     p->visaoPlayer.jogador.i_quantJogador = 0;
     p->visaoPlayer.jogador.i_quantadversario = 0;
+
+    //Visão Histórico
+    p->visaoPlayer.historico.i_amarelo = 0;
+    p->visaoPlayer.historico.i_azul = 0;
+    p->visaoPlayer.historico.i_verde = 0;
+    p->visaoPlayer.historico.i_vermelho = 0;
+
+    for (int i = 0; i < 10; i++)
+    {
+        p->visaoPlayer.historico.numero[i] = 0;
+    }
 }
 
-    int v_QuantMesa()
+int v_QuantMesa()
 {
     return contadorDeCartas(M_l);
 }
@@ -22,33 +34,32 @@ int v_QuantMontante()
     return contadorDeCartas(G_l);
 }
 
-carta* v_VerificarCartaMesa()
+carta *v_VerificarCartaMesa()
 {
     return lst_ObterCartaRef(M_l);
 }
 
-int v_QuantPlayer(player* jogador)
+int v_QuantPlayer(player *jogador)
 {
-	
+
     return contadorDeCartas(jogador->listaMaos);
 }
 
-void executarMotorVisao(player* p){
+void executarMotorVisao(player *p)
+{
 
-// Zera variáveis antes de computar as visões do player* p
-inicializarMotorVisao(p);
-contadorDeCartasPorTipo(p);
+    // Zera variáveis antes de computar as visões do player* p
+    inicializarMotorVisao(p);
+    contadorDeCartasPorTipo(p);
+    contadorDeCartasporCor(p, M_l);
+    // Visão Contagem
+    p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
+    p->visaoPlayer.contagem.i_quantMontante = v_QuantMontante();
 
-// Visão Contagem
-p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
-p->visaoPlayer.contagem.i_quantMontante = v_QuantMontante();
+    // Visão Mesa
+    p->visaoPlayer.mesa.c_cartaMesa = v_VerificarCartaMesa();
 
-// Visão Mesa
-p->visaoPlayer.mesa.c_cartaMesa = v_VerificarCartaMesa();
-
-
-//Visão Jogador
-p->visaoPlayer.jogador.i_quantJogador = v_QuantPlayer(p);
-p->visaoPlayer.jogador.i_quantadversario = v_QuantPlayer(p->adversario);
-
+    //Visão Jogador
+    p->visaoPlayer.jogador.i_quantJogador = v_QuantPlayer(p);
+    p->visaoPlayer.jogador.i_quantadversario = v_QuantPlayer(p->adversario);
 }
