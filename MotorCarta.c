@@ -258,13 +258,13 @@ void contadorDeCartasPorTipo(player *j)
 	j->numDeCartasCoringa = contCoringa;
 }
 
-void contadorDeCartasporCor(player *p, Lista* l)
+void contadorDeCartasporCor(player *p, Lista *l)
 {
 
-	Lista *mesa = l;
-	while (mesa != NULL)
+	Lista *aux = l;
+	while (aux != NULL)
 	{
-		switch (mesa->Carta.CorCarta)
+		switch (aux->Carta.CorCarta)
 		{
 		case AMARELO:
 			p->visaoPlayer.historico.i_amarelo++;
@@ -281,9 +281,10 @@ void contadorDeCartasporCor(player *p, Lista* l)
 			p->visaoPlayer.historico.i_vermelho++;
 			break;
 		default:
-			puts("\n\n ERRO de carta em contadorDeCartasPorTipo \n\n");
+			break;
 		}
-		mesa = mesa->prox;
+
+		aux = aux->prox;
 	}
 
 	return;
