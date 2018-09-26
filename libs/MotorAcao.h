@@ -3,6 +3,14 @@ typedef struct caseStruct
 {
 
     Lista *caseList;
+    //CASE NORMAL
+    bool normalCor;
+    bool normalNumero;
+    //CASE NORMAL AND ACTION OR CORINGA
+    bool acaoCor;    
+    bool acaoSimbolo;    //ONLY ACTION
+    bool acaoCorSimbolo; //ONLY ACTION
+    bool coringa; // ALL CASES
 
 } ActionSet;
 
