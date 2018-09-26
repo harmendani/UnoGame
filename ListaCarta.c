@@ -56,44 +56,29 @@ Lista *lst_Remove(Lista *atual)
 /* Remove primeiro Elemento da Lista - de qualquer posição pelo identificador */
 Lista *lst_RemovePorId(Lista *atual, int id)
 {
-    if (atual == NULL)
-        return NULL;
-   
+
     Lista *p = atual;
     Lista *ant = NULL;
-    Lista *prox = NULL;
-    
+
     if (p->Carta.id == id)
     {
         p = lst_Remove(atual);
         return p;
     }
 
-    while (p != NULL)
+    while (p != NULL && p->Carta.id != id)
     {
         ant = p;
-
-        if (ant->prox != NULL)
-        {
-
-            if (p->prox->Carta.id == id)
-            {
-                prox = p->prox;
-                ant->prox = prox->prox;
-                free(prox);
-                prox = NULL;
-                return atual;
-            }
-        }
-
         p = p->prox;
-        if (p->prox == NULL && p->Carta.id == id)
-        {
-            ant->prox = NULL;
-            free(p);
-            p = NULL;
-        }
     }
+
+    if (p == NULL)
+        return atual;
+
+    ant->prox = p->prox;
+    free(p);
+    p = NULL;
+
     return atual;
 }
 /* Imprime elementos da Lista */
