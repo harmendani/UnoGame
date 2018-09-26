@@ -12,10 +12,10 @@ ActionSet *start_ActionSet(player *p)
 void defActionSet(player *p, ActionSet *a)
 {
 
-   /* INICIALIZA VARIÁVEIS */
+    /* INICIALIZA VARIÁVEIS */
     a->caseList = lst_cria();
-    
-    a->normalCor = false;;
+
+    a->normalCor = false;
     a->normalNumero = false;
     a->acaoCor = false;
     a->acaoSimbolo = false;
@@ -157,7 +157,7 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
 
     if (p->numDeCartasCoringa > 0)
     {
-
+        a->coringa = true;
         Lista *l = p->cartasCoringa;
 
         while (l != NULL)
