@@ -1,5 +1,5 @@
 /* Implementa a interface "MotorAcao.h" com funções e procedimentos
-** que manipulam as ações básicas e tomadas de decisões mais complexadas
+** que manipulam as ações básicas e tomadas de decisões mais complexas
 */
 
 ActionSet *start_ActionSet(player *p)
@@ -19,16 +19,15 @@ void defActionSet(player *p, ActionSet *a)
     case NORMAL:
         calc_ActionSet_NORMAL(p, a);
         break;
-
     case ACAO:
         calc_ActionSet_ACAO(p, a);
         break;
-
     case CORINGA:
         calc_ActionSet_CORINGA(p, a);
         break;
     default:
         puts("\n\n ERRO de carta em ACTION_SET \n\n");
+        exit(0);
     }
     return;
 }
