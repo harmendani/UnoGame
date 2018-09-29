@@ -3,25 +3,6 @@
 */
 
 // TIPOS DEFINIDOS
-typedef struct VisaoContagem
-{
-    int i_quantMesa;
-    int i_quantMontante;
-
-} st_Contagem;
-
-typedef struct VisaoMesa
-{
-    carta* c_cartaMesa;
-
-} st_Mesa;
-
-typedef struct VisaoJogador
-{
-    int i_quantJogador;
-    int i_quantadversario;
-
-} st_Jogador;
 
 typedef struct VisaoHistorico
 {
@@ -33,12 +14,34 @@ typedef struct VisaoHistorico
 
 } st_Historico;
 
+typedef struct VisaoContagem
+{
+    int i_quantMesa;
+    int i_quantMontante;
+
+} st_Contagem;
+
+typedef struct VisaoMesa
+{
+    carta *c_cartaMesa;
+    st_Historico historico;
+
+} st_Mesa;
+
+typedef struct VisaoJogador
+{
+    int i_quantJogador;
+    int i_quantadversario;
+    st_Historico historico;
+
+} st_Jogador;
+
 typedef struct VisaoTotal
 {
     st_Contagem contagem;
     st_Mesa mesa;
     st_Jogador jogador;
-    st_Historico historico;
+
 } vision;
 
 #ifndef MOTORCARTA_H
@@ -60,7 +63,7 @@ int v_QuantMontante();
 
 // Vis�o Mesa
 /* Retorna a carta da mesa */
-carta* v_VerificarCartaMesa();
+carta *v_VerificarCartaMesa();
 
 // Vis�o Jogador
 /* Retorna a quantidade de cartas de qualquer jogador */
@@ -69,7 +72,7 @@ int v_QuantPlayer(player *);
 /* Zera variáveis do tipo Vision a cada execução do motor para garantir integridade 
 ** da visao do jogador.
 */
-static void inicializarMotorVisao(player*);
+static void inicializarMotorVisao(player *);
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////
 * ROTINA PRINCIPAL PARA O MOTOR DE VISÃO: 
