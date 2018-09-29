@@ -71,6 +71,7 @@ void executarMotorVisao(player *p)
     //Visão Jogador
     p->visaoPlayer.jogador.i_quantJogador = v_QuantPlayer(p);
     p->visaoPlayer.jogador.i_quantadversario = v_QuantPlayer(p->adversario);
-    contadorDeCartasporCorJogador(p, p->listaMaos);
+    contadorDeCartasporCorJogador(p, p->cartasAcao);
+    contadorDeCartasporCorJogador(p, p->cartasNormal);
     contadorDeCartasPorNumeroJogador(p, p->cartasNormal);
 }

@@ -279,7 +279,7 @@ void contadorDeCartasporCorJogador(player *p, Lista *l)
 			p->visaoPlayer.jogador.historico.i_vermelho++;
 			break;
 		default:
-			puts("\nErro contadorDeCartasPorCor()..\n");
+			puts("\nErro contadorDeCartasPorCorJogador()..\n");
 			exit(0);
 			break;
 		}
@@ -313,7 +313,7 @@ void contadorDeCartasporCorMesa(player *p, Lista *l)
 				p->visaoPlayer.mesa.historico.i_vermelho++;
 				break;
 			default:
-				puts("\nErro contadorDeCartasPorCor()..\n");
+				puts("\nErro contadorDeCartasPorCorMesa()..\n");
 				exit(0);
 				break;
 			}
