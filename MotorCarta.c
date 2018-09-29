@@ -258,7 +258,7 @@ void contadorDeCartasPorTipo(player *j)
 	j->numDeCartasCoringa = contCoringa;
 }
 
-void contadorDeCartasporCor(player *p, Lista *l)
+void contadorDeCartasporCorJogador(player *p, Lista *l)
 {
 
 	Lista *aux = l;
@@ -267,26 +267,168 @@ void contadorDeCartasporCor(player *p, Lista *l)
 		switch (aux->Carta.CorCarta)
 		{
 		case AMARELO:
-			p->visaoPlayer.historico.i_amarelo++;
+			p->visaoPlayer.jogador.historico.i_amarelo++;
 			break;
-
 		case AZUL:
-			p->visaoPlayer.historico.i_azul++;
+			p->visaoPlayer.jogador.historico.i_azul++;
 			break;
-
 		case VERDE:
-			p->visaoPlayer.historico.i_verde++;
+			p->visaoPlayer.jogador.historico.i_verde++;
 			break;
 		case VERMELHO:
-			p->visaoPlayer.historico.i_vermelho++;
+			p->visaoPlayer.jogador.historico.i_vermelho++;
 			break;
 		default:
+			puts("\nErro contadorDeCartasPorCor()..\n");
+			exit(0);
 			break;
 		}
 
 		aux = aux->prox;
 	}
 
+	return;
+}
+
+void contadorDeCartasporCorMesa(player *p, Lista *l)
+{
+
+	Lista *aux = l;
+	while (aux != NULL)
+	{
+		if (aux->Carta.TipoCarta != CORINGA)
+		{
+			switch (aux->Carta.CorCarta)
+			{
+			case AMARELO:
+				p->visaoPlayer.mesa.historico.i_amarelo++;
+				break;
+			case AZUL:
+				p->visaoPlayer.mesa.historico.i_azul++;
+				break;
+			case VERDE:
+				p->visaoPlayer.mesa.historico.i_verde++;
+				break;
+			case VERMELHO:
+				p->visaoPlayer.mesa.historico.i_vermelho++;
+				break;
+			default:
+				puts("\nErro contadorDeCartasPorCor()..\n");
+				exit(0);
+				break;
+			}
+		}
+
+		aux = aux->prox;
+	}
+
+	return;
+}
+
+void contadorDeCartasPorNumeroMesa(player *p, Lista *l)
+{
+
+	Lista *aux = l;
+	while (aux != NULL)
+	{
+		if (aux->Carta.TipoCarta == NORMAL)
+		{
+			switch (aux->Carta.numFace)
+			{
+
+			case 0:
+				(p->visaoPlayer.mesa.historico.numero[0])++;
+				break;
+
+			case 1:
+				(p->visaoPlayer.mesa.historico.numero[1])++;
+				break;
+
+			case 2:
+				(p->visaoPlayer.mesa.historico.numero[2])++;
+				break;
+			case 3:
+				(p->visaoPlayer.mesa.historico.numero[3])++;
+				break;
+			case 4:
+				(p->visaoPlayer.mesa.historico.numero[4])++;
+				break;
+			case 5:
+				(p->visaoPlayer.mesa.historico.numero[5])++;
+				break;
+			case 6:
+				(p->visaoPlayer.mesa.historico.numero[6])++;
+				break;
+			case 7:
+				(p->visaoPlayer.mesa.historico.numero[7])++;
+				break;
+			case 8:
+				(p->visaoPlayer.mesa.historico.numero[8])++;
+				break;
+			case 9:
+				(p->visaoPlayer.mesa.historico.numero[9])++;
+				break;
+			default:
+				puts("\nErro contadorDeCartasPorNumero()..\n");
+				exit(0);
+				break;
+			}
+		}
+		aux = aux->prox;
+	}
+	return;
+}
+
+void contadorDeCartasPorNumeroJogador(player *p, Lista *l)
+{
+
+	Lista *aux = l;
+	while (aux != NULL)
+	{
+
+		switch (aux->Carta.numFace)
+		{
+
+		case 0:
+			(p->visaoPlayer.jogador.historico.numero[0])++;
+			break;
+
+		case 1:
+			(p->visaoPlayer.jogador.historico.numero[1])++;
+			break;
+
+		case 2:
+			(p->visaoPlayer.jogador.historico.numero[2])++;
+			break;
+		case 3:
+			(p->visaoPlayer.jogador.historico.numero[3])++;
+			break;
+		case 4:
+			(p->visaoPlayer.jogador.historico.numero[4])++;
+			break;
+		case 5:
+			(p->visaoPlayer.jogador.historico.numero[5])++;
+			break;
+		case 6:
+			(p->visaoPlayer.jogador.historico.numero[6])++;
+			break;
+		case 7:
+			(p->visaoPlayer.jogador.historico.numero[7])++;
+			break;
+		case 8:
+			(p->visaoPlayer.jogador.historico.numero[8])++;
+			break;
+		case 9:
+			(p->visaoPlayer.jogador.historico.numero[9])++;
+			break;
+		default:
+			puts("\nErro contadorDeCartasPorNumero()..\n");
+			exit(0);
+			break;
+		}
+
+		aux = aux->prox;
+	}
 	return;
 }
 
