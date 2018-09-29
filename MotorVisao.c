@@ -47,11 +47,11 @@ int v_QuantPlayer(player *jogador)
 
 void executarMotorVisao(player *p)
 {
+    inicializarMotorVisao(p);       // Zera variáveis antes de computar as visões do player* p
+    contadorDeCartasPorTipo(p);     // Conta e salva as cartas por tipo das mãos do jogador atual.
+    contadorDeCartasporCor(p, M_l); // Salva o histórico por cor da mesa
+    build_StateGame(p);             // Salva o estado atual do jogador antes da jogada
 
-    // Zera variáveis antes de computar as visões do player* p
-    inicializarMotorVisao(p);
-    contadorDeCartasPorTipo(p);
-    contadorDeCartasporCor(p, M_l);
     // Visão Contagem
     p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
     p->visaoPlayer.contagem.i_quantMontante = v_QuantMontante();
