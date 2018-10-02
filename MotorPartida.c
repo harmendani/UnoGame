@@ -91,14 +91,15 @@ player *definePlayerSaida()
 
 player *throwPlay(player *p)
 {
-    static int i;
+
     executarMotorVisao(p);
-    //tomada de decisão / calculo do estado
-    transferirCartaJogadorParaMesa(p);
-    executarMotorVisao(p);
-    i++;
-    printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
-    return p->adversario;
+    //tomada de decisão
+    //executar jogada
+    // calculo do estado
+    // retorna próximo jogador
+    
+    //printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
+    
 }
 
 //Motor Principal que roda a PARTIDA
