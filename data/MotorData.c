@@ -67,7 +67,6 @@ static Data *dadosEntrada()
 
     if (dadosOk)
     {
-        imprimirDadosEntrada(dataEntrada);
         system("cls");
         return dataEntrada;
     }
@@ -91,8 +90,7 @@ static bool validarDadosEntrada(Data *dataEntrada)
 
 void imprimirDadosEntrada(Data *dataEntrada)
 {
-    puts("\n\n Engine DATA..\n\n");
-    puts("\n****Print Dados_Entrada****\n");
+    puts("\n****Input Data****\n");
     printf(">md_training: %d\n", dataEntrada->md_training);
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
     printf(">md_learningRate: %d%% \n", dataEntrada->md_learning.md_learningRate);
@@ -174,6 +172,7 @@ Data *executaMotorData()
     informarDadosEntrada();
     Data *data = dadosEntrada();
     writeFileRunSystem(data);
-    
+    imprimirDadosEntrada(data);
+
     return data;
 }
