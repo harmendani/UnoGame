@@ -166,5 +166,8 @@ Data *executaMotorData()
 
     informarDadosEntrada();
 
-    return dadosEntrada();
+    Data* data = dadosEntrada();
+    writeFileRunSystem(data);
+
+    return data;
 }

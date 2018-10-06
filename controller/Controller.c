@@ -2,7 +2,14 @@
 
 void runSystem()
 {
-    Data *data = executaMotorData();
-    writeFileRunSystem(data);
+    
+    controllerCore();
     return;
+}
+
+void controllerCore(){
+
+    Data *data = executaMotorData();
+    return;
+    
 }

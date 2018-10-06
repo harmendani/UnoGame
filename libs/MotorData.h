@@ -13,6 +13,8 @@
 
 typedef struct Q_Values LearnFactors;
 typedef enum I_Treino IntensidadeTreino;
+
+/* Exporta o tipo principal do motor */
 typedef struct EngineData Data;
 
 /* Enumera o número de partidas do jogo*/
