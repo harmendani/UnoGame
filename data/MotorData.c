@@ -156,18 +156,24 @@ void writeFileRunSystem(Data *data)
     }
 
     fclose(file);
-    puts("\nwriteFileRunSystem - Sucess in the writing in disk..\n");
+
+    startScreen();
+    sleep(1);
+    printf("\n\n..");
+    sleep(1.5);
+    printf("....");
+    sleep(1);
+    printf("..");
+    printf(".writeFileRunSystem - Sucess in the writing in disk!\n");
 
     return;
 }
 
 Data *executaMotorData()
 {
-
     informarDadosEntrada();
-
-    Data* data = dadosEntrada();
+    Data *data = dadosEntrada();
     writeFileRunSystem(data);
-
+    
     return data;
 }

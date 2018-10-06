@@ -9,7 +9,9 @@ void runSystem()
 
 void controllerCore(){
 
+    startScreen(); 
     Data *data = executaMotorData();
+    
     return;
     
 }
