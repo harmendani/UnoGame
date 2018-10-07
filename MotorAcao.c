@@ -5,22 +5,27 @@
 ActionSet *start_ActionSet(player *p)
 {
     ActionSet *set = (ActionSet *)malloc(sizeof(ActionSet));
+    inicializaActionSet(set);
     defActionSet(p, set);
     return set;
 }
 
-void defActionSet(player *p, ActionSet *a)
+inicializaActionSet(ActionSet *a)
 {
 
-    /* INICIALIZA VARIÁVEIS */
-    a->caseList = lst_cria();
+    a->caseCor = lst_cria();
+    a->caseNumero = lst_cria();
+    a->caseSimbolo = lst_cria();
 
-    a->normalCor = false;
-    a->normalNumero = false;
-    a->acaoCor = false;
-    a->acaoSimbolo = false;
-    a->acaoCorSimbolo = false;
-    a->coringa = false;
+    bool coringaComprar = false;
+    bool coringaNormal = false;
+    int numberAction = 0;
+
+    return;
+}
+
+void defActionSet(player *p, ActionSet *a)
+{
 
     switch (p->visaoPlayer.mesa.c_cartaMesa->TipoCarta)
     {
@@ -39,6 +44,8 @@ void defActionSet(player *p, ActionSet *a)
     }
     return;
 }
+
+/* Rotinas de mecânicas básicas de cartas de Ação */
 
 void runAction_Comprar4(player *p)
 {
