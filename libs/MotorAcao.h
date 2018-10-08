@@ -24,6 +24,7 @@ void runAction_Comprar2(player *);
 void calc_ActionSet_COR(player *, ActionSet *);
 void calc_ActionSet_NUMERO(player *, ActionSet *);
 void calc_ActionSet_SIMBOLO(player *, ActionSet *);
+void calc_ActionSet_CORINGA(player *, ActionSet *);
 
 #ifndef MOTORACAO_C
 #define MOTORACAO_C
