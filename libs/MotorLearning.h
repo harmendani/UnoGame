@@ -18,7 +18,7 @@ typedef struct Q_Function
 }q_Learning;
 
 /* Define parâmetros para heurísticas de exploração*/
-q_Learning defineParametrosHeuristica(Data *);
+q_Learning* defineParametrosHeuristica(Data *);
 
 /* Define parâmetros para o Q_learning*/
 void defineQLearning();

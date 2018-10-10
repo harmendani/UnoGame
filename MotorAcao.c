@@ -11,11 +11,10 @@ ActionSet *start_ActionSet(player *p)
 
 void inicializaActionSet(ActionSet *a)
 {
-    puts("\nTRAVU");
+
     a->caseCor = lst_cria();
     a->caseNumero = lst_cria();
     a->caseSimbolo = lst_cria();
-    puts("\nTRAV2");
     bool coringaComprar = false;
     bool coringaNormal = false;
     int numberAction = 0;
@@ -33,7 +32,6 @@ void defActionSet(player *p, ActionSet *a)
         calc_ActionSet_NUMERO(p, a);
         calc_ActionSet_COR(p, a);
         calc_ActionSet_CORINGA(p, a);
-        puts("\nTRAVU3NORMAL");
         break;
     case ACAO:
         calc_ActionSet_SIMBOLO(p, a);
@@ -66,7 +64,6 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
             a->caseCor = lst_Insere(a->caseCor, temp);
             a->numberAction++;
         }
-        puts("\n\nfudeiNormal");
         normal = normal->prox;
     }
 
@@ -79,8 +76,6 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
             a->caseCor = lst_Insere(a->caseCor, temp);
             a->numberAction++;
         }
-        puts("\n\nfudeiAcao");
-
         acao = acao->prox;
     }
 
@@ -99,8 +94,6 @@ void calc_ActionSet_NUMERO(player *p, ActionSet *a)
             a->caseNumero = lst_Insere(a->caseNumero, temp);
             a->numberAction++;
         }
-        puts("\n\nFudeiNumer");
-
         normal = normal->prox;
     }
 
@@ -119,8 +112,6 @@ void calc_ActionSet_SIMBOLO(player *p, ActionSet *a)
             a->caseSimbolo = lst_Insere(a->caseSimbolo, temp);
             a->numberAction++;
         }
-        puts("\n\nfudeiSimbolo");
-
         acao = acao->prox;
     }
 
