@@ -5,6 +5,7 @@
 ActionSet *start_ActionSet(player *p)
 {
     ActionSet *set = (ActionSet *)malloc(sizeof(ActionSet));
+
     inicializaActionSet(set);
     defActionSet(p, set);
     return set;
@@ -31,11 +32,11 @@ void defActionSet(player *p, ActionSet *a)
     switch (p->visaoPlayer.mesa.c_cartaMesa->TipoCarta)
     {
     case NORMAL:
-        --verificanumero e cor break;
+    //verificanumero e cor break;
     case ACAO:
-        --verificaSimbolo e cor break;
+        //verificaSimbolo e cor break;
     case CORINGA:
-        --motordeDecisaoEscolheCor break;
+        //motordeDecisaoEscolheCor break;
     default:
         puts("\n\n ERRO de carta em ACTION_SET \n\n");
         exit(0);
@@ -52,24 +53,31 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
 
     while (normal != NULL)
     {
+
         if (normal->Carta.CorCarta == p->visaoPlayer.mesa.c_cartaMesa->CorCarta)
         {
             carta temp = lst_ObterCarta(normal);
-            lst_Insere(a->caseCor, temp);
+            a->caseCor = lst_Insere(a->caseCor, temp);
         }
+        
         normal = normal->prox;
     }
 
     while (acao != NULL)
     {
+
         if (acao->Carta.CorCarta == p->visaoPlayer.mesa.c_cartaMesa->CorCarta)
         {
             carta temp = lst_ObterCarta(acao);
-            lst_Insere(a->caseCor, temp);
+            a->caseCor = lst_Insere(a->caseCor, temp);
         }
+        puts("\nLOOP\n");
         acao = acao->prox;
     }
-
+    lst_FreeList(acao);
+    acao = NULL;
+    lst_FreeList(normal);
+    normal = NULL;
     return;
 }
 
@@ -82,10 +90,13 @@ void calc_ActionSet_NUMERO(player *p, ActionSet *a)
         if (normal->Carta.numFace == p->visaoPlayer.mesa.c_cartaMesa->numFace)
         {
             carta temp = lst_ObterCarta(normal);
-            lst_Insere(a->caseNumero, temp);
+            a->caseNumero = lst_Insere(a->caseNumero, temp);
         }
+        
         normal = normal->prox;
     }
+    lst_FreeList(normal);
+    normal = NULL;
 
     return;
 }
@@ -99,10 +110,13 @@ void calc_ActionSet_SIMBOLO(player *p, ActionSet *a)
         if (acao->Carta.TipoCarta == p->visaoPlayer.mesa.c_cartaMesa->TipoCarta)
         {
             carta temp = lst_ObterCarta(acao);
-            lst_Insere(a->caseSimbolo, temp);
+            a->caseSimbolo = lst_Insere(a->caseSimbolo, temp);
         }
+       
         acao = acao->prox;
     }
+    lst_FreeList(acao);
+    acao = NULL;
 
     return;
 }
