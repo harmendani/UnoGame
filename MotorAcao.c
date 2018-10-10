@@ -5,7 +5,6 @@
 ActionSet *start_ActionSet(player *p)
 {
     ActionSet *set = (ActionSet *)malloc(sizeof(ActionSet));
-
     inicializaActionSet(set);
     defActionSet(p, set);
     return set;
@@ -32,11 +31,18 @@ void defActionSet(player *p, ActionSet *a)
     switch (p->visaoPlayer.mesa.c_cartaMesa->TipoCarta)
     {
     case NORMAL:
-    //verificanumero e cor break;
+        calc_ActionSet_NUMERO(p, a);
+        calc_ActionSet_COR(p, a);
+        calc_ActionSet_CORINGA(p, a);
+        break;
     case ACAO:
-        //verificaSimbolo e cor break;
+        calc_ActionSet_SIMBOLO(p, a);
+        calc_ActionSet_COR(p, a);
+        calc_ActionSet_CORINGA(p, a);
+        break;
     case CORINGA:
-        //motordeDecisaoEscolheCor break;
+        calc_ActionSet_CORINGA(p, a);
+        break;
     default:
         puts("\n\n ERRO de carta em ACTION_SET \n\n");
         exit(0);
@@ -58,8 +64,9 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
         {
             carta temp = lst_ObterCarta(normal);
             a->caseCor = lst_Insere(a->caseCor, temp);
+            a->numberAction++;
         }
-        
+
         normal = normal->prox;
     }
 
@@ -70,8 +77,9 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
         {
             carta temp = lst_ObterCarta(acao);
             a->caseCor = lst_Insere(a->caseCor, temp);
+            a->numberAction++;
         }
-        puts("\nLOOP\n");
+
         acao = acao->prox;
     }
     lst_FreeList(acao);
@@ -91,8 +99,9 @@ void calc_ActionSet_NUMERO(player *p, ActionSet *a)
         {
             carta temp = lst_ObterCarta(normal);
             a->caseNumero = lst_Insere(a->caseNumero, temp);
+            a->numberAction++;
         }
-        
+
         normal = normal->prox;
     }
     lst_FreeList(normal);
@@ -111,8 +120,9 @@ void calc_ActionSet_SIMBOLO(player *p, ActionSet *a)
         {
             carta temp = lst_ObterCarta(acao);
             a->caseSimbolo = lst_Insere(a->caseSimbolo, temp);
+            a->numberAction++;
         }
-       
+
         acao = acao->prox;
     }
     lst_FreeList(acao);
@@ -126,6 +136,8 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
 
     if (p->numDeCartasCoringa > 0)
     {
+        a->numberAction++;
+
         Lista *coringaTemp = p->cartasCoringa;
         while (coringaTemp != NULL)
         {
