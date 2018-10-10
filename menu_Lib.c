@@ -30,7 +30,6 @@
 #include "./libs/Estado.h"
 #endif
 
-
 #ifndef MOTORVISAO_H
 #define MOTORVISAO_H
 #include "./libs/MotorVisao.h"
@@ -49,6 +48,11 @@
 #ifndef MOTORACAO_H
 #define MOTORACAO_H
 #include "./libs/MotorAcao.h"
+#endif
+
+#ifndef MOTOR_LEARNING_H
+#define MOTOR_LEARNING_H
+#include "./libs/MotorLearning.h"
 #endif
 
 #ifndef CONTROLLER_C
