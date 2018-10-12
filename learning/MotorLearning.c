@@ -8,8 +8,5 @@ q_Learning *defineParametrosHeuristica(Data *data)
     qdata->learningRate = (float)(data->md_learning.md_learningRate) / 100;
     qdata->exploitation = (float)(data->md_learning.md_exploitation) / 100;
 
-    printf(" \nq data discont %f", qdata->discountFactor);
-    printf(" \nq data learning %f", qdata->learningRate);
-    printf(" \nq data exploit %f", qdata->exploitation);
     return qdata;
 }

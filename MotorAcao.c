@@ -133,7 +133,10 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
             {
                 a->coringaComprar = true;
             }
-            a->coringaNormal = true;
+            else
+            {
+                a->coringaNormal = true;
+            }
             coringaTemp = coringaTemp->prox;
         }
     }
