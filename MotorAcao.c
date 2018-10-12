@@ -15,9 +15,9 @@ void inicializaActionSet(ActionSet *a)
     a->caseCor = lst_cria();
     a->caseNumero = lst_cria();
     a->caseSimbolo = lst_cria();
-    bool coringaComprar = false;
-    bool coringaNormal = false;
-    int numberAction = 0;
+    a->coringaComprar = false;
+    a->coringaNormal = false;
+    a->numberAction = 0;
 
     return;
 }
@@ -129,7 +129,7 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
         while (coringaTemp != NULL)
         {
 
-            if (coringaTemp->Carta.AcaoCarta = CORINGA_COMPRAR_4)
+            if (coringaTemp->Carta.AcaoCarta == CORINGA_COMPRAR_4)
             {
                 a->coringaComprar = true;
             }
