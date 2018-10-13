@@ -6,6 +6,7 @@ ActionSet *start_ActionSet(player *p)
 {
     ActionSet *set = (ActionSet *)malloc(sizeof(ActionSet));
     defActionSet(p, set);
+    calc_AcaoForActionSet(p, set);
     return set;
 }
 
