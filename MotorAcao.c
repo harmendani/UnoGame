@@ -144,6 +144,64 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
     return;
 }
 
+/* Rotinas Primárias de Ações */
+
+bool calc_AcaoForActionSet(player *p, ActionSet *a)
+{
+
+    if (a->numberAction > 0)
+    {
+        a->action[MENOR_PESO] = calc_AcaoMenorPeso(p);
+        a->action[MAIOR_PESO] = calc_AcaoMaiorPeso(p);
+        a->action[COR_DESCARTE] = calc_AcaoCorDescarte(a);
+        a->action[NUM_DESCARTE] = calc_AcaoNumDescarte(a);
+
+        return true;
+    }
+    return false;
+}
+
+bool calc_AcaoMenorPeso(player *p)
+{
+
+    if (p->numDeCartasNormal > 0)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool calc_AcaoMaiorPeso(player *p)
+{
+    if (p->numDeCartasCoringa > 0 || p->numDeCartasAcao > 0)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool calc_AcaoCorDescarte(ActionSet *a)
+{
+    if (a->caseSimbolo != NULL || a->caseNumero != NULL)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool calc_AcaoNumDescarte(ActionSet *a)
+{
+
+    if (a->caseNumero != NULL)
+    {
+        return true;
+    }
+    return false;
+}
+
 /* Rotinas de mecânicas básicas de cartas de Ação */
 
 void runAction_Comprar4(player *p)

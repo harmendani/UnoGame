@@ -9,14 +9,16 @@ typedef struct caseStruct
     bool coringaNormal;
     int numberAction;
 
+    acaoSeq action[4];
+
 } ActionSet;
 
 typedef enum acaoSequencia
 {
-    MENOR_PESO = 1,
-    MAIOR_PESO = 2,
-    COR_DESCARTE = 3,
-    NUM_DESCARTE = 4
+    MENOR_PESO = 0,
+    MAIOR_PESO = 1,
+    COR_DESCARTE = 2,
+    NUM_DESCARTE = 3
 
 } acaoSeq;
 
@@ -36,6 +38,12 @@ void calc_ActionSet_SIMBOLO(player *, ActionSet *);
 void calc_ActionSet_CORINGA(player *, ActionSet *);
 
 /* Rotinas Primárias de Ações */
+bool calc_AcaoForActionSet(player *p, ActionSet *); // Calcula todas possibilidades e salva no vetor action[]
+bool calc_AcaoMenorPeso(player *);
+bool calc_AcaoMaiorPeso(player *);
+bool calc_AcaoNumDescarte(ActionSet *);
+bool calc_AcaoCorDescarte(ActionSet *);
+{
 
 #ifndef MOTORACAO_C
 #define MOTORACAO_C
