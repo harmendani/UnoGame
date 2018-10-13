@@ -7,8 +7,10 @@ typedef struct caseStruct
     Lista *caseSimbolo;
     bool coringaComprar;
     bool coringaNormal;
+    int varCor;
+    int varNum;
+    
     int numberAction;
-
     acaoSeq action[4];
 
 } ActionSet;
@@ -43,7 +45,7 @@ bool calc_AcaoMenorPeso(player *);
 bool calc_AcaoMaiorPeso(player *);
 bool calc_AcaoNumDescarte(ActionSet *);
 bool calc_AcaoCorDescarte(ActionSet *);
-{
+
 
 #ifndef MOTORACAO_C
 #define MOTORACAO_C

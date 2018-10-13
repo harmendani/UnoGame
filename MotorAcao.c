@@ -18,6 +18,8 @@ void inicializaActionSet(ActionSet *a)
     a->coringaComprar = false;
     a->coringaNormal = false;
     a->numberAction = 0;
+    a->varCor = 0;
+    a->varNum = 0;
 
     return;
 }
@@ -144,6 +146,122 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
     return;
 }
 
+void calc_ActionSet_quantCor(ActionSet *a)
+{
+    if (a->caseNumero != NULL)
+    {
+        Lista *l = a->caseNumero;
+        while (l != NULL)
+        {
+
+            switch (l->Carta.CorCarta)
+            {
+            case AMARELO:
+                a->varCor++;
+                break;
+            case AZUL:
+                a->varCor++;
+                break;
+            case VERDE:
+                a->varCor++;
+                break;
+            case VERMELHO:
+                a->varCor++;
+                break;
+            default:
+                puts("\nErro contadorDeCartasPorCorJogador()..\n");
+                exit(0);
+                break;
+            }
+            l = l->prox;
+        }
+    }
+
+    if (a->caseSimbolo != NULL)
+    {
+        Lista *l = a->caseSimbolo;
+        while (l != NULL)
+        {
+            switch (l->Carta.CorCarta)
+            {
+            case AMARELO:
+                a->varCor++;
+                break;
+            case AZUL:
+                a->varCor++;
+                break;
+            case VERDE:
+                a->varCor++;
+                break;
+            case VERMELHO:
+                a->varCor++;
+                break;
+            default:
+                puts("\nErro contadorDeCartasPorCorJogador()..\n");
+                exit(0);
+                break;
+            }
+            l = l->prox;
+        }
+    }
+
+    return;
+}
+
+void calc_ActionSet_quantNum(ActionSet *a)
+{
+
+    if (a->caseCor != NULL)
+    {
+        Lista *l = a->caseCor;
+        while (l != NULL)
+        {
+            if (l->Carta.TipoCarta == NORMAL)
+            {
+                switch (l->Carta.numFace)
+                {
+                case 0:
+                    a->varNum++;
+                    break;
+                case 1:
+                    a->varNum++;
+                    break;
+                case 2:
+                    a->varNum++;
+                    break;
+                case 3:
+                    a->varNum++;
+                    break;
+                case 4:
+                    a->varNum++;
+                    break;
+                case 5:
+                    a->varNum++;
+                    break;
+                case 6:
+                    a->varNum++;
+                    break;
+                case 7:
+                    a->varNum++;
+                    break;
+                case 8:
+                    a->varNum++;
+                    break;
+                case 9:
+                    a->varNum++;
+                    break;
+                default:
+                    puts("\nErro contadorDeCartasPorNumero()..\n");
+                    exit(0);
+                    break;
+                }
+            }
+            l = l->prox;
+        }
+    }
+    return;
+}
+
 /* Rotinas Primárias de Ações */
 
 bool calc_AcaoForActionSet(player *p, ActionSet *a)
@@ -184,7 +302,7 @@ bool calc_AcaoMaiorPeso(player *p)
 
 bool calc_AcaoCorDescarte(ActionSet *a)
 {
-    if (a->caseSimbolo != NULL || a->caseNumero != NULL)
+    if (a->varCor > 1)
     {
         return true;
     }
@@ -195,7 +313,7 @@ bool calc_AcaoCorDescarte(ActionSet *a)
 bool calc_AcaoNumDescarte(ActionSet *a)
 {
 
-    if (a->caseNumero != NULL)
+    if (a->varNum > 1)
     {
         return true;
     }
