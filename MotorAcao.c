@@ -34,14 +34,21 @@ void defActionSet(player *p, ActionSet *a)
         calc_ActionSet_NUMERO(p, a);
         calc_ActionSet_COR(p, a);
         calc_ActionSet_CORINGA(p, a);
+
+        calc_ActionSet_quantCor(a);
+        calc_ActionSet_quantNum(a);
         break;
     case ACAO:
         calc_ActionSet_SIMBOLO(p, a);
         calc_ActionSet_COR(p, a);
         calc_ActionSet_CORINGA(p, a);
+
+        calc_ActionSet_quantCor(a);
         break;
     case CORINGA:
         calc_ActionSet_CORINGA(p, a);
+
+        calc_ActionSet_quantNum(a);
         break;
     default:
         puts("\n\n ERRO de carta em ACTION_SET \n\n");
