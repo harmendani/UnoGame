@@ -116,7 +116,7 @@ void calc_ActionSet_SIMBOLO(player *p, ActionSet *a)
 
     while (acao != NULL)
     {
-        if (acao->Carta.TipoCarta == p->visaoPlayer.mesa.c_cartaMesa->TipoCarta)
+        if (acao->Carta.TipoCarta == p->visaoPlayer.mesa.c_cartaMesa->AcaoCarta)
         {
             carta temp = lst_ObterCarta(acao);
             a->caseSimbolo = lst_Insere(a->caseSimbolo, temp);
@@ -218,14 +218,18 @@ void calc_ActionSet_quantCor(ActionSet *a)
 
 void calc_ActionSet_quantNum(ActionSet *a)
 {
-
+    
+    if(a->caseNumero != NULL){
+        a->caseNumero++;
+    }
     if (a->caseCor != NULL)
     {
         Lista *l = a->caseCor;
         while (l != NULL)
         {
             if (l->Carta.TipoCarta == NORMAL)
-            {
+            {   
+               
                 switch (l->Carta.numFace)
                 {
                 case 0:

@@ -1,4 +1,13 @@
 //Tipos
+typedef enum acaoSequencia
+{
+    MENOR_PESO = 0,
+    MAIOR_PESO = 1,
+    COR_DESCARTE = 2,
+    NUM_DESCARTE = 3
+
+} acaoSeq;
+
 typedef struct caseStruct
 {
 
@@ -14,15 +23,6 @@ typedef struct caseStruct
     acaoSeq action[4];
 
 } ActionSet;
-
-typedef enum acaoSequencia
-{
-    MENOR_PESO = 0,
-    MAIOR_PESO = 1,
-    COR_DESCARTE = 2,
-    NUM_DESCARTE = 3
-
-} acaoSeq;
 
 /* Rotinas secundárias de Ações */
 void defActionSet(player *, ActionSet *);
