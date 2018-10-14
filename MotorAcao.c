@@ -289,8 +289,8 @@ bool calc_AcaoForActionSet(player *p, ActionSet *a)
 
     if (a->numberAction > 0)
     {
-        a->action[MENOR_PESO] = calc_AcaoMenorPeso(p);
-        a->action[MAIOR_PESO] = calc_AcaoMaiorPeso(p);
+        a->action[MENOR_PESO] = calc_AcaoMenorPeso(a);
+        a->action[MAIOR_PESO] = calc_AcaoMaiorPeso(a);
         a->action[COR_DESCARTE] = calc_AcaoCorDescarte(a);
         a->action[NUM_DESCARTE] = calc_AcaoNumDescarte(a);
 
