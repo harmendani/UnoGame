@@ -16,6 +16,8 @@ typedef struct caseStruct
     Lista *caseSimbolo;
     bool coringaComprar;
     bool coringaNormal;
+    bool normalAction;
+    bool acaoAction;
     int varCor;
     int varNum;
     
@@ -41,8 +43,8 @@ void calc_ActionSet_CORINGA(player *, ActionSet *);
 
 /* Rotinas Primárias de Ações */
 bool calc_AcaoForActionSet(player *p, ActionSet *); // Calcula todas possibilidades e salva no vetor action[]
-bool calc_AcaoMenorPeso(player *);
-bool calc_AcaoMaiorPeso(player *);
+bool calc_AcaoMenorPeso(ActionSet *);
+bool calc_AcaoMaiorPeso(ActionSet *);
 bool calc_AcaoNumDescarte(ActionSet *);
 bool calc_AcaoCorDescarte(ActionSet *);
 

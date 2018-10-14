@@ -6,7 +6,7 @@ ActionSet *start_ActionSet(player *p)
 {
     ActionSet *set = (ActionSet *)malloc(sizeof(ActionSet));
     defActionSet(p, set);
-    calc_AcaoForActionSet(p, set);
+    bool teste = calc_AcaoForActionSet(p, set);
     return set;
 }
 
@@ -18,6 +18,8 @@ void inicializaActionSet(ActionSet *a)
     a->caseSimbolo = lst_cria();
     a->coringaComprar = false;
     a->coringaNormal = false;
+    a->normalAction = false;
+    a->acaoAction = false;
     a->numberAction = 0;
     a->varCor = 0;
     a->varNum = 0;
@@ -38,6 +40,7 @@ void defActionSet(player *p, ActionSet *a)
 
         calc_ActionSet_quantCor(a);
         calc_ActionSet_quantNum(a);
+
         break;
     case ACAO:
         calc_ActionSet_SIMBOLO(p, a);
@@ -49,7 +52,6 @@ void defActionSet(player *p, ActionSet *a)
     case CORINGA:
         calc_ActionSet_CORINGA(p, a);
 
-        calc_ActionSet_quantNum(a);
         break;
     default:
         puts("\n\n ERRO de carta em ACTION_SET \n\n");
@@ -73,6 +75,7 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
             carta temp = lst_ObterCarta(normal);
             a->caseCor = lst_Insere(a->caseCor, temp);
             a->numberAction++;
+            a->normalAction = true;
         }
         normal = normal->prox;
     }
@@ -85,6 +88,7 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
             carta temp = lst_ObterCarta(acao);
             a->caseCor = lst_Insere(a->caseCor, temp);
             a->numberAction++;
+            a->acaoAction = true;
         }
         acao = acao->prox;
     }
@@ -116,7 +120,7 @@ void calc_ActionSet_SIMBOLO(player *p, ActionSet *a)
 
     while (acao != NULL)
     {
-        if (acao->Carta.TipoCarta == p->visaoPlayer.mesa.c_cartaMesa->AcaoCarta)
+        if (acao->Carta.AcaoCarta == p->visaoPlayer.mesa.c_cartaMesa->AcaoCarta)
         {
             carta temp = lst_ObterCarta(acao);
             a->caseSimbolo = lst_Insere(a->caseSimbolo, temp);
@@ -218,20 +222,23 @@ void calc_ActionSet_quantCor(ActionSet *a)
 
 void calc_ActionSet_quantNum(ActionSet *a)
 {
-    
-    if(a->caseNumero != NULL){
-        a->caseNumero++;
+    int numTemp = -1;
+    if (a->caseNumero != NULL)
+    {
+        a->varNum++;
+        numTemp = a->caseNumero->Carta.numFace;
     }
     if (a->caseCor != NULL)
     {
         Lista *l = a->caseCor;
+
         while (l != NULL)
         {
-            if (l->Carta.TipoCarta == NORMAL)
-            {   
-               
+            if (l->Carta.TipoCarta == NORMAL && l->Carta.numFace != numTemp)
+            {
                 switch (l->Carta.numFace)
                 {
+
                 case 0:
                     a->varNum++;
                     break;
@@ -271,6 +278,7 @@ void calc_ActionSet_quantNum(ActionSet *a)
             l = l->prox;
         }
     }
+
     return;
 }
 
@@ -291,20 +299,30 @@ bool calc_AcaoForActionSet(player *p, ActionSet *a)
     return false;
 }
 
-bool calc_AcaoMenorPeso(player *p)
+bool calc_AcaoMenorPeso(ActionSet *a)
 {
 
-    if (p->numDeCartasNormal > 0)
+    if (a->normalAction)
     {
         return true;
+    }
+    if (a->coringaComprar == true || a->coringaNormal == true)
+    {
+        if (a->acaoAction)
+            return true;
     }
 
     return false;
 }
 
-bool calc_AcaoMaiorPeso(player *p)
+bool calc_AcaoMaiorPeso(ActionSet *a)
 {
-    if (p->numDeCartasCoringa > 0 || p->numDeCartasAcao > 0)
+    if (a->coringaComprar == true || a->coringaNormal == true)
+    {
+        return true;
+    }
+
+    if (a->acaoAction)
     {
         return true;
     }
