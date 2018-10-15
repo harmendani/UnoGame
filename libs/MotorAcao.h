@@ -22,7 +22,7 @@ typedef struct caseStruct
     int varNum;
     
     int numberAction;
-    acaoSeq action[4];
+    bool action[4];
 
 } ActionSet;
 

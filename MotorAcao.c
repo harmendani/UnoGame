@@ -23,6 +23,10 @@ void inicializaActionSet(ActionSet *a)
     a->numberAction = 0;
     a->varCor = 0;
     a->varNum = 0;
+    a->action[MENOR_PESO] = false;
+    a->action[MAIOR_PESO] = false;
+    a->action[COR_DESCARTE] = false;
+    a->action[NUM_DESCARTE] = false;
 
     return;
 }
@@ -137,7 +141,7 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
 
     if (p->numDeCartasCoringa > 0)
     {
-        a->numberAction++;
+        
 
         Lista *coringaTemp = p->cartasCoringa;
         while (coringaTemp != NULL)
@@ -146,10 +150,12 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
             if (coringaTemp->Carta.AcaoCarta == CORINGA_COMPRAR_4)
             {
                 a->coringaComprar = true;
+                a->numberAction++;
             }
             else
             {
                 a->coringaNormal = true;
+                a->numberAction++;
             }
             coringaTemp = coringaTemp->prox;
         }
