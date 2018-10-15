@@ -52,6 +52,7 @@ void defActionSet(player *p, ActionSet *a)
         calc_ActionSet_CORINGA(p, a);
 
         calc_ActionSet_quantCor(a);
+        calc_ActionSet_quantNum(a);
         break;
     case CORINGA:
         calc_ActionSet_CORINGA(p, a);
@@ -111,6 +112,7 @@ void calc_ActionSet_NUMERO(player *p, ActionSet *a)
             carta temp = lst_ObterCarta(normal);
             a->caseNumero = lst_Insere(a->caseNumero, temp);
             a->numberAction++;
+            a->normalAction = true;
         }
         normal = normal->prox;
     }
@@ -129,6 +131,7 @@ void calc_ActionSet_SIMBOLO(player *p, ActionSet *a)
             carta temp = lst_ObterCarta(acao);
             a->caseSimbolo = lst_Insere(a->caseSimbolo, temp);
             a->numberAction++;
+            a->acaoAction = true;
         }
         acao = acao->prox;
     }
@@ -228,7 +231,7 @@ void calc_ActionSet_quantCor(ActionSet *a)
 
 void calc_ActionSet_quantNum(ActionSet *a)
 {
-    int numTemp = -1;
+    int numTemp = 99;
     if (a->caseNumero != NULL)
     {
         a->varNum++;
