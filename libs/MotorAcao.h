@@ -20,7 +20,7 @@ typedef struct caseStruct
     bool acaoAction;
     int varCor;
     int varNum;
-    
+
     int numberAction;
     bool action[4];
 
@@ -32,8 +32,10 @@ ActionSet *start_ActionSet(player *);
 void inicializaActionSet(ActionSet *);
 
 //Mecânicas básicas de cartas de ação
-void runAction_Comprar4(player *);
-void runAction_Comprar2(player *);
+player *runAction_Comprar4(player *);
+player *runAction_Comprar2(player *);
+player *runAction_Pular(player *);
+player *runAction_Revert(player *);
 
 //Rotinas para calcular possibilidades diante de carta da mesa e salvar numa lista
 void calc_ActionSet_COR(player *, ActionSet *);
@@ -47,8 +49,6 @@ bool calc_AcaoMenorPeso(ActionSet *);
 bool calc_AcaoMaiorPeso(ActionSet *);
 bool calc_AcaoNumDescarte(ActionSet *);
 bool calc_AcaoCorDescarte(ActionSet *);
-
-
 #ifndef MOTORACAO_C
 #define MOTORACAO_C
 #include "../MotorAcao.c"

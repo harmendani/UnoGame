@@ -144,7 +144,6 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
 
     if (p->numDeCartasCoringa > 0)
     {
-        
 
         Lista *coringaTemp = p->cartasCoringa;
         while (coringaTemp != NULL)
@@ -169,30 +168,38 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
 
 void calc_ActionSet_quantCor(ActionSet *a)
 {
+
+    int corTemp = 99;
+    if (a->caseCor != NULL)
+    {
+        a->varCor++;
+        corTemp = a->caseCor->Carta.CorCarta;
+    }
     if (a->caseNumero != NULL)
     {
         Lista *l = a->caseNumero;
         while (l != NULL)
         {
-
-            switch (l->Carta.CorCarta)
-            {
-            case AMARELO:
-                a->varCor++;
-                break;
-            case AZUL:
-                a->varCor++;
-                break;
-            case VERDE:
-                a->varCor++;
-                break;
-            case VERMELHO:
-                a->varCor++;
-                break;
-            default:
-                puts("\nErro contadorDeCartasPorCorJogador()..\n");
-                exit(0);
-                break;
+            if (l->Carta.CorCarta != corTemp){
+                switch (l->Carta.CorCarta)
+                {
+                case AMARELO:
+                    a->varCor++;
+                    break;
+                case AZUL:
+                    a->varCor++;
+                    break;
+                case VERDE:
+                    a->varCor++;
+                    break;
+                case VERMELHO:
+                    a->varCor++;
+                    break;
+                default:
+                    puts("\nErro contadorDeCartasPorCorJogador()..\n");
+                    exit(0);
+                    break;
+                }
             }
             l = l->prox;
         }
@@ -361,26 +368,35 @@ bool calc_AcaoNumDescarte(ActionSet *a)
 
 /* Rotinas de mecânicas básicas de cartas de Ação */
 
-void runAction_Comprar4(player *p)
+player *runAction_Comprar4(player *p)
 {
 
     int contador = 4;
     while (contador > 0)
     {
-        transferirCartaMontanteParaJogador(p);
+        transferirCartaMontanteParaJogador(p->adversario);
         contador--;
     }
-    return;
+    return p;
 }
 
-void runAction_Comprar2(player *p)
+player *runAction_Comprar2(player *p)
 {
 
     int contador = 2;
     while (contador > 0)
     {
-        transferirCartaMontanteParaJogador(p);
+        transferirCartaMontanteParaJogador(p->adversario);
         contador--;
     }
-    return;
+    return p;
+}
+
+player *runAction_Pular(player *p)
+{
+    return p;
+}
+player *runAction_Revert(player *p)
+{
+    return p;
 }
