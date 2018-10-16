@@ -6,7 +6,6 @@ ActionSet *start_ActionSet(player *p)
 {
     ActionSet *set = (ActionSet *)malloc(sizeof(ActionSet));
     defActionSet(p, set);
-    bool teste = calc_AcaoForActionSet(p, set);
     return set;
 }
 
@@ -63,6 +62,70 @@ void defActionSet(player *p, ActionSet *a)
         exit(0);
     }
     return;
+}
+
+bool isActionController(player *p, bool isAction)
+{
+
+    if (isAction == false)
+    {
+        transferirCartaMontanteParaJogador(p);
+        carta temp = lst_ObterCarta(p->listaMaos);
+        isAction = onlyActionMatch(p, temp);
+        if (isAction)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return true;
+    }
+}
+
+bool onlyActionMatch(player *p, carta c)
+{
+
+    if (c.TipoCarta == CORINGA)
+    {
+        return true;
+    }
+    else
+    {
+        if (c.TipoCarta == ACAO)
+        {
+            if (p->visaoPlayer.mesa.c_cartaMesa->AcaoCarta == c.AcaoCarta || p->visaoPlayer.mesa.c_cartaMesa->CorCarta == c.CorCarta)
+            {
+                return true;
+            }
+        }
+        if (c.TipoCarta == NORMAL)
+        {
+            if (p->visaoPlayer.mesa.c_cartaMesa->CorCarta == c.CorCarta || p->visaoPlayer.mesa.c_cartaMesa->numFace == c.numFace)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+bool execute_ActionSet(player *p)
+{
+
+    ActionSet *set = start_ActionSet(p);
+    bool action = calc_AcaoForActionSet(p, set);
+    action = isActionController(p, action);
+
+    if (action)
+    {
+        return true;
+    }
+    return false;
 }
 
 /* Rotinas para calcular possibilidades diante de carta da mesa e salvar numa lista */
@@ -180,7 +243,8 @@ void calc_ActionSet_quantCor(ActionSet *a)
         Lista *l = a->caseNumero;
         while (l != NULL)
         {
-            if (l->Carta.CorCarta != corTemp){
+            if (l->Carta.CorCarta != corTemp)
+            {
                 switch (l->Carta.CorCarta)
                 {
                 case AMARELO:
