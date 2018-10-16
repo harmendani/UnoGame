@@ -70,12 +70,12 @@ bool isActionController(player *p, bool isAction)
     if (isAction == false)
     {
         transferirCartaMontanteParaJogador(p);
-        //Atualiza visao do Jogador
+        /* Atualiza visao do Jogador */
         executarMotorVisao(p);
-        puts("\n\n // MOTOR VISAO ATUALIZADO\n");
+        //puts("\n\n // MOTOR VISAO ATUALIZADO\n");
         ActionSet *actSet = start_ActionSet(p);
         isAction = calc_AcaoForActionSet(p, actSet);
-        if(isAction){
+        /*if(isAction){
             puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
             Lista *l = NULL;
             puts("\nMao do jogador agora:->\n");
@@ -91,7 +91,7 @@ bool isActionController(player *p, bool isAction)
             l = lst_Insere(l, temp);
             lst_Imprime(l);
             
-        }
+        }*/
         return isAction;
     }
     else
@@ -137,11 +137,193 @@ bool execute_ActionSet(player *p)
     bool action = calc_AcaoForActionSet(p, set);
     action = isActionController(p, action);
 
+    /* //testa escolha carta por action[n]
+    carta *slt = NULL;
+    if (set->action[MENOR_PESO] == true)
+    {
+        slt = select_ActionMenorPeso(set, p);
+        M_l = lst_Insere(M_l, *slt);
+        p->listaMaos = lst_RemovePorId(p->listaMaos, slt->id);
+    }
+    // fim testa */
+
     if (action)
     {
         return true;
     }
     return false;
+}
+
+carta *select_ActionMaiorPeso(ActionSet *a, player *p)
+{
+    // Cartas Coringa
+    Lista *coringaComprar = lst_cria();
+    Lista *coringaNormal = lst_cria();
+
+    // Cartas de Ação
+    Lista *acaoSimbolo = lst_cria();
+    Lista *acaoCor = lst_cria();
+    // Variavel auxiliar de retorno
+    carta *c = NULL;
+
+    if (a->coringaComprar)
+    {
+
+        coringaComprar = p->cartasCoringa;
+        while (coringaComprar != NULL)
+        {
+            if (coringaComprar->Carta.AcaoCarta == CORINGA_COMPRAR_4)
+            {
+                c = lst_ObterCartaRef(coringaComprar);
+                return c;
+            }
+            coringaComprar = coringaComprar->prox;
+        }
+    }
+    if (a->coringaNormal == true && coringaComprar == NULL)
+    {
+
+        coringaNormal = p->cartasCoringa;
+        while (coringaNormal != NULL)
+        {
+            if (coringaNormal->Carta.AcaoCarta == CORINGA_NOACTION)
+            {
+                c = lst_ObterCartaRef(coringaNormal);
+                return c;
+            }
+            coringaNormal = coringaNormal->prox;
+        }
+    }
+    if (a->acaoAction)
+    {
+        acaoCor = a->caseCor;
+        acaoSimbolo = a->caseSimbolo;
+
+        while (acaoCor != NULL)
+        {
+            if (acaoCor->Carta.TipoCarta == ACAO && acaoCor->Carta.AcaoCarta == COMPRAR_DUAS)
+            {
+                c = lst_ObterCartaRef(acaoCor);
+                return c;
+            }
+            if (acaoCor->Carta.TipoCarta == ACAO && acaoCor->Carta.AcaoCarta == PULAR)
+            {
+                c = lst_ObterCartaRef(acaoCor);
+                return c;
+            }
+            if (acaoCor->Carta.TipoCarta == ACAO && acaoCor->Carta.AcaoCarta == REVERTER)
+            {
+                c = lst_ObterCartaRef(acaoCor);
+                return c;
+            }
+
+            acaoCor = acaoCor->prox;
+        }
+
+        while (acaoSimbolo != NULL)
+        {
+            if (acaoSimbolo->Carta.TipoCarta == ACAO && acaoSimbolo->Carta.AcaoCarta == COMPRAR_DUAS)
+            {
+                c = lst_ObterCartaRef(acaoSimbolo);
+                return c;
+            }
+            if (acaoSimbolo->Carta.TipoCarta == ACAO && acaoSimbolo->Carta.AcaoCarta == PULAR)
+            {
+                c = lst_ObterCartaRef(acaoSimbolo);
+                return c;
+            }
+            if (acaoSimbolo->Carta.TipoCarta == ACAO && acaoSimbolo->Carta.AcaoCarta == REVERTER)
+            {
+                c = lst_ObterCartaRef(acaoSimbolo);
+                return c;
+            }
+
+            acaoSimbolo = acaoSimbolo->prox;
+        }
+    }
+    return NULL;
+}
+
+carta *select_ActionMenorPeso(ActionSet *a, player *p)
+{
+    // Cartas do tipo normal
+    Lista *normalCor = lst_cria();
+    Lista *normalNum = lst_cria();
+
+    // Cartas do tipo Acao
+    Lista *acaoSimbolo = lst_cria();
+    Lista *acaoCor = lst_cria();
+
+    // Variável auxiliar de retorno
+    carta *c = NULL;
+    if (a->normalAction)
+    {
+        normalCor = a->caseCor;
+        while (normalCor != NULL)
+        {
+            if (normalCor->Carta.TipoCarta == NORMAL)
+            {
+                c = lst_ObterCartaRef(normalCor);
+                return c;
+            }
+            normalCor = normalCor->prox;
+        }
+
+        normalNum = a->caseNumero;
+        while (normalCor != NULL)
+        {
+            c = lst_ObterCartaRef(normalCor);
+            return c;
+        }
+    }
+    else
+    {
+        acaoCor = a->caseCor;
+        acaoSimbolo = a->caseSimbolo;
+
+        while (acaoCor != NULL)
+        {
+            if (acaoCor->Carta.TipoCarta == ACAO && acaoCor->Carta.AcaoCarta == COMPRAR_DUAS)
+            {
+                c = lst_ObterCartaRef(acaoCor);
+                return c;
+            }
+            if (acaoCor->Carta.TipoCarta == ACAO && acaoCor->Carta.AcaoCarta == PULAR)
+            {
+                c = lst_ObterCartaRef(acaoCor);
+                return c;
+            }
+            if (acaoCor->Carta.TipoCarta == ACAO && acaoCor->Carta.AcaoCarta == REVERTER)
+            {
+                c = lst_ObterCartaRef(acaoCor);
+                return c;
+            }
+
+            acaoCor = acaoCor->prox;
+        }
+
+        while (acaoSimbolo != NULL)
+        {
+            if (acaoSimbolo->Carta.TipoCarta == ACAO && acaoSimbolo->Carta.AcaoCarta == COMPRAR_DUAS)
+            {
+                c = lst_ObterCartaRef(acaoSimbolo);
+                return c;
+            }
+            if (acaoSimbolo->Carta.TipoCarta == ACAO && acaoSimbolo->Carta.AcaoCarta == PULAR)
+            {
+                c = lst_ObterCartaRef(acaoSimbolo);
+                return c;
+            }
+            if (acaoSimbolo->Carta.TipoCarta == ACAO && acaoSimbolo->Carta.AcaoCarta == REVERTER)
+            {
+                c = lst_ObterCartaRef(acaoSimbolo);
+                return c;
+            }
+
+            acaoSimbolo = acaoSimbolo->prox;
+        }
+    }
+    return NULL;
 }
 
 /* Rotinas para calcular possibilidades diante de carta da mesa e salvar numa lista */
