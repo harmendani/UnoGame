@@ -32,10 +32,12 @@ ActionSet *start_ActionSet(player *);
 void inicializaActionSet(ActionSet *);
 bool onlyActionMatch(player *, carta);
 bool isActionController(player *, bool);
+
+/* Rotinas principais da mecânica de ação */
 bool execute_ActionSet(player *);
 
-    //Mecânicas básicas de cartas de ação
-    player *runAction_Comprar4(player *);
+//Mecânicas básicas de cartas de ação
+player *runAction_Comprar4(player *);
 player *runAction_Comprar2(player *);
 player *runAction_Pular(player *);
 player *runAction_Revert(player *);

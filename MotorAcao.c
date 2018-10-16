@@ -70,16 +70,29 @@ bool isActionController(player *p, bool isAction)
     if (isAction == false)
     {
         transferirCartaMontanteParaJogador(p);
-        carta temp = lst_ObterCarta(p->listaMaos);
-        isAction = onlyActionMatch(p, temp);
-        if (isAction)
-        {
-            return true;
+        //Atualiza visao do Jogador
+        executarMotorVisao(p);
+        puts("\n\n // MOTOR VISAO ATUALIZADO\n");
+        ActionSet *actSet = start_ActionSet(p);
+        isAction = calc_AcaoForActionSet(p, actSet);
+        if(isAction){
+            puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
+            Lista *l = NULL;
+            puts("\nMao do jogador agora:->\n");
+            lst_Imprime(p->listaMaos);
+            puts("\nAcoes possiveis:->\n");
+            printf("\n action MenorPeso: %d", actSet->action[MENOR_PESO]);
+            printf("\n action MaiorPeso: %d", actSet->action[MAIOR_PESO]);
+            printf("\n action CorDescarte: %d", actSet->action[COR_DESCARTE]);
+            printf("\n action NumDescarte %d", actSet->action[NUM_DESCARTE]);
+            puts("\nCarta Match:->\n");
+            carta temp = lst_ObterCarta(M_l);
+            puts("\n Enquanto isso.. na visao mesa: ");
+            l = lst_Insere(l, temp);
+            lst_Imprime(l);
+            
         }
-        else
-        {
-            return false;
-        }
+        return isAction;
     }
     else
     {
@@ -114,6 +127,9 @@ bool onlyActionMatch(player *p, carta c)
 
     return false;
 }
+
+/* Rotinas principais da mecânica de ação */
+
 bool execute_ActionSet(player *p)
 {
 
