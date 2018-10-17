@@ -47,11 +47,12 @@ player *runAction_Comprar2(player *);
 player *runAction_Pular(player *);
 player *runAction_Revert(player *);
 
-//Rotinas para calcular possibilidades diante de carta da mesa e salvar numa lista
+//Rotinas de cálculo
 void calc_ActionSet_COR(player *, ActionSet *);
 void calc_ActionSet_NUMERO(player *, ActionSet *);
 void calc_ActionSet_SIMBOLO(player *, ActionSet *);
 void calc_ActionSet_CORINGA(player *, ActionSet *);
+cor maiorIndiceCorDescarte(ActionSet *, player *);
 
 /* Rotinas Primárias de Ações */
 bool calc_AcaoForActionSet(player *p, ActionSet *); // Calcula todas possibilidades e salva no vetor action[]
@@ -59,6 +60,7 @@ bool calc_AcaoMenorPeso(ActionSet *);
 bool calc_AcaoMaiorPeso(ActionSet *);
 bool calc_AcaoNumDescarte(ActionSet *);
 bool calc_AcaoCorDescarte(ActionSet *);
+
 #ifndef MOTORACAO_C
 #define MOTORACAO_C
 #include "../MotorAcao.c"
