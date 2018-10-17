@@ -35,8 +35,11 @@ bool isActionController(player *, bool);
 
 /* Rotinas principais da mecânica de ação */
 bool execute_ActionSet(player *);
+void choose_ActionSet(ActionSet *);
 carta *select_ActionMaiorPeso(ActionSet *, player *);
 carta *select_ActionMenorPeso(ActionSet *, player *);
+carta *select_ActionCorDescarte(ActionSet *, player *);
+carta *select_ActionNumDescarte(ActionSet *, player *);
 
 //Mecânicas básicas de cartas de ação
 player *runAction_Comprar4(player *);

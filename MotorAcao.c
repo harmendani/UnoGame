@@ -137,21 +137,26 @@ bool execute_ActionSet(player *p)
     bool action = calc_AcaoForActionSet(p, set);
     action = isActionController(p, action);
 
-    /* //testa escolha carta por action[n]
+    //testa escolha carta por action[n]
     carta *slt = NULL;
-    if (set->action[MENOR_PESO] == true)
+    if (set->action[COR_DESCARTE] == true)
     {
-        slt = select_ActionMenorPeso(set, p);
+        slt = select_ActionCorDescarte(set, p);
         M_l = lst_Insere(M_l, *slt);
         p->listaMaos = lst_RemovePorId(p->listaMaos, slt->id);
     }
-    // fim testa */
+    // fim testa
 
     if (action)
     {
         return true;
     }
     return false;
+}
+
+void choose_ActionSet(ActionSet *a)
+{
+    return;
 }
 
 carta *select_ActionMaiorPeso(ActionSet *a, player *p)
@@ -322,6 +327,52 @@ carta *select_ActionMenorPeso(ActionSet *a, player *p)
 
             acaoSimbolo = acaoSimbolo->prox;
         }
+    }
+    return NULL;
+}
+
+carta *select_ActionCorDescarte(ActionSet *a, player *p)
+{
+
+    return NULL;
+}
+
+carta *select_ActionNumDescarte(ActionSet *a, player *p)
+{
+
+    Lista *normalCor = a->caseCor;
+    Lista *normalNum = a->caseNumero;
+    Lista *acaoSimbolo = a->caseSimbolo;
+
+    int corMaior = maiorIndiceCorDescarte(a, p);
+    carta *c = NULL;
+
+    while (acaoSimbolo != NULL)
+    {
+        if (acaoSimbolo->Carta.CorCarta == corMaior)
+        {
+            c = lst_ObterCartaRef(acaoSimbolo);
+            return c;
+        }
+        acaoSimbolo = acaoSimbolo->prox;
+    }
+    while (normalCor != NULL)
+    {
+        if (normalCor->Carta.CorCarta == corMaior)
+        {
+            c = lst_ObterCartaRef(normalCor);
+            return c;
+        }
+        normalCor = normalCor->prox;
+    }
+    while (normalNum != NULL)
+    {
+        if (normalNum->Carta.CorCarta == corMaior)
+        {
+            c = lst_ObterCartaRef(normalNum);
+            return c;
+        }
+        normalNum = normalNum->prox;
     }
     return NULL;
 }
