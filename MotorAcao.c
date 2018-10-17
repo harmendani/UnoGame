@@ -139,11 +139,29 @@ bool execute_ActionSet(player *p)
 
     //testa escolha carta por action[n]
     carta *slt = NULL;
-    if (set->action[COR_DESCARTE] == true)
+    if (set->action[NUM_DESCARTE] == true)
     {
-        slt = select_ActionCorDescarte(set, p);
+        /*puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
+        Lista *l = NULL;
+        puts("\nMao do jogador agora:->\n");
+        lst_Imprime(p->listaMaos);
+        puts("\nAcoes possiveis:->\n");
+        printf("\n action MenorPeso: %d", set->action[MENOR_PESO]);
+        printf("\n action MaiorPeso: %d", set->action[MAIOR_PESO]);
+        printf("\n action CorDescarte: %d", set->action[COR_DESCARTE]);
+        printf("\n action NumDescarte %d", set->action[NUM_DESCARTE]);
+        puts("\nCarta Match:->\n");
+        carta temp = lst_ObterCarta(M_l);
+        puts("\n Enquanto isso.. na visao mesa: \n");
+        l = lst_Insere(l, temp);
+        lst_Imprime(l);*/
+        slt = select_ActionNumDescarte(set, p);
         M_l = lst_Insere(M_l, *slt);
+        //puts("\n CARTA do topo FOI DESCARTADA das maos \n");
+        //lst_Imprime(M_l);
         p->listaMaos = lst_RemovePorId(p->listaMaos, slt->id);
+        //puts("\nMao do jogador após DESCARTE da CARTA:->\n");
+        //lst_Imprime(p->listaMaos);
     }
     // fim testa
 
@@ -334,12 +352,6 @@ carta *select_ActionMenorPeso(ActionSet *a, player *p)
 carta *select_ActionCorDescarte(ActionSet *a, player *p)
 {
 
-    return NULL;
-}
-
-carta *select_ActionNumDescarte(ActionSet *a, player *p)
-{
-
     Lista *normalCor = a->caseCor;
     Lista *normalNum = a->caseNumero;
     Lista *acaoSimbolo = a->caseSimbolo;
@@ -374,6 +386,43 @@ carta *select_ActionNumDescarte(ActionSet *a, player *p)
         }
         normalNum = normalNum->prox;
     }
+    return NULL;
+}
+
+carta *select_ActionNumDescarte(ActionSet *a, player *p)
+{
+
+    // Lista auxiliares para cartas normais
+    Lista *normalCor = a->caseCor;
+    Lista *normalNum = a->caseNumero;
+
+    int numeroDesc = maiorIndiceNumDescarte(a, p);
+    carta *c = NULL;
+
+    while (normalNum != NULL)
+    {
+        if (normalNum->Carta.numFace == numeroDesc)
+        {
+            c = lst_ObterCartaRef(normalNum);
+            return c;
+        }
+
+        normalNum = normalNum->prox;
+    }
+
+    while (normalCor != NULL)
+    {
+        if (normalCor->Carta.TipoCarta == NORMAL)
+        {
+            if (normalCor->Carta.numFace == numeroDesc)
+            {
+                c = lst_ObterCartaRef(normalCor);
+                return c;
+            }
+        }
+        normalCor = normalCor->prox;
+    }
+
     return NULL;
 }
 
@@ -622,7 +671,7 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     float indiceAzul = (float)p->visaoPlayer.jogador.historico.i_azul + (float)p->visaoPlayer.mesa.historico.i_azul;
     float indiceVermelho = (float)p->visaoPlayer.jogador.historico.i_vermelho + (float)p->visaoPlayer.mesa.historico.i_vermelho;
     float indiceVerde = (float)p->visaoPlayer.jogador.historico.i_verde + (float)p->visaoPlayer.mesa.historico.i_verde;
-
+    //puts("\n --INDICE DESCARTE");
     if (indiceAmarelo == (float)0)
     {
         indiceAmarelo = (float)0;
@@ -630,6 +679,7 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     else
     {
         indiceAmarelo = indiceAmarelo / (float)25;
+        //printf("\n AMARELO : %f ", indiceAmarelo);
     }
     if (indiceAzul == (float)0)
     {
@@ -638,6 +688,7 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     else
     {
         indiceAzul = indiceAzul / (float)25;
+        //printf("\n AZUL : %f ", indiceAzul);
     }
     if (indiceVermelho == (float)0)
     {
@@ -646,6 +697,7 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     else
     {
         indiceVermelho = indiceVermelho / (float)25;
+       // printf("\n VERMELHO : %f ", indiceVermelho);
     }
     if (indiceVerde == (float)0)
     {
@@ -654,6 +706,7 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     else
     {
         indiceVerde = indiceVerde / (float)25;
+        //printf("\n VERDE : %f ", indiceVerde);
     }
 
     bool verdeTrue = false;
@@ -765,6 +818,159 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     }
 
     return maiorCor;
+}
+
+int maiorIndiceNumDescarte(ActionSet *a, player *p)
+{
+    // Lista auxiliares de cartas normais
+    Lista *normalNum = lst_cria();
+    Lista *normalCor = lst_cria();
+
+    // Auxiliares para retorno
+    float aux = (float)0;
+    float maior = (float)-1;
+    int numeroI;
+    normalNum = a->caseNumero;
+    while (normalNum != NULL)
+    {
+        float aux = calculaIndiceNum(normalNum->Carta.numFace, p);
+        if (aux > maior)
+        {
+            maior = aux;
+            numeroI = normalNum->Carta.numFace;
+        }
+        normalNum = normalNum->prox;
+    }
+
+    normalCor = a->caseCor;
+    while (normalCor != NULL)
+    {
+        if (normalCor->Carta.TipoCarta == NORMAL)
+        {
+            float aux = calculaIndiceNum(normalCor->Carta.numFace, p);
+            if (aux > maior)
+            {
+                maior = aux;
+                numeroI = normalCor->Carta.numFace;
+            }
+        }
+        normalCor = normalCor->prox;
+    }
+
+    return numeroI;
+}
+
+float calculaIndiceNum(int num, player *p)
+{
+
+    float indiceNum[10];
+    for (int i = 0; i < 10; i++)
+    {
+        indiceNum[i] = (float)0;
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        indiceNum[i] = (float)p->visaoPlayer.jogador.historico.numero[i] + (float)p->visaoPlayer.mesa.historico.numero[i];
+    }
+
+    bool aux = true;
+    while (aux == true)
+    {
+
+        switch (num)
+        {
+
+        case 0:
+
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 4;
+                //printf("\n Carta 0 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+
+        case 1:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 1 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+
+        case 2:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+               //printf("\n Carta 2 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 3:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 3 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 4:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 4 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 5:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 5 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 6:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 6 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 7:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 7 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 8:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 8 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        case 9:
+            if (indiceNum[num] != (float)0)
+            {
+                indiceNum[num] = indiceNum[num] / 8;
+                //printf("\n Carta 9 : %f", indiceNum[num]);
+            }
+            aux = false;
+            break;
+        default:
+            puts("\nErro contadorDeCartasPorNumero()..\n");
+            exit(0);
+            break;
+        }
+    }
+    return indiceNum[num];
 }
 
 /* Rotinas Primárias de Ações */

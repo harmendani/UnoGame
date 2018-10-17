@@ -432,10 +432,6 @@ void contadorDeCartasPorNumeroJogador(player *p, Lista *l)
 	return;
 }
 
-int maiorIndiceNumDescarte(ActionSet *a, player *p)
-{
-}
-
 void controlarCartasNoMontante()
 {
 	if (lst_IsEmpty(G_l))

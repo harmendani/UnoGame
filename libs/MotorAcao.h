@@ -53,6 +53,8 @@ void calc_ActionSet_NUMERO(player *, ActionSet *);
 void calc_ActionSet_SIMBOLO(player *, ActionSet *);
 void calc_ActionSet_CORINGA(player *, ActionSet *);
 cor maiorIndiceCorDescarte(ActionSet *, player *);
+int maiorIndiceNumDescarte(ActionSet *, player *);
+float calculaIndiceNum(int , player *);
 
 /* Rotinas Primárias de Ações */
 bool calc_AcaoForActionSet(player *p, ActionSet *); // Calcula todas possibilidades e salva no vetor action[]
