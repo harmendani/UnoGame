@@ -54,6 +54,7 @@ void defActionSet(player *p, ActionSet *a)
         calc_ActionSet_quantNum(a);
         break;
     case CORINGA:
+        calc_ActionSet_ALL(p, a);
         calc_ActionSet_CORINGA(p, a);
 
         break;
@@ -139,13 +140,13 @@ bool execute_ActionSet(player *p)
 
     //testa escolha carta por action[n]
     carta *slt = NULL;
-    if (set->action[NUM_DESCARTE] == true)
+    if (set->action[MAIOR_PESO] == true)
     {
-        /*puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
+        puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
         Lista *l = NULL;
         puts("\nMao do jogador agora:->\n");
         lst_Imprime(p->listaMaos);
-        puts("\nAcoes possiveis:->\n");
+        printf("\nAcoes possiveis: %d\n", set->numberAction);
         printf("\n action MenorPeso: %d", set->action[MENOR_PESO]);
         printf("\n action MaiorPeso: %d", set->action[MAIOR_PESO]);
         printf("\n action CorDescarte: %d", set->action[COR_DESCARTE]);
@@ -154,14 +155,14 @@ bool execute_ActionSet(player *p)
         carta temp = lst_ObterCarta(M_l);
         puts("\n Enquanto isso.. na visao mesa: \n");
         l = lst_Insere(l, temp);
-        lst_Imprime(l);*/
-        slt = select_ActionNumDescarte(set, p);
+        lst_Imprime(l);
+        slt = select_ActionMaiorPeso(set, p);
         M_l = lst_Insere(M_l, *slt);
-        //puts("\n CARTA do topo FOI DESCARTADA das maos \n");
-        //lst_Imprime(M_l);
+        puts("\n CARTA do topo FOI DESCARTADA das maos \n");
+        lst_Imprime(M_l);
         p->listaMaos = lst_RemovePorId(p->listaMaos, slt->id);
-        //puts("\nMao do jogador após DESCARTE da CARTA:->\n");
-        //lst_Imprime(p->listaMaos);
+        puts("\nMao do jogador após DESCARTE da CARTA:->\n");
+        lst_Imprime(p->listaMaos);
     }
     // fim testa
 
@@ -527,6 +528,87 @@ void calc_ActionSet_CORINGA(player *p, ActionSet *a)
     return;
 }
 
+void calc_ActionSet_ALL(player *p, ActionSet *a)
+{
+    Lista *hands = lst_cria();
+    hands = p->cartasNormal;
+    a->numberAction = contadorDeCartas(p->cartasAcao) + contadorDeCartas(p->cartasNormal);
+
+    if (p->numDeCartasAcao > 0)
+    {
+        a->acaoAction = true;
+        a->caseSimbolo = p->cartasAcao;
+    }
+    if (p->numDeCartasNormal > 0)
+    {
+        a->normalAction = true;
+        a->caseNumero = p->cartasNormal;
+    }
+    if (p->visaoPlayer.jogador.historico.i_amarelo > 0)
+    {
+        a->varCor++;
+    }
+    if (p->visaoPlayer.jogador.historico.i_azul > 0)
+    {
+        a->varCor++;
+    }
+    if (p->visaoPlayer.jogador.historico.i_verde > 0)
+    {
+        a->varCor++;
+    }
+    if (p->visaoPlayer.jogador.historico.i_vermelho > 0)
+    {
+        a->varCor++;
+    }
+
+    while (hands != NULL)
+    {
+        if (hands->Carta.TipoCarta != CORINGA)
+        {
+            a->caseCor = lst_Insere(a->caseCor, hands->Carta);
+        }
+        switch (hands->Carta.numFace)
+        {
+
+        case 0:
+            a->varNum++;
+            break;
+        case 1:
+            a->varNum++;
+            break;
+        case 2:
+            a->varNum++;
+            break;
+        case 3:
+            a->varNum++;
+            break;
+        case 4:
+            a->varNum++;
+            break;
+        case 5:
+            a->varNum++;
+            break;
+        case 6:
+            a->varNum++;
+            break;
+        case 7:
+            a->varNum++;
+            break;
+        case 8:
+            a->varNum++;
+            break;
+        case 9:
+            a->varNum++;
+            break;
+        default:
+            puts("\nErro contadorDeCartasPorNumero()..\n");
+            exit(0);
+            break;
+        }
+        hands = hands->prox;
+    }
+    return;
+}
 void calc_ActionSet_quantCor(ActionSet *a)
 {
 
@@ -697,7 +779,7 @@ cor maiorIndiceCorDescarte(ActionSet *a, player *p)
     else
     {
         indiceVermelho = indiceVermelho / (float)25;
-       // printf("\n VERMELHO : %f ", indiceVermelho);
+        // printf("\n VERMELHO : %f ", indiceVermelho);
     }
     if (indiceVerde == (float)0)
     {
@@ -904,7 +986,7 @@ float calculaIndiceNum(int num, player *p)
             if (indiceNum[num] != (float)0)
             {
                 indiceNum[num] = indiceNum[num] / 8;
-               //printf("\n Carta 2 : %f", indiceNum[num]);
+                //printf("\n Carta 2 : %f", indiceNum[num]);
             }
             aux = false;
             break;
