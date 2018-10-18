@@ -131,51 +131,44 @@ bool onlyActionMatch(player *p, carta c)
 
 /* Rotinas principais da mecânica de ação */
 
-bool execute_ActionSet(player *p)
+player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
 {
+    player *select = NULL;
+    carta *c = NULL;
 
+    switch (as)
+    {
+    case MENOR_PESO:
+        c = select_ActionMenorPeso(a, p);
+        break;
+    case MAIOR_PESO:
+        c = select_ActionMaiorPeso(a, p);
+        break;
+    case COR_DESCARTE:
+        c = select_ActionCorDescarte(a, p);
+        break;
+    case NUM_DESCARTE:
+        c = select_ActionNumDescarte(a, p);
+        break;
+    default:
+        puts("\n ERRO em execute_ActionSet..! \n");
+        exit(0);
+        break;
+    }
+    
+    return select;
+}
+bool create_ActionSet(player *p)
+{
     ActionSet *set = start_ActionSet(p);
     bool action = calc_AcaoForActionSet(p, set);
     action = isActionController(p, action);
-
-    //testa escolha carta por action[n]
-    carta *slt = NULL;
-    if (set->action[MAIOR_PESO] == true)
-    {
-        puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
-        Lista *l = NULL;
-        puts("\nMao do jogador agora:->\n");
-        lst_Imprime(p->listaMaos);
-        printf("\nAcoes possiveis: %d\n", set->numberAction);
-        printf("\n action MenorPeso: %d", set->action[MENOR_PESO]);
-        printf("\n action MaiorPeso: %d", set->action[MAIOR_PESO]);
-        printf("\n action CorDescarte: %d", set->action[COR_DESCARTE]);
-        printf("\n action NumDescarte %d", set->action[NUM_DESCARTE]);
-        puts("\nCarta Match:->\n");
-        carta temp = lst_ObterCarta(M_l);
-        puts("\n Enquanto isso.. na visao mesa: \n");
-        l = lst_Insere(l, temp);
-        lst_Imprime(l);
-        slt = select_ActionMaiorPeso(set, p);
-        M_l = lst_Insere(M_l, *slt);
-        puts("\n CARTA do topo FOI DESCARTADA das maos \n");
-        lst_Imprime(M_l);
-        p->listaMaos = lst_RemovePorId(p->listaMaos, slt->id);
-        puts("\nMao do jogador após DESCARTE da CARTA:->\n");
-        lst_Imprime(p->listaMaos);
-    }
-    // fim testa
 
     if (action)
     {
         return true;
     }
     return false;
-}
-
-void choose_ActionSet(ActionSet *a)
-{
-    return;
 }
 
 carta *select_ActionMaiorPeso(ActionSet *a, player *p)
