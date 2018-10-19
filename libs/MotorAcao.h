@@ -34,6 +34,7 @@ bool onlyActionMatch(player *, carta);
 bool isActionController(player *, bool);
 
 /* Rotinas principais da mecânica de ação */
+player *execute_ActionSet(player *, carta *);
 bool create_ActionSet(player *);
 player *select_ActionSet(ActionSet *, acaoSeq, player *);
 carta *select_ActionMaiorPeso(ActionSet *, player *);

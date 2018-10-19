@@ -131,6 +131,61 @@ bool onlyActionMatch(player *p, carta c)
 
 /* Rotinas principais da mecânica de ação */
 
+player *execute_ActionSet(player *p, carta *c)
+{
+    player *select = NULL;
+
+    switch (c->TipoCarta)
+    {
+    case NORMAL:
+        M_l = lst_Insere(M_l, *c);
+        p->listaMaos = lst_RemovePorId(p->listaMaos, c->id);
+        select = p->adversario;
+        break;
+    case ACAO:
+        if (c->AcaoCarta == COMPRAR_DUAS)
+        {
+            M_l = lst_Insere(M_l, *c);
+            p->listaMaos = lst_RemovePorId(p->listaMaos, c->id);
+            select = runAction_Comprar2(p);
+        }
+        if (c->AcaoCarta == REVERTER)
+        {
+            M_l = lst_Insere(M_l, *c);
+            p->listaMaos = lst_RemovePorId(p->listaMaos, c->id);
+            select = runAction_Revert(p);
+        }
+        if (c->AcaoCarta == PULAR)
+        {
+            M_l = lst_Insere(M_l, *c);
+            p->listaMaos = lst_RemovePorId(p->listaMaos, c->id);
+            select = runAction_Pular(p);
+        }
+        break;
+    case CORINGA:
+        if (c->AcaoCarta == CORINGA_COMPRAR_4)
+        {
+            M_l = lst_Insere(M_l, *c);
+            p->listaMaos = lst_RemovePorId(p->listaMaos, c->id);
+            select = runAction_Comprar4(p);
+        }
+        if (c->AcaoCarta == CORINGA_NOACTION)
+        {
+            M_l = lst_Insere(M_l, *c);
+            p->listaMaos = lst_RemovePorId(p->listaMaos, c->id);
+            select = p->adversario;
+        }
+
+        break;
+    default:
+        puts("\n ERRO em execute_ActionSet..! \n");
+        exit(0);
+        break;
+    }
+
+    return select;
+}
+
 player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
 {
     player *select = NULL;
@@ -140,22 +195,26 @@ player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
     {
     case MENOR_PESO:
         c = select_ActionMenorPeso(a, p);
+        select = execute_ActionSet(p, c);
         break;
     case MAIOR_PESO:
         c = select_ActionMaiorPeso(a, p);
+        select = execute_ActionSet(p, c);
         break;
     case COR_DESCARTE:
         c = select_ActionCorDescarte(a, p);
+        select = execute_ActionSet(p, c);
         break;
     case NUM_DESCARTE:
         c = select_ActionNumDescarte(a, p);
+        select = execute_ActionSet(p, c);
         break;
     default:
-        puts("\n ERRO em execute_ActionSet..! \n");
+        puts("\n ERRO em select_ActionSet..! \n");
         exit(0);
         break;
     }
-    
+
     return select;
 }
 bool create_ActionSet(player *p)
