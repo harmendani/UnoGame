@@ -131,6 +131,25 @@ bool onlyActionMatch(player *p, carta c)
 
 /* Rotinas principais da mecânica de ação */
 
+void executarMotorAcao(player *p, player *pprox)
+{
+
+    ActionSet *set = start_ActionSet(p);
+    bool action = calc_AcaoForActionSet(p, set);
+    action = isActionController(p, action);
+
+    if (action)
+    {
+        return;
+    }
+    else
+    {
+        return;
+    }
+
+    return;
+}
+
 player *execute_ActionSet(player *p, carta *c)
 {
     player *select = NULL;
@@ -216,18 +235,6 @@ player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
     }
 
     return select;
-}
-bool create_ActionSet(player *p)
-{
-    ActionSet *set = start_ActionSet(p);
-    bool action = calc_AcaoForActionSet(p, set);
-    action = isActionController(p, action);
-
-    if (action)
-    {
-        return true;
-    }
-    return false;
 }
 
 carta *select_ActionMaiorPeso(ActionSet *a, player *p)
