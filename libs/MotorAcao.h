@@ -26,15 +26,19 @@ typedef struct caseStruct
 
 } ActionSet;
 
+/* Rotinas básicas para tomada de decisão */
+acaoSeq executarMotorDecisao(player *, ActionSet *);
+int *calc_ScoreAction(player *, ActionSet *);
+
 /* Rotinas secundárias de Ações */
 void defActionSet(player *, ActionSet *);
 ActionSet *start_ActionSet(player *);
 void inicializaActionSet(ActionSet *);
 bool onlyActionMatch(player *, carta);
-bool isActionController(player *, bool);
+ActionSet *isActionController(player *, bool, ActionSet *);
 
 /* Rotinas principais da mecânica de ação */
-void executarMotorAcao(player *, player *);
+player *executarMotorAcao(player *);
 player *execute_ActionSet(player *, carta *);
 player *select_ActionSet(ActionSet *, acaoSeq, player *);
 carta *select_ActionMaiorPeso(ActionSet *, player *);

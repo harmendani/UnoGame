@@ -65,7 +65,7 @@ void defActionSet(player *p, ActionSet *a)
     return;
 }
 
-bool isActionController(player *p, bool isAction)
+ActionSet *isActionController(player *p, bool isAction, ActionSet *a)
 {
 
     if (isAction == false)
@@ -73,10 +73,11 @@ bool isActionController(player *p, bool isAction)
         transferirCartaMontanteParaJogador(p);
         /* Atualiza visao do Jogador */
         executarMotorVisao(p);
-        //puts("\n\n // MOTOR VISAO ATUALIZADO\n");
         ActionSet *actSet = start_ActionSet(p);
         isAction = calc_AcaoForActionSet(p, actSet);
-        /*if(isAction){
+
+        /*if (isAction)
+        {
             puts("\n\n // MOTOR VISAO ATUALIZADO COM SUCESSO!!\n");
             Lista *l = NULL;
             puts("\nMao do jogador agora:->\n");
@@ -91,13 +92,20 @@ bool isActionController(player *p, bool isAction)
             puts("\n Enquanto isso.. na visao mesa: ");
             l = lst_Insere(l, temp);
             lst_Imprime(l);
-            
         }*/
-        return isAction;
+        if (isAction)
+        {
+
+            return actSet;
+        }
+        else
+        {
+            return NULL;
+        }
     }
     else
     {
-        return true;
+        return a;
     }
 }
 
@@ -129,25 +137,198 @@ bool onlyActionMatch(player *p, carta c)
     return false;
 }
 
+/* Motor de Decisão */
+
+acaoSeq executarMotorDecisao(player *p, ActionSet *a)
+{
+
+    /*
+    int *scoreAcao = calc_ScoreAction(p, a);
+    
+    int maior = -9;
+    int aux = -9;
+    acaoSeq acaoIndice = -9;
+
+    for (int i = 0; i < 4; i++)
+    {
+        printf("acao: %d\n", i);
+        
+        if (a->action[i])
+        {
+            if (scoreAcao[i] > aux)
+            {
+                maior = scoreAcao[i];
+                acaoIndice = i;
+                aux = maior;
+            }
+        }
+    }*/
+    acaoSeq acaoIndice = -9;
+    for (int j = 0; j < 4; j++)
+    {
+        if (a->action[j] == true)
+        {
+            acaoIndice = j;
+            //printf("\n //a->action: %d\n", a->action[j]);
+        }
+        //printf("\n for em acaoIndice: %d", a->action[j]);
+    }
+
+    // printf("\n //acaoIndice: %d\n", acaoIndice);
+    return acaoIndice;
+}
+
+int *calc_ScoreAction(player *p, ActionSet *a)
+{
+    int *scoreAcao = (int *)malloc(sizeof(int) * 4);
+
+    for (int i = 0; i < 4; i++)
+    {
+        scoreAcao[i] = -1;
+    }
+    int numCoringa = p->numDeCartasCoringa;
+    int numAcao = p->numDeCartasAcao;
+    int coringaDescartada = contadorDeCartasCuringa_4(M_l);
+    int acaoDescartada = contadorDeCartasAcao(M_l);
+
+    if (numCoringa > 0 || numAcao > 0)
+    {
+        scoreAcao[MAIOR_PESO]++;
+    }
+    if (p->numDeCartasNormal > (numCoringa + numAcao))
+    {
+        scoreAcao[MENOR_PESO]++;
+        scoreAcao[MENOR_PESO]++;
+        scoreAcao[NUM_DESCARTE]++;
+        scoreAcao[COR_DESCARTE]++;
+        if (numAcao > 1)
+        {
+
+            scoreAcao[COR_DESCARTE]++;
+            scoreAcao[MAIOR_PESO]++;
+        }
+        if (numCoringa && a->coringaComprar)
+        {
+            scoreAcao[MAIOR_PESO]++;
+            scoreAcao[MENOR_PESO]++;
+        }
+        if (numCoringa && a->coringaNormal)
+        {
+
+            scoreAcao[MAIOR_PESO]++;
+        }
+        if (numCoringa < p->numDeCartasAcao)
+        {
+            scoreAcao[MENOR_PESO]++;
+        }
+        if (numAcao < p->numDeCartasNormal)
+        {
+            scoreAcao[NUM_DESCARTE]++;
+            scoreAcao[NUM_DESCARTE]++;
+        }
+        else
+        {
+            scoreAcao[COR_DESCARTE]++;
+        }
+    }
+    else
+    {
+        scoreAcao[MAIOR_PESO]++;
+        if (a->acaoAction && numCoringa)
+        {
+            scoreAcao[MAIOR_PESO]++;
+            scoreAcao[MAIOR_PESO]++;
+        }
+        if (a->acaoAction && numCoringa == 0)
+        {
+            scoreAcao[MAIOR_PESO]++;
+            scoreAcao[MENOR_PESO]++;
+        }
+        if (a->acaoAction > 1)
+        {
+            scoreAcao[COR_DESCARTE]++;
+        }
+    }
+    if (p->visaoPlayer.jogador.i_quantJogador >= p->visaoPlayer.jogador.i_quantadversario)
+    {
+        scoreAcao[MAIOR_PESO] = scoreAcao[MAIOR_PESO] * 2;
+        scoreAcao[MENOR_PESO]++;
+        if (p->numDeCartasNormal > 1 && a->varCor > 1)
+        {
+            scoreAcao[NUM_DESCARTE]++;
+            scoreAcao[NUM_DESCARTE]++;
+            scoreAcao[COR_DESCARTE]++;
+            scoreAcao[COR_DESCARTE]++;
+        }
+    }
+    else
+    {
+        scoreAcao[MENOR_PESO] = scoreAcao[MENOR_PESO] * 2;
+        scoreAcao[MAIOR_PESO]++;
+    }
+    if (coringaDescartada > 3)
+    {
+        scoreAcao[MAIOR_PESO] = scoreAcao[MAIOR_PESO] * 2;
+    }
+    else
+    {
+        scoreAcao[MAIOR_PESO]--;
+        scoreAcao[MENOR_PESO]++;
+    }
+    if (acaoDescartada > (p->numDeCartasAcao) && p->numDeCartasNormal > 1)
+    {
+        scoreAcao[COR_DESCARTE] = scoreAcao[COR_DESCARTE] * 2;
+    }
+    else
+    {
+        scoreAcao[MENOR_PESO] = scoreAcao[MENOR_PESO] * 2;
+        scoreAcao[NUM_DESCARTE]++;
+    }
+    if (p->numDeCartasNormal < p->numDeCartasAcao && a->varCor > 1)
+    {
+        scoreAcao[COR_DESCARTE] = scoreAcao[COR_DESCARTE] * 2;
+    }
+    else
+    {
+        scoreAcao[NUM_DESCARTE] = scoreAcao[NUM_DESCARTE] * 2;
+        scoreAcao[MENOR_PESO]++;
+    }
+
+    return scoreAcao;
+}
+
 /* Rotinas principais da mecânica de ação */
 
-void executarMotorAcao(player *p, player *pprox)
+player *executarMotorAcao(player *p)
 {
 
     ActionSet *set = start_ActionSet(p);
     bool action = calc_AcaoForActionSet(p, set);
-    action = isActionController(p, action);
+    set = isActionController(p, action, set);
 
-    if (action)
+    player *pprox = NULL;
+
+    if (set != NULL)
     {
-        return;
+
+        acaoSeq aSeq = executarMotorDecisao(p, set);
+        /*if (aSeq > 3 || aSeq < 0)
+        {
+            puts("\n ERRO FATAL apos motor Decisao em motor de acao!!");
+            exit(0);
+        }*/
+        pprox = select_ActionSet(set, aSeq, p);
+
+        return pprox;
     }
     else
     {
-        return;
-    }
 
-    return;
+        pprox = p->adversario;
+
+        return pprox;
+    }
+ 
 }
 
 player *execute_ActionSet(player *p, carta *c)
@@ -201,7 +382,10 @@ player *execute_ActionSet(player *p, carta *c)
         exit(0);
         break;
     }
-
+    if (select == NULL)
+    {
+        puts(" \n SE FUDEU");
+    }
     return select;
 }
 
@@ -213,20 +397,29 @@ player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
     switch (as)
     {
     case MENOR_PESO:
+        //puts("\n MENOR PESO antes");
         c = select_ActionMenorPeso(a, p);
+        //puts("\n select  PESO antes");
         select = execute_ActionSet(p, c);
+        puts("\n MENOR PESO depois");
         break;
     case MAIOR_PESO:
+        //puts("\n maior PESO antes");
         c = select_ActionMaiorPeso(a, p);
         select = execute_ActionSet(p, c);
+        puts("\n maior PESO depois");
         break;
     case COR_DESCARTE:
+        //puts("\n cor descarte antes");
         c = select_ActionCorDescarte(a, p);
         select = execute_ActionSet(p, c);
+        puts("\n cor descarte depois");
         break;
     case NUM_DESCARTE:
+        //puts("\n num descarte antes");
         c = select_ActionNumDescarte(a, p);
         select = execute_ActionSet(p, c);
+        //puts("\n num descarte depois");
         break;
     default:
         puts("\n ERRO em select_ActionSet..! \n");
@@ -341,11 +534,14 @@ carta *select_ActionMenorPeso(ActionSet *a, player *p)
     carta *c = NULL;
     if (a->normalAction)
     {
+
         normalCor = a->caseCor;
         while (normalCor != NULL)
         {
+
             if (normalCor->Carta.TipoCarta == NORMAL)
             {
+
                 c = lst_ObterCartaRef(normalCor);
                 return c;
             }
@@ -353,14 +549,16 @@ carta *select_ActionMenorPeso(ActionSet *a, player *p)
         }
 
         normalNum = a->caseNumero;
-        while (normalCor != NULL)
+        while (normalNum != NULL)
         {
-            c = lst_ObterCartaRef(normalCor);
+
+            c = lst_ObterCartaRef(normalNum);
             return c;
         }
     }
-    else
+    if (a->acaoAction)
     {
+
         acaoCor = a->caseCor;
         acaoSimbolo = a->caseSimbolo;
 
@@ -406,6 +604,7 @@ carta *select_ActionMenorPeso(ActionSet *a, player *p)
             acaoSimbolo = acaoSimbolo->prox;
         }
     }
+
     return NULL;
 }
 
@@ -492,6 +691,8 @@ void calc_ActionSet_COR(player *p, ActionSet *a)
 {
     Lista *normal = p->cartasNormal;
     Lista *acao = p->cartasAcao;
+    /*puts("\n // CARTAS MESA \n");
+    lst_Imprime(M_l);*/
 
     while (normal != NULL)
     {
@@ -1121,6 +1322,7 @@ bool calc_AcaoForActionSet(player *p, ActionSet *a)
 
     if (a->numberAction > 0)
     {
+
         a->action[MENOR_PESO] = calc_AcaoMenorPeso(a);
         a->action[MAIOR_PESO] = calc_AcaoMaiorPeso(a);
         a->action[COR_DESCARTE] = calc_AcaoCorDescarte(a);
@@ -1128,6 +1330,7 @@ bool calc_AcaoForActionSet(player *p, ActionSet *a)
 
         return true;
     }
+
     return false;
 }
 
