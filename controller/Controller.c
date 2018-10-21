@@ -2,16 +2,21 @@
 
 void runSystem()
 {
-    
+    startScreen();
     controllerCore();
+
     return;
 }
 
-void controllerCore(){
+void controllerCore()
+{
 
-    startScreen(); 
     Data *data = executaMotorData();
-    
+    while (data->md_training)
+    {
+        executarMotorPartida();
+        data->md_training--;
+    }
+
     return;
-    
 }
