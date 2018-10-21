@@ -35,6 +35,11 @@
 #include "./libs/MotorVisao.h"
 #endif
 
+#ifndef MOTORACAO_H
+#define MOTORACAO_H
+#include "./libs/MotorAcao.h"
+#endif
+
 #ifndef MOTORPARTIDA_C
 #define MOTORPARTIDA_C
 #include "MotorPartida.c"
@@ -45,10 +50,7 @@
 #include "./libs/MotorData.h"
 #endif
 
-#ifndef MOTORACAO_H
-#define MOTORACAO_H
-#include "./libs/MotorAcao.h"
-#endif
+
 
 #ifndef MOTOR_LEARNING_H
 #define MOTOR_LEARNING_H

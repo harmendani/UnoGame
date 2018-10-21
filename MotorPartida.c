@@ -3,6 +3,7 @@ para manipular as partidas*/
 
 #include "./libs/MotorPartida.h"
 
+
 // PROCEDIMENTOS DE START
 static void start_StatusMatch()
 {
@@ -95,10 +96,10 @@ player *throwPlay(player *p)
 
     executarMotorVisao(p);
     //tomada de decisão
-    //executar jogada
+    p = executarMotorAcao(p);
     // calculo do estado
     // retorna próximo jogador
-    
+    return p;
     //printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
     
 }
@@ -108,15 +109,17 @@ player *throwPlay(player *p)
 void executarMotorPartida()
 {
     // Inicia Partida
+    sleep(1);
     start_Match();
 
     //Define player que começa a partida
     player *select = definePlayerSaida();
+    player * temp = NULL;
 
     //Roda loop das rodadas
     do
     {
-        player *temp = throwPlay(select);
+        temp = throwPlay(select);
         select = temp;
 
     } while (isMatch());
