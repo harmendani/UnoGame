@@ -90,11 +90,22 @@ static bool validarDadosEntrada(Data *dataEntrada)
 void imprimirDadosEntrada(Data *dataEntrada)
 {
     puts("\n****Input Data****\n");
-    printf(">md_training: %d\n", dataEntrada->md_training);
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
     printf(">md_learningRate: %d%% \n", dataEntrada->md_learning.md_learningRate);
     printf(">md_exploitation: %d%% \n", dataEntrada->md_learning.md_exploitation);
+    printf("\n>md_training: %d de %d.", dataEntrada->md_training, (dataEntrada->md_training + 1));
     puts("\n**************************\n");
+}
+
+void imprimirDadosSaida(Data *dataSaida)
+{
+    puts("\n****Output Data****\n");
+    printf(">Jogador %s - : ", dataSaida->md_data.t_player->nome);
+    printf(">Vitórias %d: ", dataSaida->md_data.t_player->vitorias);
+    printf(">Jogador %s - : ", dataSaida->md_data.t_player->adversario->nome);
+    printf(">Vitórias %d: ", dataSaida->md_data.t_player->vitorias);
+    puts("\n**************************\n");
+    return;
 }
 
 String textMotorData(char c)

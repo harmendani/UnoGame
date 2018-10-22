@@ -2,6 +2,7 @@
 
 void runSystem()
 {
+    
     startScreen();
     controllerCore();
 
@@ -17,6 +18,8 @@ void controllerCore()
         executarMotorPartida(data);
         data->md_training--;
     }
-
+    imprimirDadosSaida(data);
+    
+   
     return;
 }
