@@ -1,18 +1,19 @@
 /* Recebe e manipula os dados da plataforma de simulação*/
 
-// BIBLIOTECAS 
+// BIBLIOTECAS
 #ifndef TIME_H
 #define TIME_H
 #include <time.h>
 #endif
 
-// CONSTANTES 
+// CONSTANTES
 #define DIR "data/logs/"
 
 /* Exporta tipos declarados */
 
 typedef struct Q_Values LearnFactors;
 typedef enum I_Treino IntensidadeTreino;
+typedef struct T_values DataTreino;
 
 /* Exporta o tipo principal do motor */
 typedef struct EngineData Data;
@@ -35,15 +36,23 @@ static struct Q_Values
     int md_exploitation;   // Taxa de exploração
 };
 
+/* Define a estrutura para salvar dados importantes ao longo do treinamento */
+static struct T_values
+{
+    player *t_player;
+};
+
 /* Define a estrutura principal do Motor*/
 static struct EngineData
 {
     LearnFactors md_learning;
     IntensidadeTreino md_training;
+    DataTreino md_data;
 };
 
 /*Obter ponteiro para tipo Data validando retorno correto*/
-static Data *ponteiroData();
+static Data *
+ponteiroData();
 
 /*Aloca espaço e inicializa variável retornando-a*/
 static Data *referenciaDataEntrada();

@@ -50,8 +50,6 @@
 #include "./libs/MotorData.h"
 #endif
 
-
-
 #ifndef MOTOR_LEARNING_H
 #define MOTOR_LEARNING_H
 #include "./libs/MotorLearning.h"
