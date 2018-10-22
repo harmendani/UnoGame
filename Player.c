@@ -12,6 +12,9 @@ void inicializaJogadores()
 	j2.bool_statusJogador = false;
 	j1.vitorias = 0;
 	j2.vitorias = 0;
+
+	j1.rodadas = 0;
+	j2.rodadas = 0;
     
     lst_FreeList(j1.listaMaos);
 	lst_FreeList(j2.listaMaos);

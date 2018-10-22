@@ -31,7 +31,7 @@ struct jogador
 
 	bool bool_statusJogador; /* Indica a vez do jogador, tem somente valor true quando é a vez dele */
 	int vitorias;			 /* Guarda o n??mero de vit?�rias a cada partida realizada */
-	
+	int rodadas;             /* Guarda o número de rodadas executadas */
 	int numDeCartasNormal;  // Salva quantidade de cartas do tipo Normal.
 	int numDeCartasAcao;	// Salva quantidade de cartas do tipo A?�?�o.
 	int numDeCartasCoringa; // Salva quantidade de cartas do tipo Coringa.
