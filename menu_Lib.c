@@ -71,7 +71,7 @@ void startScreen()
 void endProgram()
 {
     puts("\n");
-    printf("\n--- AT� MAIS ---\n");
+    printf("\n--- End Program! ---\n");
     puts("______________________________________________________________________________");
     system("pause");
 }

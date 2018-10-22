@@ -89,7 +89,7 @@ static bool validarDadosEntrada(Data *dataEntrada)
 }
 
 void imprimirDadosEntrada(Data *dataEntrada)
-{
+{   
     puts("\n****Input Data****\n");
     printf(">md_training: %d\n", dataEntrada->md_training);
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
@@ -155,14 +155,15 @@ void writeFileRunSystem(Data *data)
 
     fclose(file);
 
-    startScreen();
     sleep(1);
     printf("\n\n..");
     sleep(1.5);
     printf("....");
     sleep(1);
     printf("..");
-    printf(".writeFileRunSystem - Sucess in the writing in disk!\n");
+    printf(".writeFileRunSystem - Sucess in the writing in disk!..");
+    sleep(2);
+    printf("..");
 
     return;
 }
@@ -172,7 +173,6 @@ Data *executaMotorData()
     informarDadosEntrada();
     Data *data = dadosEntrada();
     writeFileRunSystem(data);
-    imprimirDadosEntrada(data);
-
+    
     return data;
 }
