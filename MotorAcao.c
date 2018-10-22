@@ -59,7 +59,7 @@ void defActionSet(player *p, ActionSet *a)
 
         break;
     default:
-        puts("\n\n ERRO de carta em ACTION_SET \n\n");
+        puts("\n\n ERRO de carta em DEF_ACTION_SET \n\n");
         exit(0);
     }
     return;
@@ -384,7 +384,8 @@ player *execute_ActionSet(player *p, carta *c)
     }
     if (select == NULL)
     {
-        puts(" \n SE FUDEU");
+        puts("\n ERRO em execute_ActionSet");
+        exit(0);
     }
     return select;
 }
@@ -401,19 +402,19 @@ player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
         c = select_ActionMenorPeso(a, p);
         //puts("\n select  PESO antes");
         select = execute_ActionSet(p, c);
-        puts("\n MENOR PESO depois");
+        //puts("\n MENOR PESO depois");
         break;
     case MAIOR_PESO:
         //puts("\n maior PESO antes");
         c = select_ActionMaiorPeso(a, p);
         select = execute_ActionSet(p, c);
-        puts("\n maior PESO depois");
+        //puts("\n maior PESO depois");
         break;
     case COR_DESCARTE:
         //puts("\n cor descarte antes");
         c = select_ActionCorDescarte(a, p);
         select = execute_ActionSet(p, c);
-        puts("\n cor descarte depois");
+        //puts("\n cor descarte depois");
         break;
     case NUM_DESCARTE:
         //puts("\n num descarte antes");
@@ -422,7 +423,7 @@ player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
         //puts("\n num descarte depois");
         break;
     default:
-        puts("\n ERRO em select_ActionSet..! \n");
+        //puts("\n ERRO em select_ActionSet..! \n");
         exit(0);
         break;
     }
