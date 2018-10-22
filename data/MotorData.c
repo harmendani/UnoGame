@@ -89,6 +89,7 @@ static bool validarDadosEntrada(Data *dataEntrada)
 
 void imprimirDadosEntrada(Data *dataEntrada)
 {
+
     puts("\n****Input Data****\n");
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
     printf(">md_learningRate: %d%% \n", dataEntrada->md_learning.md_learningRate);
@@ -97,11 +98,11 @@ void imprimirDadosEntrada(Data *dataEntrada)
     puts("\n**************************\n");
 }
 
-void imprimirProgressoTreinamento(Data *data)
+void imprimirProgressoTreinamento(Data *data, int treino)
 {
-    int qtdTreino = data->md_training;
-    float progress = (float)data->md_training / (float)qtdTreino;
-    printf("\n>>Training Load: %d%% de %d", progress, data->md_training);
+
+    float progress = (((float)1 - ((float)treino / data->md_training)) * (float)100);
+    printf("\n>>Training Load: %.2f%% de %d", progress, data->md_training);
 
     return;
 }

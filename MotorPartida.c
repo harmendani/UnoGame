@@ -124,12 +124,7 @@ player *throwPlay(player *p)
 
 void executarMotorPartida(Data *data)
 {
-    // Iniciando Partida
-    system("cls");
-    startScreen();
-    imprimirDadosEntrada(data);
-    puts("\n Starting match...");
-    //imprimirDadosSaida(data);
+    // Iniciando Partida    
     sleep(1);
     start_Match();
 
@@ -144,9 +139,9 @@ void executarMotorPartida(Data *data)
         select = temp;
 
     } while (isMatch());
-
+    
     // Salva dados do vencedor na Engine Data
-    data->md_data.t_player = definePlayerVencedor(select);    
+    data->md_data.t_player = definePlayerVencedor(select);
     // Finaliza Partida
     end_Match();
 

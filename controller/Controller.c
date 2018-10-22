@@ -13,10 +13,17 @@ void controllerCore()
 {
 
     Data *data = executaMotorData();
-    while (data->md_training)
+    int training = data->md_training;
+    while (training)
     {
+        system("cls");
+        startScreen();
+        imprimirDadosEntrada(data);
+        puts("\n Executing matchs...");
+        imprimirProgressoTreinamento(data, training);
         executarMotorPartida(data);
-        data->md_training--;
+        training--;
+        
     }
     imprimirDadosSaida(data);
     
