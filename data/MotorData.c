@@ -93,8 +93,17 @@ void imprimirDadosEntrada(Data *dataEntrada)
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
     printf(">md_learningRate: %d%% \n", dataEntrada->md_learning.md_learningRate);
     printf(">md_exploitation: %d%% \n", dataEntrada->md_learning.md_exploitation);
-    printf("\n>md_training: %d de %d.", dataEntrada->md_training, (dataEntrada->md_training + 1));
+    printf("\n>md_training: %d", dataEntrada->md_training);
     puts("\n**************************\n");
+}
+
+void imprimirProgressoTreinamento(Data *data)
+{
+    int qtdTreino = data->md_training;
+    float progress = (float)data->md_training / (float)qtdTreino;
+    printf("\n>>Training Load: %d%% de %d", progress, data->md_training);
+
+    return;
 }
 
 void imprimirDadosSaida(Data *dataSaida)
