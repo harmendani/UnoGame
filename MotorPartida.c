@@ -3,7 +3,6 @@ para manipular as partidas*/
 
 #include "./libs/MotorPartida.h"
 
-
 // PROCEDIMENTOS DE START
 static void start_StatusMatch()
 {
@@ -28,14 +27,14 @@ void start_Match()
 {
     inicializaJogadores();
     executarMotorCarta();
-   
-        while (lst_ObterCarta(M_l).TipoCarta == CORINGA)
-        {
 
-            sleep(2);
-            inicializaJogadores();
-            executarMotorCarta();
-        }
+    while (lst_ObterCarta(M_l).TipoCarta == CORINGA)
+    {
+
+        sleep(2);
+        inicializaJogadores();
+        executarMotorCarta();
+    }
 
     start_StatusMatch();
 }
@@ -45,16 +44,17 @@ bool isMatch()
     int contJ1 = v_QuantPlayer(&j1);
     int contJ2 = v_QuantPlayer(&j2);
 
-    if (contJ1 == 0){
+    if (contJ1 == 0)
+    {
         j1.bool_statusJogador = true;
         return false;
     }
-       
-    if (contJ2 == 0){
+
+    if (contJ2 == 0)
+    {
         j2.bool_statusJogador = true;
         return false;
     }
-        
 
     return true;
 }
@@ -107,12 +107,11 @@ player *throwPlay(player *p)
     // retorna próximo jogador
     return p;
     //printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
-    
 }
 
 //Motor Principal que roda a PARTIDA
 
-void executarMotorPartida()
+void executarMotorPartida(Data *data)
 {
     // Inicia Partida
     sleep(1);
@@ -120,7 +119,7 @@ void executarMotorPartida()
 
     //Define player que começa a partida
     player *select = definePlayerSaida();
-    player * temp = NULL;
+    player *temp = NULL;
 
     //Roda loop das rodadas
     do
@@ -129,7 +128,7 @@ void executarMotorPartida()
         select = temp;
 
     } while (isMatch());
-    
+        
     // Finaliza Partida
     end_Match();
 

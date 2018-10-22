@@ -14,7 +14,7 @@ void controllerCore()
     Data *data = executaMotorData();
     while (data->md_training)
     {
-        executarMotorPartida();
+        executarMotorPartida(data);
         data->md_training--;
     }
 

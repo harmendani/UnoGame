@@ -15,7 +15,7 @@ static bool STATUS_MONTANTE_DESCARTE;
 * - Começa loop de rodadas com o player do passo acima até a condição de parada : 
 *   Quantidade de cartas == 0 pra alguma jogador (*player)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////*/
-void executarMotorPartida();
+void executarMotorPartida(Data *);
 
 /* Rotina básica para iniciar variáveis de controle da partida:
 * STATUS_PARTIDA -> TRUE.
