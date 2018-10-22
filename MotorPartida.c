@@ -97,6 +97,15 @@ player *definePlayerSaida()
     }
 }
 
+player *definePlayerVencedor(player *p)
+{
+    if (p->bool_statusJogador == true)
+    {
+        return p;
+    }
+    return p->adversario;
+}
+
 player *throwPlay(player *p)
 {
 
@@ -121,6 +130,8 @@ void executarMotorPartida(Data *data)
     player *select = definePlayerSaida();
     player *temp = NULL;
 
+    //Salva dados iniciais do player
+    data->md_data.t_player = select;
     //Roda loop das rodadas
     do
     {
@@ -128,7 +139,7 @@ void executarMotorPartida(Data *data)
         select = temp;
 
     } while (isMatch());
-        
+
     // Finaliza Partida
     end_Match();
 

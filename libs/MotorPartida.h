@@ -2,6 +2,11 @@
 ** controlar as partidas de jogo
  */
 
+#ifndef MOTORDATA_H
+#define MOTORDATA_H
+#include "MotorData.h"
+#endif
+
 /** IN�CIO: Vari�veis Globais **/
 static bool STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o termino da partida.
 static bool STATUS_PILHA_MESA;
@@ -53,6 +58,9 @@ bool isMatch();
 
 /* Determina aleatoriamente o jogador a começar a partida*/
 player *definePlayerSaida();
+
+/* Devolve jogador vencedor da partida */
+player *definePlayerVencedor(player *);
 
 /* Lança o jogador correto para efetuar uma jogada*/
 player *throwPlay(player *);
