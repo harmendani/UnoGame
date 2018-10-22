@@ -45,10 +45,16 @@ bool isMatch()
     int contJ1 = v_QuantPlayer(&j1);
     int contJ2 = v_QuantPlayer(&j2);
 
-    if (contJ1 == 0)
+    if (contJ1 == 0){
+        j1.bool_statusJogador = true;
         return false;
-    if (contJ2 == 0)
+    }
+       
+    if (contJ2 == 0){
+        j2.bool_statusJogador = true;
         return false;
+    }
+        
 
     return true;
 }
@@ -123,7 +129,7 @@ void executarMotorPartida()
         select = temp;
 
     } while (isMatch());
-
+    
     // Finaliza Partida
     end_Match();
 

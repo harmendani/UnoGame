@@ -29,7 +29,7 @@ struct jogador
 	string nome;	  /* Nome do jogador durante as partidas */
 	Lista *listaMaos; /* Mantem uma referencia para as cartas em m?�os */
 
-	bool bool_statusJogador; /* Indica a vez do jogador, tem somente valor true quando é a vez dele */
+	bool bool_statusJogador; /* Indica quando o jogador ganhou com Verdadeiro = 1 */
 	int vitorias;			 /* Guarda o n??mero de vit?�rias a cada partida realizada */
 	int rodadas;             /* Guarda o número de rodadas executadas */
 	int numDeCartasNormal;  // Salva quantidade de cartas do tipo Normal.
