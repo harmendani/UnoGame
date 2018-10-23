@@ -101,10 +101,9 @@ player *definePlayerVencedor(player *p)
 {
     if (p->bool_statusJogador == true)
     {
-        p->vitorias++;
         return p;
     }
-    p->adversario->vitorias++;
+
     return p->adversario;
 }
 
@@ -124,7 +123,7 @@ player *throwPlay(player *p)
 
 void executarMotorPartida(Data *data)
 {
-    // Iniciando Partida    
+    // Iniciando Partida
     sleep(1);
     start_Match();
 
@@ -139,9 +138,10 @@ void executarMotorPartida(Data *data)
         select = temp;
 
     } while (isMatch());
-    
+
     // Salva dados do vencedor na Engine Data
     data->md_data.t_player = definePlayerVencedor(select);
+
     // Finaliza Partida
     end_Match();
 
