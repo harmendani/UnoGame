@@ -308,14 +308,20 @@ player *executarMotorAcao(player *p)
 
     player *pprox = NULL;
 
+    if (p->id == 1)
+    {
+        build_StateGame(p);
+    }
+
     if (set != NULL)
     {
-        
+
         acaoSeq aSeq = executarMotorDecisao(p, set);
-        if(p->id == 1){
+        if (p->id == 1)
+        {
             p->codAcao = aSeq;
         }
-        
+
         /*if (aSeq > 3 || aSeq < 0)
         {
             puts("\n ERRO FATAL apos motor Decisao em motor de acao!!");
@@ -335,7 +341,6 @@ player *executarMotorAcao(player *p)
 
         return pprox;
     }
- 
 }
 
 player *execute_ActionSet(player *p, carta *c)

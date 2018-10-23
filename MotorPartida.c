@@ -109,11 +109,12 @@ player *definePlayerVencedor(player *p)
 
 player *throwPlay(player *p)
 {
-
+    // Atualiza visão para o player
     executarMotorVisao(p);
-    //tomada de decisão
-    p = executarMotorAcao(p);
-    // calculo do estado
+    
+    // Executa Ação
+    p = executarMotorAcao(p);    
+    
     // retorna próximo jogador
     return p;
     //printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
