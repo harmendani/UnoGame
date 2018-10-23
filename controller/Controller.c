@@ -2,7 +2,7 @@
 
 void runSystem()
 {
-    
+
     startScreen();
     controllerCore();
 
@@ -11,22 +11,31 @@ void runSystem()
 
 void controllerCore()
 {
-
     Data *data = executaMotorData();
     int training = data->md_training;
+    int spockWin = 0;
+    int machineWin = 0;
+
     while (training)
     {
-        system("cls");
         startScreen();
-        imprimirDadosEntrada(data);
-        puts("\n Executing matchs...");
+        imprimirDadosEntrada(data);        
         imprimirProgressoTreinamento(data, training);
         executarMotorPartida(data);
         training--;
-        
+        if (data->md_data.t_player->nome == SPOCK)
+        {   
+            //printf("\n>> Wins update: %s \n", j2.nome);
+            spockWin++;            
+        }
+        else
+        {
+            machineWin++;
+            
+        }
     }
-    imprimirDadosSaida(data);
-    
-   
+    printf("\n\nSpock : %d - Machine : %d \n", spockWin, machineWin);
+    //imprimirDadosSaida(data);
+
     return;
 }

@@ -94,7 +94,7 @@ void imprimirDadosEntrada(Data *dataEntrada)
     printf(">md_discountFactor: %d%% \n", dataEntrada->md_learning.md_discountFactor);
     printf(">md_learningRate: %d%% \n", dataEntrada->md_learning.md_learningRate);
     printf(">md_exploitation: %d%% \n", dataEntrada->md_learning.md_exploitation);
-    printf("\n>md_training: %d", dataEntrada->md_training);
+    printf(">md_training: %d", dataEntrada->md_training);
     puts("\n**************************\n");
 }
 
@@ -103,6 +103,7 @@ void imprimirProgressoTreinamento(Data *data, int treino)
 
     float progress = (((float)1 - ((float)treino / data->md_training)) * (float)100);
     printf("\n>>Training Load: %.2f%% de %d", progress, data->md_training);
+    puts("\n Executing matchs...");
 
     return;
 }
@@ -195,4 +196,11 @@ Data *executaMotorData()
     writeFileRunSystem(data);
 
     return data;
+}
+
+void saveDataMatch(Data *data)
+{
+    //Incrementa vitórias na Engine de Data
+    (data->md_data.t_player->vitorias)++;
+    return;
 }

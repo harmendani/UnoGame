@@ -86,8 +86,9 @@ void writeFileRunSystem(Data *);
 */
 String textMotorData(char);
 
-/* Imprime na tela os dados de entrada*/
+/* Imprime na tela os dados */
 void imprimirDadosEntrada(Data *);
+void imprimirProgressoTreinamento(Data *, int);
 
 /*Rotina principal exporta dados de entrada*/
 Data *executaMotorData();
