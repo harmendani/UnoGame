@@ -20,10 +20,10 @@
 
 struct Estado
 {
-    /* Salva o estado atual do jogo  */
+    /* Salva o estado atual do jogo antes de executar um ação  */
     char stateGame[11];
-    /* Salva o estado anterior do jogo ap�s executar uma a��o */
-    char stateAnt[11];
+    /* Salva o estado anterior do jogo após executar uma ação */
+    char stateProx[11];
 };
 typedef struct Estado estado;
 
@@ -37,9 +37,9 @@ typedef struct Estado estado;
 /*  Ao realizar uma a��o, salva stateNext[n] em stateGame[n].
 *   Depois salva S em stateNext[n] - próximo estado do jogo.
 */
-static void save_StateAnd();
+void build_StateProx(player *);
 
-/* Calcula o estado S atual para o jogador corrente a partir de (s1, s2, s3) */
+/* Calcula o estado S e salva em stateGame  */
 void build_StateGame(player *);
 
 /* Calcula e devolve sub-estado s1 */

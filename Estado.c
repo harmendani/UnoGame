@@ -15,6 +15,21 @@ void build_StateGame(player *j)
     return;
 }
 
+void build_StateProx(player *j){
+
+    char *sub_estado_1 = build_SubEstado_1(j); //Guarda s1
+    char *sub_estado_2 = build_SubEstado_2(j); //Guarda s2
+    char *sub_estado_3 = build_SubEstado_3(j); //Guarda s3
+
+    strcpy(j->estadoPlayer.stateProx, sub_estado_1);
+
+    strcat(j->estadoPlayer.stateProx, sub_estado_2);
+
+    strcat(j->estadoPlayer.stateProx, sub_estado_3);
+
+    return;
+}
+
 static char *build_SubEstado_1(player *j)
 {
     char *sub_estado_1 = (char *)malloc(4 * sizeof(char)); // Guarda s1
