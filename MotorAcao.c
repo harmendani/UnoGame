@@ -310,8 +310,12 @@ player *executarMotorAcao(player *p)
 
     if (set != NULL)
     {
-
+        
         acaoSeq aSeq = executarMotorDecisao(p, set);
+        if(p->id == 1){
+            p->codAcao = aSeq;
+        }
+        
         /*if (aSeq > 3 || aSeq < 0)
         {
             puts("\n ERRO FATAL apos motor Decisao em motor de acao!!");
@@ -323,7 +327,10 @@ player *executarMotorAcao(player *p)
     }
     else
     {
-
+        if (p->id == 1)
+        {
+            p->codAcao = -1;
+        }
         pprox = p->adversario;
 
         return pprox;

@@ -15,6 +15,9 @@ void inicializaJogadores()
 
 	j1.rodadas = 0;
 	j2.rodadas = 0;
+
+	j1.codAcao = -1;
+	j2.codAcao = -1;
     
     lst_FreeList(j1.listaMaos);
 	lst_FreeList(j2.listaMaos);
