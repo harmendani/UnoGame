@@ -2,6 +2,9 @@
 ** usando o algoritmo Q Learning e heurísticas de exploração
 */
 
+// Variáveis globais
+float matrixQ[28][5];
+
 //Bibliotecas necessárias
 #ifndef MOTORDATA_H
 #define MOTORDATA_H
@@ -20,7 +23,11 @@ typedef struct Q_Function
 /* Define parâmetros para heurísticas de exploração*/
 q_Learning* defineParametrosHeuristica(Data *);
 
-/* Define parâmetros para o Q_learning*/
+/* Constroi artefatos computacionais úteis*/
+void start_MatrixQ();
+void imprime_MatrixQ();
+
+/* Constroi Q Learning a partir de parâmetros e artefatos */
 void defineQLearning();
 
 #ifndef MOTOR_LEARNING_C

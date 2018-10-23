@@ -10,3 +10,44 @@ q_Learning *defineParametrosHeuristica(Data *data)
 
     return qdata;
 }
+
+/* Inicializa tabela de aprendizado */
+void start_MatrixQ()
+{
+
+    for (int i = 0; i < 28; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            matrixQ[i][j] = -1.0f;
+            if (i == 0 && j > 0)
+            {
+                matrixQ[i][j] = (float)(j - 1);
+            }
+            if (j == 0 && i > 0)
+            {
+                matrixQ[i][j] = 100.0f;
+            }
+        }
+    }
+    matrixQ[0][0] = -1.0f;
+
+    return;
+}
+
+void imprime_MatrixQ()
+{
+
+    for (int k = 0; k < 28; k++)
+    {
+        printf("\n");
+        printf("%d\t", k);
+
+        for (int t = 0; t < 5; t++)
+        {
+            printf("%2.f", matrixQ[k][t]);
+            printf("\t");
+        }
+    }
+    return;
+}
