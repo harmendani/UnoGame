@@ -57,8 +57,7 @@ void executarMotorVisao(player *p)
 {
     inicializarMotorVisao(p);       // Zera variáveis antes de computar as visões do player* p
     contadorDeCartasPorTipo(p);     // Conta e salva as cartas por tipo das mãos do jogador atual.     
-    build_StateGame(p);             // Salva o estado atual do jogador antes da jogada
-
+    
     // Visão Contagem
     p->visaoPlayer.contagem.i_quantMesa = v_QuantMesa();
     p->visaoPlayer.contagem.i_quantMontante = v_QuantMontante();
