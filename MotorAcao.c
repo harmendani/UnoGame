@@ -305,38 +305,39 @@ player *executarMotorAcao(player *p)
     ActionSet *set = start_ActionSet(p);
     bool action = calc_AcaoForActionSet(p, set);
     set = isActionController(p, action, set);
-
     player *pprox = NULL;
-
-    if (p->id == 1)
-    {
-        build_StateGame(p);
-    }
 
     if (set != NULL)
     {
-
-        acaoSeq aSeq = executarMotorDecisao(p, set);
+        acaoSeq aSeq = executarMotorDecisao(p, set);        
+        
         if (p->id == 1)
         {
-            p->codAcao = aSeq;
+            if (p->seqAcao == 0)
+            {
+                p->codAcao = aSeq;
+                build_StateGame(p);
+                addSate_MatrixQ(p->estadoPlayer.stateGame);
+            }
+            if (p->seqAcao == 1)
+            {
+                build_StateProx(p);
+                addSate_MatrixQ(p->estadoPlayer.stateProx);
+                /* Calcula recompensa */
+                //float r= calc_Reward(p);
+                /* Update Q Learning */ 
+                
+                p->seqAcao = -1;
+                return p;
+            }
         }
-
-        /*if (aSeq > 3 || aSeq < 0)
-        {
-            puts("\n ERRO FATAL apos motor Decisao em motor de acao!!");
-            exit(0);
-        }*/
         pprox = select_ActionSet(set, aSeq, p);
 
         return pprox;
     }
     else
     {
-        if (p->id == 1)
-        {
-            p->codAcao = -1;
-        }
+        p->codAcao = -1;
         pprox = p->adversario;
 
         return pprox;

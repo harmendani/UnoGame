@@ -111,10 +111,25 @@ player *throwPlay(player *p)
 {
     // Atualiza visão para o player
     executarMotorVisao(p);
-    
+
+    if (p->id == 1)
+    {
+        switch (p->seqAcao)
+        {
+        case -1:
+            p->seqAcao = 0;
+            break;
+        case 0:
+            p->seqAcao = 1;
+            break;
+        case 1:
+            p->seqAcao = -1;
+            break;
+        }
+    }
     // Executa Ação
-    p = executarMotorAcao(p);    
-    
+    p = executarMotorAcao(p);
+
     // retorna próximo jogador
     return p;
     //printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
