@@ -13,6 +13,9 @@ void inicializaJogadores()
 	j1.vitorias = 0;
 	j2.vitorias = 0;
 
+	j1.seqAcao = -1;
+	j2.seqAcao = -1;
+
 	j1.rodadas = 0;
 	j2.rodadas = 0;
 
