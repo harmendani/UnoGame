@@ -32,10 +32,12 @@ q_Learning *defineParametrosHeuristica(Data *);
 /* Constroi artefatos computacionais úteis*/
 void start_MatrixQ();
 void addSate_MatrixQ(char *);
+int calcReward(player *);
 void imprime_MatrixQ();
 
+
 /* Constroi Q Learning a partir de parâmetros e artefatos */
-void defineQLearning();
+ void defineQLearning();
 
 #ifndef MOTOR_LEARNING_C
 #define MOTOR_LEARNING_C

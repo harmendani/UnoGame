@@ -83,3 +83,46 @@ void addSate_MatrixQ(char *s)
 
     return;
 }
+
+int calcReward(player *p)
+{
+    /* Realiza contagem das maos dos jogadores */
+    int qtdPlayer = contadorDeCartas(p->listaMaos);
+    int qtdAdv = contadorDeCartas(p->adversario->listaMaos);
+
+    /* Salva hipoteses */
+    bool qtdJogadorFavoravel = false;
+    bool qtdIndicePlayer = false;
+
+    /* Declara variável para salvar recompensa */
+    int reward = 0;
+
+    /* Realiza comparações das contagens */
+    
+    if (qtdPlayer <= qtdAdv)
+    {
+        qtdJogadorFavoravel = true;
+        reward = reward + 5;
+
+        if (qtdPlayer <= 4)
+        {
+            qtdIndicePlayer = true;
+            reward = reward + 5;
+        }
+        return reward;
+    }
+    else
+    {
+        if (qtdPlayer > 4)
+        {
+            reward = -10;
+        }
+        else
+        {
+            reward = -5;
+        }
+        return reward;
+    }
+
+    return reward;
+}

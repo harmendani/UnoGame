@@ -324,7 +324,7 @@ player *executarMotorAcao(player *p)
                 build_StateProx(p);
                 addSate_MatrixQ(p->estadoPlayer.stateProx);
                 /* Calcula recompensa */
-                //float r= calc_Reward(p);
+                float rt = (float) calcReward(p);
                 /* Update Q Learning */ 
                 
                 p->seqAcao = -1;
