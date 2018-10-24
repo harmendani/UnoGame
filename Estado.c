@@ -93,7 +93,7 @@ static char *build_SubEstado_2(player *j)
 
 static char *build_SubEstado_3(player *j)
 {
-    char *sub_estado_3 = (char *)malloc(5 * sizeof(char)); //Guarda s3
+    char *sub_estado_3 = (char *)malloc(3 * sizeof(char)); //Guarda s3
     int quantJogador = j->visaoPlayer.jogador.i_quantJogador;
     int quantAdv = j->visaoPlayer.jogador.i_quantadversario;
 

@@ -12,18 +12,18 @@
 #define S5 "101"
 #define S6 "110"
 //V3(Crítico, Equilibrado e Favorável) -Visão das Maõs
-#define S7 "0111"
-#define S8 "1000"
-#define S9 "1001"
+#define S7 "01"
+#define S8 "10"
+#define S9 "11"
 
 //TIPOS
 
 struct Estado
 {
     /* Salva o estado atual do jogo antes de executar um ação  */
-    char stateGame[11];
+    char stateGame[9];
     /* Salva o estado anterior do jogo após executar uma ação */
-    char stateProx[11];
+    char stateProx[9];
 };
 typedef struct Estado estado;
 
