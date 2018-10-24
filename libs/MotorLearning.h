@@ -37,7 +37,7 @@ void imprime_MatrixQ();
 
 
 /* Constroi Q Learning a partir de parâmetros e artefatos */
- void defineQLearning();
+ void updateQLearning(q_Learning*, int);
 
 #ifndef MOTOR_LEARNING_C
 #define MOTOR_LEARNING_C

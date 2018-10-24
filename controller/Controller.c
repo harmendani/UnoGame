@@ -23,7 +23,7 @@ void controllerCore()
         startScreen();
         imprimirDadosEntrada(data);
         imprimirProgressoTreinamento(data, training);
-        executarMotorPartida(data);
+        executarMotorPartida(data, q);
         training--;
         if (data->md_data.t_player->nome == SPOCK)
         {

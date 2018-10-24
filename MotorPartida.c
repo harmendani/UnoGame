@@ -107,7 +107,7 @@ player *definePlayerVencedor(player *p)
     return p->adversario;
 }
 
-player *throwPlay(player *p)
+player *throwPlay(player *p, q_Learning *q)
 {
     // Atualiza visão para o player
     executarMotorVisao(p);
@@ -137,7 +137,7 @@ player *throwPlay(player *p)
 
 //Motor Principal que roda a PARTIDA
 
-void executarMotorPartida(Data *data)
+void executarMotorPartida(Data *data, q_Learning *q)
 {
     // Iniciando Partida
     sleep(1);
@@ -150,7 +150,7 @@ void executarMotorPartida(Data *data)
     //Roda loop das rodadas
     do
     {
-        temp = throwPlay(select);
+        temp = throwPlay(select, q);
         select = temp;
 
     } while (isMatch());

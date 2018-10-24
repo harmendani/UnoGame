@@ -325,8 +325,8 @@ player *executarMotorAcao(player *p)
                 addSate_MatrixQ(p->estadoPlayer.stateProx);
                 /* Calcula recompensa */
                 float rt = (float) calcReward(p);
-                /* Update Q Learning */ 
-                
+                /* Update Q Learning */
+                //updateQLearning(qLearning,  rt);
                 p->seqAcao = -1;
                 return p;
             }

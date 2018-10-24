@@ -7,6 +7,11 @@
 #include "MotorData.h"
 #endif
 
+#ifndef MOTOR_LEARNING_H
+#define MOTOR_LEARNING_H
+#include "MotorLearning.h"
+#endif
+
 /** IN�CIO: Vari�veis Globais **/
 static bool STATUS_PARTIDA; // Guarda TRUE ou FALSE para indicar o termino da partida.
 static bool STATUS_PILHA_MESA;
@@ -20,7 +25,7 @@ static bool STATUS_MONTANTE_DESCARTE;
 * - Começa loop de rodadas com o player do passo acima até a condição de parada : 
 *   Quantidade de cartas == 0 pra alguma jogador (*player)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////*/
-void executarMotorPartida(Data *);
+void executarMotorPartida(Data *, q_Learning*);
 
 /* Rotina básica para iniciar variáveis de controle da partida:
 * STATUS_PARTIDA -> TRUE.
@@ -63,4 +68,4 @@ player *definePlayerSaida();
 player *definePlayerVencedor(player *);
 
 /* Lança o jogador correto para efetuar uma jogada*/
-player *throwPlay(player *);
+player *throwPlay(player *, q_Learning*);
