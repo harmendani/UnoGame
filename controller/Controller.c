@@ -12,6 +12,8 @@ void runSystem()
 void controllerCore()
 {
     Data *data = executaMotorData();
+    q_Learning *q = executaMotorLearning(data);
+
     int training = data->md_training;
     int spockWin = 0;
     int machineWin = 0;
@@ -19,23 +21,22 @@ void controllerCore()
     while (training)
     {
         startScreen();
-        imprimirDadosEntrada(data);        
+        imprimirDadosEntrada(data);
         imprimirProgressoTreinamento(data, training);
         executarMotorPartida(data);
         training--;
         if (data->md_data.t_player->nome == SPOCK)
-        {   
+        {
             //printf("\n>> Wins update: %s \n", j2.nome);
-            spockWin++;            
+            spockWin++;
         }
         else
         {
             machineWin++;
-            
         }
     }
     printf("\n\nSpock : %d - Machine : %d \n", spockWin, machineWin);
-    //imprimirDadosSaida(data);
 
+    //imprime_MatrixQ();
     return;
 }

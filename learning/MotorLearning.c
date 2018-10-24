@@ -1,4 +1,15 @@
+q_Learning *executaMotorLearning(Data *data)
+{
 
+    q_Learning *q = defineParametrosHeuristica(data);
+    start_MatrixQ();
+    if (errno != 0)
+    {
+        puts("\n Erro em motorLearning!\n");
+        exit(0);
+    }
+    return q;
+}
 
 q_Learning *defineParametrosHeuristica(Data *data)
 {
@@ -55,19 +66,19 @@ void imprime_MatrixQ()
 void addSate_MatrixQ(char *s)
 {
     float stateTemp = (float)strtol(s, NULL, 10);
-    printf("\n Literal > %s", s);
-    printf("\n floating > %.0f", stateTemp);
+    /*printf("\n Literal > %s", s);
+    printf("\n floating > %.0f", stateTemp);*/
 
     for (int i = 1; i < 28; i++)
     {
         if (matrixQ[i][0] == stateTemp)
             break;
 
-        if (matrixQ[i][0] == 100){
+        if (matrixQ[i][0] == 100)
+        {
             matrixQ[i][0] = stateTemp;
             break;
         }
-            
     }
 
     return;

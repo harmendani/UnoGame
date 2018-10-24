@@ -18,13 +18,20 @@ typedef struct Q_Function
     float learningRate;   // Fato de aprendizagem
     float exploitation;   // Taxa de exploração
 
-}q_Learning;
+} q_Learning;
+
+/* Rotina principal da Engine de aprendizado: 
+* 1 - Inicia Matriz Global
+* 2 - Invoca defineParametrosHeuristica(Data *)
+*/
+q_Learning *executaMotorLearning(Data *);
 
 /* Define parâmetros para heurísticas de exploração*/
-q_Learning* defineParametrosHeuristica(Data *);
+q_Learning *defineParametrosHeuristica(Data *);
 
 /* Constroi artefatos computacionais úteis*/
 void start_MatrixQ();
+void addSate_MatrixQ(char *);
 void imprime_MatrixQ();
 
 /* Constroi Q Learning a partir de parâmetros e artefatos */
