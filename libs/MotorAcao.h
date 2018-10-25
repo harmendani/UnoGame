@@ -1,3 +1,8 @@
+#ifndef MOTOR_LEARNING_H
+#define MOTOR_LEARNING_H
+#include "MotorLearning.h"
+#endif
+
 //Tipos
 typedef enum acaoSequencia
 {
@@ -38,7 +43,7 @@ bool onlyActionMatch(player *, carta);
 ActionSet *isActionController(player *, bool, ActionSet *);
 
 /* Rotinas principais da mecânica de ação */
-player *executarMotorAcao(player *);
+player *executarMotorAcao(player *, q_Learning *);
 player *execute_ActionSet(player *, carta *);
 player *select_ActionSet(ActionSet *, acaoSeq, player *);
 carta *select_ActionMaiorPeso(ActionSet *, player *);
