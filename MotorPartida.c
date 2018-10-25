@@ -133,7 +133,7 @@ player *throwPlay(player *p, q_Learning *q)
     }
     // Executa Ação
     p = executarMotorAcao(p, q);
-
+    //lst_Imprime(M_l);
     // retorna próximo jogador
     return p;
     //printf("\n Rodada : %d - Jogador: %s - VisaoMaos: %d", i, p->nome, p->visaoPlayer.jogador.i_quantJogador);
@@ -158,9 +158,11 @@ void executarMotorPartida(Data *data, q_Learning *q)
         select = temp;
 
     } while (isMatch());
-
+     
     // Salva dados do vencedor na Engine Data
     data->md_data.t_player = definePlayerVencedor(select);
+
+    writeFileEndMatch(data);
 
     // Finaliza Partida
     end_Match();

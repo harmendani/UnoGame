@@ -33,6 +33,10 @@ void transferirCartaMontanteParaJogador(player *j)
 
 void transferirCartaJogadorParaMesa(player *j)
 {
+	if (j->listaMaos == NULL)
+	{
+		return;
+	}
 	carta temp = lst_ObterCarta(j->listaMaos);
 	M_l = lst_Insere(M_l, temp);
 	j->listaMaos = lst_Remove(j->listaMaos);
@@ -436,8 +440,11 @@ void controlarCartasNoMontante()
 {
 	if (lst_IsEmpty(G_l))
 	{
+		
 		G_l = M_l;
 		M_l = lst_cria(); // Pilha da mesa recebe NULL.
+		carta temp = lst_ObterCarta(G_l);
+		M_l = lst_Insere(M_l, temp);
 	}
 }
 

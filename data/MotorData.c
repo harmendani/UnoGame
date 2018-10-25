@@ -141,6 +141,39 @@ String textMotorData(char c)
 
     return NULL;
 }
+void writeFileEndMatch(Data *data)
+{
+
+    String nameFile = data->md_data.t_player->nome;
+    String nameExtension = textMotorData('x');
+    String path = createNameAndPath(DIR, nameFile, nameExtension);
+    FILE *file = openFileTxt(path);
+    writeIntegerEndTxt(file, "%d\n", data->md_data.t_player->bool_statusJogador);
+
+    if (ferror(file))
+    {
+        printf("Error: %s\n", strerror(errno));
+        exit(1);
+    }
+
+    fclose(file);
+
+    nameFile = data->md_data.t_player->adversario->nome;
+    nameExtension = textMotorData('x');
+    path = createNameAndPath(DIR, nameFile, nameExtension);
+    file = openFileTxt(path);
+    writeIntegerEndTxt(file, "%d\n", data->md_data.t_player->adversario->bool_statusJogador);
+
+    if (ferror(file))
+    {
+        printf("Error: %s\n", strerror(errno));
+        exit(1);
+    }
+
+    fclose(file);
+
+    return;
+}
 
 void writeFileRunSystem(Data *data)
 {

@@ -180,7 +180,7 @@ acaoSeq executarMotorDecisao(player *p, ActionSet *a)
             acaoSeq acaoIndice = -9;
             float aux = (float)-9999999;
             int indiceEstado = buscarIndiceEstado(p->estadoPlayer.stateGame);
-            
+
             for (int j = 1; j < 5; j++)
             {
                 if (a->action[j - 1] == true)
@@ -194,7 +194,7 @@ acaoSeq executarMotorDecisao(player *p, ActionSet *a)
 
                     //printf("\n //a->action: %d\n", a->action[j]);
                 }
-                printf("\n for em acaoIndice: %d", a->action[j - 1]);
+               // printf("\n for em acaoIndice: %d", a->action[j - 1]);
             }
             if (acaoIndice < 0 || acaoIndice > 3)
             {
@@ -496,6 +496,10 @@ player *select_ActionSet(ActionSet *a, acaoSeq as, player *p)
         //puts("\n ERRO em select_ActionSet..! \n");
         exit(0);
         break;
+    }
+    if (select == NULL)
+    {
+        puts("\n ERRO em select ActionSet!!");
     }
 
     return select;
