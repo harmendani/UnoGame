@@ -57,7 +57,7 @@ void imprime_MatrixQ()
         for (int t = 0; t < 5; t++)
         {
             printf("%.2f", matrixQ[k][t]);
-            printf(" \t");
+            printf("    \t");
         }
     }
     return;

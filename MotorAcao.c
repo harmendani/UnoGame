@@ -141,41 +141,72 @@ bool onlyActionMatch(player *p, carta c)
 
 acaoSeq executarMotorDecisao(player *p, ActionSet *a)
 {
-
-    /*
-    int *scoreAcao = calc_ScoreAction(p, a);
-    
-    int maior = -9;
-    int aux = -9;
-    acaoSeq acaoIndice = -9;
-
-    for (int i = 0; i < 4; i++)
+    if (p->id == 0)
     {
-        printf("acao: %d\n", i);
-        
-        if (a->action[i])
+        int *scoreAcao = calc_ScoreAction(p, a);
+
+        int maior = -9;
+        int aux = -9;
+        acaoSeq acaoIndice = -9;
+
+        for (int i = 0; i < 4; i++)
         {
-            if (scoreAcao[i] > aux)
+            //printf("acao: %d\n", i);
+
+            if (a->action[i])
             {
-                maior = scoreAcao[i];
-                acaoIndice = i;
-                aux = maior;
+                if (scoreAcao[i] > aux)
+                {
+                    maior = scoreAcao[i];
+                    acaoIndice = i;
+                    aux = maior;
+                }
             }
         }
-    }*/
-    acaoSeq acaoIndice = -9;
-    for (int j = 0; j < 4; j++)
-    {
-        if (a->action[j] == true)
+        if (acaoIndice < 0 || acaoIndice > 3)
         {
-            acaoIndice = j;
-            //printf("\n //a->action: %d\n", a->action[j]);
+            printf("\n AcaoIndice agente == 0 fora de faixa em MotorDecisao!! -- value >> %d", acaoIndice);
+            exit(0);
         }
-        //printf("\n for em acaoIndice: %d", a->action[j]);
+        return acaoIndice;
+    }
+    else
+    {
+        if (p->seqAcao == 0)
+        {
+
+            build_StateGame(p);
+            addSate_MatrixQ(p->estadoPlayer.stateGame);
+            acaoSeq acaoIndice = -9;
+            float aux = (float)-9999999;
+            int indiceEstado = buscarIndiceEstado(p->estadoPlayer.stateGame);
+            
+            for (int j = 1; j < 5; j++)
+            {
+                if (a->action[j - 1] == true)
+                {
+
+                    if (matrixQ[indiceEstado][j] >= aux)
+                    {
+                        aux = matrixQ[indiceEstado][j];
+                        acaoIndice = j - 1;
+                    }
+
+                    //printf("\n //a->action: %d\n", a->action[j]);
+                }
+                printf("\n for em acaoIndice: %d", a->action[j - 1]);
+            }
+            if (acaoIndice < 0 || acaoIndice > 3)
+            {
+                printf("\n AcaoIndice agente == 1 fora de faixa em MotorDecisao!! -- value >> %d >> %s", acaoIndice, p->nome);
+                exit(0);
+            }
+            return acaoIndice;
+        }
+        return p->codAcao;
     }
 
-    // printf("\n //acaoIndice: %d\n", acaoIndice);
-    return acaoIndice;
+    // printf("\n //acaoIndice: %d\n", acaoIndice);*/
 }
 
 int *calc_ScoreAction(player *p, ActionSet *a)
@@ -322,14 +353,16 @@ player *executarMotorAcao(player *p, q_Learning *q)
             if (p->seqAcao == 0)
             {
                 p->codAcao = aSeq;
-                
+
                 if (p->codAcao < 0 || p->codAcao > 5)
                 {
                     printf("\n CodAcao fora de faixa em MotorDEAcao seqACao == 0!! -- value >> %d", p->codAcao);
                     exit(0);
                 }
-                build_StateGame(p);
-                addSate_MatrixQ(p->estadoPlayer.stateGame);
+                /*build_StateGame(p);
+                addSate_MatrixQ(p->estadoPlayer.stateGame);*/
+                pprox = select_ActionSet(set, aSeq, p);
+                return pprox;
             }
             if (p->seqAcao == 1)
             {
@@ -343,7 +376,7 @@ player *executarMotorAcao(player *p, q_Learning *q)
                     exit(0);
                 }
                 updateQLearning(q, p);
-                p->seqAcao = 1;
+                p->seqAcao = -1;
                 if (p != temp)
                 {
                     puts("\n ERRO FATAL MOTOR ACAO DO PLAYER !!\n");
@@ -352,9 +385,12 @@ player *executarMotorAcao(player *p, q_Learning *q)
                 return p;
             }
         }
-        pprox = select_ActionSet(set, aSeq, p);
 
-        return pprox;
+        if (p->id == 0)
+        {
+            pprox = select_ActionSet(set, aSeq, p);
+            return pprox;
+        }
     }
     else
     {
@@ -1354,6 +1390,11 @@ float calculaIndiceNum(int num, player *p)
 
 bool calc_AcaoForActionSet(player *p, ActionSet *a)
 {
+
+    a->action[0] = 0;
+    a->action[1] = 0;
+    a->action[2] = 0;
+    a->action[3] = 0;
 
     if (a->numberAction > 0)
     {
