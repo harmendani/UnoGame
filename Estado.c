@@ -2,6 +2,7 @@
 
 void build_StateGame(player *j)
 {
+    //memset(j->estadoPlayer.stateGame, NULL, 10);
     char *sub_estado_1 = build_SubEstado_1(j); //Guarda s1
     char *sub_estado_2 = build_SubEstado_2(j); //Guarda s2
     char *sub_estado_3 = build_SubEstado_3(j); //Guarda s3
@@ -17,6 +18,7 @@ void build_StateGame(player *j)
 
 void build_StateProx(player *j){
 
+    //memset(j->estadoPlayer.stateProx, NULL, 10);
     char *sub_estado_1 = build_SubEstado_1(j); //Guarda s1
     char *sub_estado_2 = build_SubEstado_2(j); //Guarda s2
     char *sub_estado_3 = build_SubEstado_3(j); //Guarda s3

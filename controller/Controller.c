@@ -36,7 +36,10 @@ void controllerCore()
         }
     }
     printf("\n\nSpock : %d - Machine : %d \n", spockWin, machineWin);
-
-    //imprime_MatrixQ();
+    free(q);
+    free(data);
+    q = NULL;
+    data = NULL;
+    imprime_MatrixQ();
     return;
 }

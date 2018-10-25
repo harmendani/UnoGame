@@ -299,23 +299,35 @@ int *calc_ScoreAction(player *p, ActionSet *a)
 
 /* Rotinas principais da mecânica de ação */
 
-player *executarMotorAcao(player *p)
+player *executarMotorAcao(player *p, q_Learning *q)
 {
 
     ActionSet *set = start_ActionSet(p);
     bool action = calc_AcaoForActionSet(p, set);
     set = isActionController(p, action, set);
     player *pprox = NULL;
+    player *temp = p;
 
     if (set != NULL)
     {
-        acaoSeq aSeq = executarMotorDecisao(p, set);        
-        
+        acaoSeq aSeq = executarMotorDecisao(p, set);
+        if (aSeq < 0 || aSeq > 3)
+        {
+            printf("\n AcaoSeq fora de faixa em MotorDEAcao!! -- value >> %d", aSeq);
+            exit(0);
+        }
+
         if (p->id == 1)
         {
             if (p->seqAcao == 0)
             {
                 p->codAcao = aSeq;
+                
+                if (p->codAcao < 0 || p->codAcao > 5)
+                {
+                    printf("\n CodAcao fora de faixa em MotorDEAcao seqACao == 0!! -- value >> %d", p->codAcao);
+                    exit(0);
+                }
                 build_StateGame(p);
                 addSate_MatrixQ(p->estadoPlayer.stateGame);
             }
@@ -323,11 +335,20 @@ player *executarMotorAcao(player *p)
             {
                 build_StateProx(p);
                 addSate_MatrixQ(p->estadoPlayer.stateProx);
-                /* Calcula recompensa */
-                float rt = (float) calcReward(p);
+
                 /* Update Q Learning */
-                //updateQLearning(qLearning,  rt);
-                p->seqAcao = -1;
+                if (p->codAcao < 0 || p->codAcao > 5)
+                {
+                    printf("\n CodAcao fora de faixa em MotorDEAcao seqACao == 1!! -- value %s >> %d", p->nome, p->codAcao);
+                    exit(0);
+                }
+                updateQLearning(q, p);
+                p->seqAcao = 1;
+                if (p != temp)
+                {
+                    puts("\n ERRO FATAL MOTOR ACAO DO PLAYER !!\n");
+                    exit(0);
+                }
                 return p;
             }
         }
@@ -337,7 +358,7 @@ player *executarMotorAcao(player *p)
     }
     else
     {
-        p->codAcao = -1;
+        p->seqAcao = -1;
         pprox = p->adversario;
 
         return pprox;

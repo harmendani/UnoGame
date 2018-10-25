@@ -116,19 +116,23 @@ player *throwPlay(player *p, q_Learning *q)
     {
         switch (p->seqAcao)
         {
-        case -1:
+        case (-1):
             p->seqAcao = 0;
             break;
-        case 0:
+        case (0):
             p->seqAcao = 1;
             break;
-        case 1:
+        case (1):
             p->seqAcao = -1;
+            break;
+        default:
+            puts("\n ERRO FATAL em throwPlay");
+            exit(0);
             break;
         }
     }
     // Executa Ação
-    p = executarMotorAcao(p);
+    p = executarMotorAcao(p, q);
 
     // retorna próximo jogador
     return p;
@@ -160,6 +164,7 @@ void executarMotorPartida(Data *data, q_Learning *q)
 
     // Finaliza Partida
     end_Match();
+    imprime_MatrixQ();
 
     return;
 }
