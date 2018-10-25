@@ -30,7 +30,7 @@ void start_MatrixQ()
     {
         for (int j = 0; j < 5; j++)
         {
-            matrixQ[i][j] = -1.0f;
+            matrixQ[i][j] = 0.0f;
             if (i == 0 && j > 0)
             {
                 matrixQ[i][j] = (float)(j - 1);
@@ -41,7 +41,7 @@ void start_MatrixQ()
             }
         }
     }
-    matrixQ[0][0] = -1.0f;
+    matrixQ[0][0] = -99.0f;
 
     return;
 }
@@ -56,8 +56,8 @@ void imprime_MatrixQ()
 
         for (int t = 0; t < 5; t++)
         {
-            printf("%.0f", matrixQ[k][t]);
-            printf("\t");
+            printf("%.2f", matrixQ[k][t]);
+            printf(" \t");
         }
     }
     return;
@@ -66,13 +66,16 @@ void imprime_MatrixQ()
 void addSate_MatrixQ(char *s)
 {
     float stateTemp = (float)strtol(s, NULL, 10);
+    //printf("\nEstado now >> %.3f", stateTemp);
     /*printf("\n Literal > %s", s);
     printf("\n floating > %.0f", stateTemp);*/
 
     for (int i = 1; i < 28; i++)
     {
         if (matrixQ[i][0] == stateTemp)
+        {
             break;
+        }
 
         if (matrixQ[i][0] == 100)
         {
@@ -98,7 +101,7 @@ int calcReward(player *p)
     int reward = 0;
 
     /* Realiza comparações das contagens */
-    
+
     if (qtdPlayer <= qtdAdv)
     {
         qtdJogadorFavoravel = true;
@@ -125,4 +128,74 @@ int calcReward(player *p)
     }
 
     return reward;
+}
+
+float search_ValueQ(player *p)
+{
+
+    float valueQ = 0.0f;
+    int indiceValorState = buscarIndiceEstado(p->estadoPlayer.stateGame);
+
+    valueQ = matrixQ[indiceValorState][(p->codAcao) + 1];
+
+    return valueQ;
+}
+
+int buscarIndiceEstado(char *s)
+{
+    float stateTemp = (float)strtol(s, NULL, 10);
+    for (int i = 1; i < 28; i++)
+    {
+        if (matrixQ[i][0] == stateTemp)
+        {
+            return i;
+        }
+    }
+
+    printf("\n Erro na busca de estado!! - Valor :%f\n", stateTemp);
+    imprime_MatrixQ();
+    exit(0);
+    return -1;
+}
+
+float searchMax_ValueQ(player *p)
+{
+    float maior = 0.f;
+    float aux = 0.0f;
+
+    int indiceValorState = buscarIndiceEstado(p->estadoPlayer.stateProx);
+    for (int j = 1; j < 5; j++)
+    {
+        aux = matrixQ[indiceValorState][j];
+        if (aux >= maior)
+        {
+            maior = aux;
+        }
+    }
+
+    return maior;
+}
+void updateQLearning(q_Learning *q, player *p)
+{
+
+    float alpha = q->learningRate;
+    float discountFactor = q->discountFactor;
+    float reward = (float)calcReward(p);
+    float q_OldValue = search_ValueQ(p);
+    float q_MaxValueState = searchMax_ValueQ(p);
+
+    float q_NewValue = q_OldValue + alpha * (reward + (discountFactor * q_MaxValueState - q_OldValue));
+
+    /* Atualiza Tabela Q de Aprendizado */
+    int indiceQ = buscarIndiceEstado(p->estadoPlayer.stateGame);
+
+    matrixQ[indiceQ][(p->codAcao) + 1] = q_NewValue;
+    if (indiceQ > 27 || indiceQ < 1)
+    {
+        printf("Erro em update Q, indice errado >> %.2f", matrixQ[indiceQ][(p->codAcao) + 1]);
+        exit(0);
+        return;
+    }
+
+    return;
 }

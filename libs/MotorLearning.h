@@ -8,7 +8,7 @@ float matrixQ[28][5];
 //Bibliotecas necessárias
 #ifndef MOTORDATA_H
 #define MOTORDATA_H
-#include "./libs/MotorData.h"
+#include "MotorData.h"
 #endif
 
 /* Define a estrutura da Função Q*/
@@ -34,10 +34,12 @@ void start_MatrixQ();
 void addSate_MatrixQ(char *);
 int calcReward(player *);
 void imprime_MatrixQ();
-
+int buscarIndiceEstado(char *);
+float searchMax_ValueQ(player *);
+float search_ValueQ(player *);
 
 /* Constroi Q Learning a partir de parâmetros e artefatos */
- void updateQLearning(q_Learning*, int);
+void updateQLearning(q_Learning *, player *);
 
 #ifndef MOTOR_LEARNING_C
 #define MOTOR_LEARNING_C
