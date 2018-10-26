@@ -16,8 +16,10 @@ typedef struct Q_Function
 {
     float discountFactor; // Desconto temporal
     float learningRate;   // Fato de aprendizagem
-    float exploitation;   // Taxa de exploração
-
+    float exploitation; 
+    int training;  // Taxa de exploração
+    int episode;      //Save steps of Match
+   
 } q_Learning;
 
 /* Rotina principal da Engine de aprendizado: 

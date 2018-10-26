@@ -2,6 +2,8 @@ q_Learning *executaMotorLearning(Data *data)
 {
 
     q_Learning *q = defineParametrosHeuristica(data);
+    q->episode = 0;
+    q->training = (int)data->md_training;
     start_MatrixQ();
     if (errno != 0)
     {
