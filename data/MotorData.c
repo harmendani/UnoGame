@@ -157,9 +157,13 @@ void writeFileEndMatch(Data *data)
     }
 
     fclose(file);
-
-    nameFile = data->md_data.t_player->adversario->nome;
+    if (data->md_data.t_player->bool_statusJogador == data->md_data.t_player->adversario->bool_statusJogador){
+        puts("\nn ERRO EM WrITE FILE!!");
+        exit(0);
+    }
+        nameFile = data->md_data.t_player->adversario->nome;
     nameExtension = textMotorData('x');
+    file = NULL;
     path = createNameAndPath(DIR, nameFile, nameExtension);
     file = openFileTxt(path);
     writeIntegerEndTxt(file, "%d\n", data->md_data.t_player->adversario->bool_statusJogador);

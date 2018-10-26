@@ -25,7 +25,7 @@ void controllerCore()
         imprimirProgressoTreinamento(data, training);
         executarMotorPartida(data, q);
         training--;
-        /*if (data->md_data.t_player->nome == SPOCK)
+        if (data->md_data.t_player->nome == SPOCK)
         {
             //printf("\n>> Wins update: %s \n", j2.nome);
             spockWin++;
@@ -33,10 +33,10 @@ void controllerCore()
         else
         {
             machineWin++;
-        }*/
-        //printf("\n\nSpock : %d - Machine : %d \n", spockWin, machineWin);
+        }
+        printf("\n\nSpock : %d - Machine : %d \n", spockWin, machineWin);
     }
-    int n = 100;
+    /*int n = 100;
     while(n > 0){
         executarMotorPartida(data, q);
         
@@ -52,7 +52,7 @@ void controllerCore()
         n--;
         printf("\n\nSpock : %d - Machine : %d \n", spockWin, machineWin);
     }
-
+*/
     
     imprime_MatrixQ();
     return;

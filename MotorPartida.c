@@ -150,17 +150,24 @@ void executarMotorPartida(Data *data, q_Learning *q)
     //Define player que começa a partida
     player *select = definePlayerSaida();
     player *temp = NULL;
+    j1.bool_statusJogador = false;
+    j2.bool_statusJogador = false;
 
     //Roda loop das rodadas
     do
     {
+        bool partidaLoop = isMatch();
+        if (!partidaLoop)
+        {
+            break;
+        }
         temp = throwPlay(select, q);
         select = temp;
 
     } while (isMatch());
-     
+
     // Salva dados do vencedor na Engine Data
-    data->md_data.t_player = definePlayerVencedor(select);
+    data->md_data.t_player = definePlayerVencedor(temp);
 
     writeFileEndMatch(data);
 

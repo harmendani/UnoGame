@@ -107,18 +107,24 @@ int calcReward(player *p)
         qtdJogadorFavoravel = true;
         reward = reward + 5;
 
-        if (qtdPlayer <= 4)
+        if (qtdPlayer <= 2)
         {
             qtdIndicePlayer = true;
             reward = reward + 5;
+            if(qtdPlayer == qtdAdv){
+                reward = reward - 5;
+            }
         }
         return reward;
     }
     else
     {
-        if (qtdPlayer > 4)
+        if (qtdPlayer >= 5)
         {
             reward = -10;
+            if(qtdAdv == 4){
+                reward = -5;
+            }
         }
         else
         {
