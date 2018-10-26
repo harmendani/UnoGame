@@ -194,7 +194,7 @@ acaoSeq executarMotorDecisao(player *p, ActionSet *a)
 
                     //printf("\n //a->action: %d\n", a->action[j]);
                 }
-               // printf("\n for em acaoIndice: %d", a->action[j - 1]);
+                // printf("\n for em acaoIndice: %d", a->action[j - 1]);
             }
             if (acaoIndice < 0 || acaoIndice > 3)
             {
@@ -338,9 +338,6 @@ player *executarMotorAcao(player *p, q_Learning *q)
     set = isActionController(p, action, set);
     player *pprox = NULL;
     player *temp = p;
-    
-    
-    
 
     if (set != NULL)
     {
@@ -353,38 +350,70 @@ player *executarMotorAcao(player *p, q_Learning *q)
 
         if (p->id == 1)
         {
-           
 
             if (p->seqAcao == 0)
             {
                 /* Taxa de exploração */
-                q->episode++;
-                int exploit = (int)(q->training * q->exploitation);                
-                if(q->episode <= exploit){
+                p->rodadas++;
 
-                    int *scoreAcao = calc_ScoreAction(p, set);
-
-                    int maior = -9;
-                    int aux = -9;
-                    acaoSeq acaoIndice = -9;
-
-                    for (int i = 0; i < 4; i++)
+                if (p->rodadas == q->episode)
+                {
+                    q->episode = (2 * q->episode) + 1;
+                    // Algoritmo de exploit Random
+                    int a = randomInteger();
+                    if ((a % 2) == 0)
                     {
-                        //printf("acao: %d\n", i);
+                        int *scoreAcao = calc_ScoreAction(p, set);
+                        int maior = -9;
+                        int aux = -9;
+                        acaoSeq acaoIndice = -9;
 
-                        if (set->action[i])
+                        for (int i = 0; i < 4; i++)
                         {
-                            if (scoreAcao[i] > aux)
+                            //printf("acao: %d\n", i);
+
+                            if (set->action[i])
                             {
-                                maior = scoreAcao[i];
-                                acaoIndice = i;
-                                aux = maior;
+                                if (scoreAcao[i] > aux)
+                                {
+                                    maior = scoreAcao[i];
+                                    acaoIndice = i;
+                                    aux = maior;
+                                }
                             }
                         }
+
+                        aSeq = acaoIndice;
                     }
-                    aSeq = acaoIndice;
+                    else
+                    {
+                        int acaoMenor = -9;
+
+                        while (acaoMenor == -9)
+                        {
+                            int randomNum = randomInteger();
+                            for (int i = 0; i < 4; i++)
+                            {
+                                //printf("acao: %d\n", i);
+
+                                if (set->action[i])
+                                {
+                                    if (set->action[i] == true)
+                                    {
+                                            if(randomNum % 2 == 0){
+                                                acaoMenor = i;
+                                            }
+                                            else{
+                                                continue;
+                                            }
+                                    }
+                                }
+                            }
+                        }
+                        aSeq = acaoMenor;
+                    }
                 }
-                
+
                 p->codAcao = aSeq;
 
                 if (p->codAcao < 0 || p->codAcao > 5)
