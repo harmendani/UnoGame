@@ -3,7 +3,7 @@
 */
 
 // Variáveis globais
-float matrixQ[28][5];
+float matrixQ[28][6];
 
 //Bibliotecas necessárias
 #ifndef MOTORDATA_H
@@ -39,6 +39,7 @@ void imprime_MatrixQ();
 int buscarIndiceEstado(char *);
 float searchMax_ValueQ(player *);
 float search_ValueQ(player *);
+int updateVisitState(char *);
 
 /* Constroi Q Learning a partir de parâmetros e artefatos */
 void updateQLearning(q_Learning *, player *);

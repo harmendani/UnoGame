@@ -56,7 +56,7 @@ void imprime_MatrixQ()
         printf("\n");
         printf("%d\t", k);
 
-        for (int t = 0; t < 5; t++)
+        for (int t = 0; t < 6; t++)
         {
             printf("%.2f", matrixQ[k][t]);
             printf("    \t");
@@ -113,7 +113,8 @@ int calcReward(player *p)
         {
             qtdIndicePlayer = true;
             reward = reward + 5;
-            if(qtdPlayer == qtdAdv){
+            if (qtdPlayer == qtdAdv)
+            {
                 reward = reward - 5;
             }
         }
@@ -124,7 +125,8 @@ int calcReward(player *p)
         if (qtdPlayer >= 5)
         {
             reward = -10;
-            if(qtdAdv == 4){
+            if (qtdAdv == 4)
+            {
                 reward = -5;
             }
         }
@@ -183,16 +185,25 @@ float searchMax_ValueQ(player *p)
 
     return maior;
 }
+
+int updateVisitState(char *s)
+{
+    int indiceState = buscarIndiceEstado(s);
+    matrixQ[indiceState][5] = matrixQ[indiceState][5] + 1;
+    int valor = matrixQ[indiceState][5];
+    return valor;
+}
 void updateQLearning(q_Learning *q, player *p)
 {
-
-    float alpha = q->learningRate;
+    char *s = p->estadoPlayer.stateGame;
+    int visitState = updateVisitState(s);
+    float alpha = ((float)1 / ((float)1 + (float)visitState));
     float discountFactor = q->discountFactor;
     float reward = (float)calcReward(p);
     float q_OldValue = search_ValueQ(p);
     float q_MaxValueState = searchMax_ValueQ(p);
 
-    float q_NewValue = q_OldValue + alpha * (reward + (discountFactor * q_MaxValueState - q_OldValue));
+    float q_NewValue = (((float)1 - alpha)*q_OldValue) + alpha * (reward + (discountFactor * q_MaxValueState - q_OldValue));
 
     /* Atualiza Tabela Q de Aprendizado */
     int indiceQ = buscarIndiceEstado(p->estadoPlayer.stateGame);

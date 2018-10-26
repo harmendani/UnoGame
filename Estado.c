@@ -44,7 +44,7 @@ static char *build_SubEstado_1(player *j)
     }
     else
     {
-        if (montante <= (int)(1.5 * pilhaMesa))
+        if (montante <= (int)(2 * pilhaMesa))
         {
             strcpy(sub_estado_1, S2);
         }
@@ -67,15 +67,15 @@ static char *build_SubEstado_2(player *j)
     contCartaCoringa4 = contadorDeCartasCuringa_4(M_l);
     contCartaAcao = contadorDeCartasAcao(M_l);
     contCartaCoringa = contadorDeCartasCuringa(M_l);
-    if (j->visaoPlayer.contagem.i_quantMesa > 3)
+    if (j->visaoPlayer.contagem.i_quantMesa >= 4)
     {
-        if (contCartaCoringa4 == QTD_CARTAS_CORINGA || contCartaAcao >= 8)
+        if (contCartaCoringa4 == QTD_CARTAS_CORINGA || contCartaAcao >= 12)
         {
             strcpy(sub_estado_2, S4);
         }
         else
         {
-            if (contCartaCoringa >= 4 || contCartaAcao >= 6)
+            if (contCartaCoringa4 == 4 || contCartaAcao >= 6)
             {
                 strcpy(sub_estado_2, S5);
             }

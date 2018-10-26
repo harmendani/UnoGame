@@ -338,6 +338,9 @@ player *executarMotorAcao(player *p, q_Learning *q)
     set = isActionController(p, action, set);
     player *pprox = NULL;
     player *temp = p;
+    
+    
+    
 
     if (set != NULL)
     {
@@ -350,8 +353,38 @@ player *executarMotorAcao(player *p, q_Learning *q)
 
         if (p->id == 1)
         {
+           
+
             if (p->seqAcao == 0)
             {
+                /* Taxa de exploração */
+                q->episode++;
+                int exploit = (int)(q->training * q->exploitation);                
+                if(q->episode <= exploit){
+
+                    int *scoreAcao = calc_ScoreAction(p, set);
+
+                    int maior = -9;
+                    int aux = -9;
+                    acaoSeq acaoIndice = -9;
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        //printf("acao: %d\n", i);
+
+                        if (set->action[i])
+                        {
+                            if (scoreAcao[i] > aux)
+                            {
+                                maior = scoreAcao[i];
+                                acaoIndice = i;
+                                aux = maior;
+                            }
+                        }
+                    }
+                    aSeq = acaoIndice;
+                }
+                
                 p->codAcao = aSeq;
 
                 if (p->codAcao < 0 || p->codAcao > 5)
