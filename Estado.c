@@ -16,7 +16,8 @@ void build_StateGame(player *j)
     return;
 }
 
-void build_StateProx(player *j){
+void build_StateProx(player *j)
+{
 
     //memset(j->estadoPlayer.stateProx, NULL, 10);
     char *sub_estado_1 = build_SubEstado_1(j); //Guarda s1
@@ -36,22 +37,22 @@ static char *build_SubEstado_1(player *j)
 {
     char *sub_estado_1 = (char *)malloc(4 * sizeof(char)); // Guarda s1
 
-    int montante = j->visaoPlayer.contagem.i_quantMontante;
-    int pilhaMesa = j->visaoPlayer.contagem.i_quantMesa;
-    if (montante <= pilhaMesa)
+    carta *c = lst_ObterCartaRef(M_l);
+
+    switch (c->TipoCarta)
     {
+    case NORMAL:
         strcpy(sub_estado_1, S1);
-    }
-    else
-    {
-        if (montante <= (int)(2 * pilhaMesa))
-        {
-            strcpy(sub_estado_1, S2);
-        }
-        else
-        {
-            strcpy(sub_estado_1, S3);
-        }
+        break;
+    case ACAO:
+        strcpy(sub_estado_1, S2);
+        break;
+    case CORINGA:
+        strcpy(sub_estado_1, S3);
+        break;
+    default:
+        puts("\n Erro em escolha build_subEstado1!");
+        exit(0);
     }
 
     return sub_estado_1;
@@ -69,13 +70,13 @@ static char *build_SubEstado_2(player *j)
     contCartaCoringa = contadorDeCartasCuringa(M_l);
     if (j->visaoPlayer.contagem.i_quantMesa >= 4)
     {
-        if (contCartaCoringa4 == QTD_CARTAS_CORINGA || contCartaAcao >= 12)
+        if (contCartaCoringa4 == 4 || contCartaAcao >= 12)
         {
             strcpy(sub_estado_2, S4);
         }
         else
         {
-            if (contCartaCoringa4 == 4 || contCartaAcao >= 6)
+            if (contCartaCoringa4 > 0 || contCartaAcao >= 6)
             {
                 strcpy(sub_estado_2, S5);
             }
