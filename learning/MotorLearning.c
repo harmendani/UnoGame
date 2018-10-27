@@ -94,6 +94,7 @@ int calcReward(player *p)
     /* Realiza contagem das maos dos jogadores */
     int qtdPlayer = contadorDeCartas(p->listaMaos);
     int qtdAdv = contadorDeCartas(p->adversario->listaMaos);
+    int diff = qtdPlayer - qtdAdv;
 
     /* Salva hipoteses */
     bool qtdJogadorFavoravel = false;
@@ -107,37 +108,24 @@ int calcReward(player *p)
     if (qtdPlayer <= qtdAdv)
     {
         qtdJogadorFavoravel = true;
-        reward = reward + 5;
-
-        if (qtdPlayer <= 2)
+        reward = 10;
+        if (diff >= 3 || qtdPlayer == 1)
         {
-            qtdIndicePlayer = true;
-            reward = reward + 5;
-            if (qtdPlayer == qtdAdv)
-            {
-                reward = reward - 5;
-            }
+            reward = reward + diff;
         }
+
         return reward;
     }
     else
     {
-        if (qtdPlayer >= 5)
+        reward = -10;
+        if (diff <= -3 || qtdAdv == 1)
         {
-            reward = -10;
-            if (qtdAdv == 4)
-            {
-                reward = -5;
-            }
+            reward = reward + (diff);
         }
-        else
-        {
-            reward = -5;
-        }
+
         return reward;
     }
-
-    return reward;
 }
 
 float search_ValueQ(player *p)
@@ -203,7 +191,7 @@ void updateQLearning(q_Learning *q, player *p)
     float q_OldValue = search_ValueQ(p);
     float q_MaxValueState = searchMax_ValueQ(p);
 
-    float q_NewValue = (((float)1 - alpha)*q_OldValue) + alpha * (reward + (discountFactor * q_MaxValueState - q_OldValue));
+    float q_NewValue = (((float)1 - alpha) * q_OldValue) + alpha * (reward + (discountFactor * q_MaxValueState - q_OldValue));
 
     /* Atualiza Tabela Q de Aprendizado */
     int indiceQ = buscarIndiceEstado(p->estadoPlayer.stateGame);

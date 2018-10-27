@@ -504,7 +504,13 @@ void preparaRandomCoringa()
 
 void rotinaPreparaRandom()
 {
-	srand(time(NULL));
+	struct timeval time;
+	gettimeofday(&time, NULL);
+
+	// microsecond has 1 000 000
+	// Assuming you did not need quite that accuracy
+	// Also do not assume the system clock has that accuracy.
+	srand((time.tv_sec * 1000) + (time.tv_usec / 1000));
 	preparaRandomAzul();
 	preparaRandomVermelho();
 	preparaRandomAmarelo();
@@ -515,6 +521,7 @@ void rotinaPreparaRandom()
 
 void executarMotorCarta()
 {
+	
 	inicializa_Cartas();
 	rotinaPreparaRandom();
 	alocadorDeCartasMemoria();

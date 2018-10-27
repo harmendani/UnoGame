@@ -37,6 +37,7 @@ void start_Match()
     }
 
     start_StatusMatch();
+    //lst_Imprime(G_l);
 }
 
 bool isMatch()
@@ -144,7 +145,7 @@ player *throwPlay(player *p, q_Learning *q)
 void executarMotorPartida(Data *data, q_Learning *q)
 {
     // Iniciando Partida
-    sleep(1);
+    //sleep(1);
     start_Match();
 
     //Define player que começa a partida
@@ -168,12 +169,12 @@ void executarMotorPartida(Data *data, q_Learning *q)
 
     // Salva dados do vencedor na Engine Data
     data->md_data.t_player = definePlayerVencedor(temp);
-
+    
     writeFileEndMatch(data);
 
     // Finaliza Partida
     end_Match();
-    imprime_MatrixQ();
+    //imprime_MatrixQ();    
 
     return;
 }
