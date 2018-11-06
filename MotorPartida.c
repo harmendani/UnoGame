@@ -88,12 +88,12 @@ player *definePlayerSaida()
     int a = randomInteger();
     if ((a % 2) == 0)
     {
-        j2.bool_statusJogador = true;
+
         return &j2;
     }
     else
     {
-        j1.bool_statusJogador = true;
+
         return &j1;
     }
 }
@@ -169,12 +169,12 @@ void executarMotorPartida(Data *data, q_Learning *q)
 
     // Salva dados do vencedor na Engine Data
     data->md_data.t_player = definePlayerVencedor(temp);
-    
+
     writeFileEndMatch(data);
 
     // Finaliza Partida
     end_Match();
-    //imprime_MatrixQ();    
+    imprime_MatrixQ();
 
     return;
 }

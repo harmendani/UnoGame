@@ -109,19 +109,19 @@ int calcReward(player *p)
     {
         qtdJogadorFavoravel = true;
         reward = 10;
-        if (diff >= 3 || qtdPlayer == 1)
+        if (diff >= 4 || qtdPlayer == 1)
         {
-            reward = reward + diff;
-        }
+            reward = reward + 10;
 
-        return reward;
+            return reward;
+        }
     }
     else
     {
-        reward = -10;
-        if (diff <= -3 || qtdAdv == 1)
+        reward = 0;
+        if (diff <= -4 || qtdAdv == 1)
         {
-            reward = reward + (diff);
+            reward = -10;
         }
 
         return reward;
@@ -158,7 +158,7 @@ int buscarIndiceEstado(char *s)
 
 float searchMax_ValueQ(player *p)
 {
-    float maior = 0.f;
+    float maior = -9999999.0f;
     float aux = 0.0f;
 
     int indiceValorState = buscarIndiceEstado(p->estadoPlayer.stateProx);
@@ -185,7 +185,7 @@ void updateQLearning(q_Learning *q, player *p)
 {
     char *s = p->estadoPlayer.stateGame;
     int visitState = updateVisitState(s);
-    float alpha = ((float)1 / ((float)1 + (float)visitState));
+    float alpha = ((float)1 / ((float)visitState));
     float discountFactor = q->discountFactor;
     float reward = (float)calcReward(p);
     float q_OldValue = search_ValueQ(p);
